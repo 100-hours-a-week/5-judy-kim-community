@@ -1,6 +1,9 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import ejsLayouts from 'express-ejs-layouts';
+
+
 
 const app = express();
 const port = 3000;
@@ -11,10 +14,13 @@ const __dirname = path.dirname(__filename);
 app.use(express.static('public'));
 const templatesDir = path.join(__dirname, 'templates');
 
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
+
 
 // 홈 페이지
 app.get('/', (req, res) => {
-    res.sendFile(path.join(templatesDir, 'home.html'));
+    res.sendFile(path.join(templatesDir, 'base.html'));
 });
 
 // 로그인
