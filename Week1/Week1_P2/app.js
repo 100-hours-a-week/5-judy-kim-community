@@ -1,18 +1,11 @@
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import ejsLayouts from 'express-ejs-layouts';
-
-
 
 const app = express();
 const port = 3000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static('public'));
-const templatesDir = path.join(__dirname, 'templates');
+app.use('/static', express.static(path.join(__dirname, 'templates', 'static')));
 
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
@@ -20,12 +13,12 @@ app.use(ejsLayouts);
 
 // 홈 페이지
 app.get('/', (req, res) => {
-    res.sendFile(path.join(templatesDir, 'base.html'));
+    res.render('base'); 
 });
 
 // 로그인
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(templatesDir, 'login.html'));
+    res.render('login'); 
 });
 
 // 회원가입
