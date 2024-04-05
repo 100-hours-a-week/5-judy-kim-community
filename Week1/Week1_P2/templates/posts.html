@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/overheader.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/posts.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/card.css">
+{% endblock %}
+
+{% block overheader %}
+<div class="overheader">
+    <div class="button-back">
+
+    </div>
+    <div class="profile">
+
+    </div>
+</div>        
+{% endblock %}
+
+
+{% block content %}
+    <section class="posts-section">
+        <div class="space"></div>
+        <div class="posts-title"><p>안녕하세요,<br>아무말 대잔치 <strong>게시판</strong> 입니다.</p></div>
+        <div class="space"></div>
+        <div class="button-write-parent"><button class="button-write" type='submit'>게시글 작성</button></div>
+        <div class="space"></div>
+
+        {% for card in cards %}
+        <a href="/post-contents" class="card-link">
+        <article class="card" href="/post-contents">
+            <div class="title"><h3>{{ card.title }}</h3></div>
+            <div class="subtitle">
+                <div class="subtitle-numbers">
+                    <p>좋아요 {{ card.likes }}</p>
+                    <p>댓글 {{ card.comments }}</p>
+                    <p>조회수 {{ card.views }}</p>
+                </div>
+                <div class="subtitle-date">
+                    <p>{{ card.date }}</p>
+                    <p>{{ card.time }}</p>
+                </div>
+            </div>
+            <hr class="card-line">
+            <div class="profile">
+                <div class="user-image">
+                    <!-- 이미지 경로가 있다면 여기에 <img src="{{ card.imagePath }}" alt="..."> 추가 -->
+                </div>
+                <div class="user-name">
+                    <h4>{{ card.author }}</h4>
+                </div>
+            </div>            
+        </article>
+        </a>
+        {% endfor %}
+  
+  
+    </section>
+{% endblock %}
