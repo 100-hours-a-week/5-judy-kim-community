@@ -1,39 +1,80 @@
-body {
-    display: flex;
-    justify-content: center; /* 수정: justify-items는 flex 컨테이너에 적용되지 않습니다. */
-    align-items: center;
-    text-align: center;
-    height: 100vh; /* 전체 뷰포트 높이를 채우도록 설정 */
-    margin: 0; /* 기본 마진 제거 */
+.button-back {
+    visibility:hidden;
 }
 
-.login-box {
-    background-color: #ffffff; /* 로그인 박스 배경 색상 */
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-    border-radius: 5px; /* 모서리를 둥글게 */
-    width: 300px; /* 박스의 너비 */
-    margin: auto; /* 상하 마진 자동 조절 */
+.profile {
+    visibility:hidden;
+}
+
+.login-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -20px;
+}
+
+h3 .login-title {
+    margin: 0;
 }
 
 .formbox {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px; /* 폼과 회원가입 링크 사이 간격 */
+    width: 392px;
+    padding: 20px 0;
+    border-radius: 10px;
 }
 
-.button.login {
-    background-color: #4CAF50; /* 버튼 배경 색상 */
-    color: white;
-    padding: 10px 20px;
-    margin: 10px 0; /* 버튼 위아래 마진 */
+.formtext {
+    font-weight: bold;    
+    font-size: medium;
+    text-align: left;
+    margin: 5px 0;
+}
+
+.helptext {
+    color: red;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 4px 10px;
+}
+
+.button-login {
+    cursor: pointer;
+    width: 383px;
+    height: 37px;
     border: none;
-    border-radius: 4px; /* 버튼 모서리 둥글게 */
-    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    border-radius: 10px; 
+    background-color: #ACA0EB;
+    color: white;
+    font-weight: bold;    
+    font-size: medium;
+    align-self: center;
 }
 
-.button.login:hover {
-    background-color: #45a049; /* 버튼 호버 효과 */
+.space {
+    height: 15px;
 }
 
-/* 추가적인 스타일링이 필요한 경우 이곳에 추가 */
+.button-login:hover {
+    background-color: #7FA6EE;
+}
+
+.button-login:active {
+    background-color: #7FA6EE;
+}
+
+.login-signup {
+    margin: 10px 0;    
+}
