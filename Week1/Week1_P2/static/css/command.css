@@ -51,20 +51,20 @@
     font-size: 15px;
 }
 
-.profile {
+.card .profile {
     display: flex;
     padding: 10px 25px 20px 25px;
     align-items: center;
     gap: 15px;
 }
 
-.profile .user-image {
+.card .profile .user-image {
     width: 40px;
     height: 40px;
     background-color: #8c8c8c;
     border-radius: 50%;
 }
 
-.profile .user-name {
+.card .profile .user-name {
     font-size: 16px;
 }

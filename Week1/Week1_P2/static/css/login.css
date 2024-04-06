@@ -63,10 +63,6 @@ input {
     align-self: center;
 }
 
-.space {
-    height: 15px;
-}
-
 .button-login:hover {
     background-color: #7FA6EE;
 }
