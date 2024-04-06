@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/overheader.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/profile-edit2.css">
+{% endblock %}
+
+{% block overheader %}
+<div class="overheader">
+    <div class="button-back">
+
+    </div>
+    <div class="profile">
+
+    </div>
+</div>        
+{% endblock %}
+
+{% block content %}
+    <section class="login-section">
+        <div class="login-title"><h2>비밀번호 수정</h2></div>
+        <div class="formbox">
+            <form method='post' action='/posts'>
+                <p class="formtext">비밀번호</p>
+                <input type='password' name='password' placeholder='이메일을 입력하세요'>
+                <p class="helptext">* helper text</p>
+                <p class="formtext">비밀번호 확인</p>
+                <input type='password' name='password' placeholder='비밀번호를 입력하세요'>
+                <p class="helptext">* helper text</p>
+                <div class="space"></div>
+                <div><button class="button-login" type='submit'>수정하기</button></div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/overheader.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/profile-edit1.css">
+{% endblock %}
+
+{% block overheader %}
+<div class="overheader">
+    <div class="button-back">
+
+    </div>
+    <div class="profile">
+
+    </div>
+</div>        
+{% endblock %}
+
+{% block content %}
+    <section class="login-section">
+        <div class="login-title"><h2>회원정보 수정</h2></div>
+        <div class="formbox">
+            <form method='post' action='/posts'>
+                <p class="formtext">프로필 사진*</p>
+                <div class="profile-image-parent">
+                    <div class="profile-image"></div>
+                    <div class="button-edit-image">변경</div>
+                </div>
+                <p class="formtext">이메일</p>
+                <p class="email">startupcode@gmail.com</p>
+                <p class="formtext">닉네임</p>
+                <input type='text' name='text' placeholder='닉네임을 입력하세요'>
+                <p class="helptext">* helper text</p>
+                <div class="space"></div>
+                <div><button class="button-login" type='submit'>수정하기</button></div>
+                <div class="space"></div>
+                <div><a class="login-signup" href="/login">회원 탈퇴</a></div>
+                <div class="large-space"></div>
+                <div><button class="button-final" type='submit'>수정완료</button></div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

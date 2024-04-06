@@ -1,275 +1,97 @@
-.posts-section {
+.login-section {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    
-    align-self: center;
-    width: 600px;
-    margin-top: 20px;
-    font-size: 22px;
+    justify-content: center;
+    align-items: center;
 }
 
-.contents-title .title {
-    padding: 12px 0;
-    text-align: left;
+.login-title h3 {
+    margin: 20px;
 }
 
-.contents-title .subtitle {
+.formbox {
     display: flex;
-    padding: 5px 0;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 570px;
+    padding: 20px 0;
+    border-radius: 10px;
 }
 
-.contents-title p {
+.formtext {
+    font-weight: bold;    
+    font-size: 14px;
+    text-align: left;
+    margin: 5px 10px;
+}
+
+.helptext {
+    color: red;
+    text-align: left;
     font-size: 15px;
+    margin-top: 4px;
 }
 
-.contents-title .profile {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    gap: 15px;
+.input-parent {
+    padding: 0 10px;
 }
 
-.contents-title .profile .user-image {
-    width: 40px;
+input, textarea {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    padding: 4px 10px;
+    background-color: transparent;
+    resize: none;
+}
+
+.input-title {
     height: 40px;
-    background-color: #D9D9D9;
-    border-radius: 50%;
 }
 
-.contents-title .profile .user-name {
-    font-size: 16px;
+.input-content {
+    height: 230px;
 }
 
-.contents-title .profile .date {
-    display: flex;
-    gap: 7px;
-}
-
-.contents-title  .edit-button-parent {
+.image-file-parents {
     display: flex;
     align-items: center;
-    align-content: center;
+    align-content: flex-start;
     gap: 10px;
+    margin: 10px 10px;
 }
 
-/* 버튼 */
-
-.edit-button-parent .button-edit {
-    cursor: pointer;
-    width: 56px;
-    height: 32px;
-    font-size: 16px;
-    background-color: transparent;
-    border: 1px solid #ccbef6;
-    border-radius: 7px;
-}
-
-.edit-button-parent .button-delete {
-    cursor: pointer;
-    width: 56px;
-    height: 32px;
-    font-size: 16px;
-    background-color: transparent;
-    border: 1px solid #ccbef6;
-    border-radius: 7px;
-}
-
-.contents-title-line {
-    width: 100%;
-    border: 0;
-    height: 0;
-    border-top: 1px solid #c6c6c6;
-    padding: 0;
-}
-
-.contents-middle {
-    padding: 20px;
-}
-
-.contents-middle .image {
-    width: 100%;
-    height: 300px;
-    background-color: #D9D9D9;
-}
-
-.contents-middle .text p {
-    font-size: 16px;
-    text-align: left;
-    font-weight: 200;
-}
-
-.contents-middle .box-parent {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.contents-middle .box-parent .box1 {
-    width: 100px;
-    height: 65px;
-    background-color: #D9D9D9;
-    border-radius: 12px;
-    font-weight: bold;
+.image-file-parents p {
     font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1px;
 }
 
-.box1 .number {
-    font-size: 22px;
-}
-
-.contents-middle .box-parent .box2 {
-    width: 100px;
-    height: 65px;
-    background-color: #D9D9D9;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1px;
-}
-
-.box2 .number {
-    font-size: 22px;
-}
-
-.contents-middle-line {
-    width: 100%;
-    border: 0;
-    height: 0;
-    border-top: 1px solid #c6c6c6;
-    padding: 0;
-}
-
-.contents-command {
-    width: 100%;
-    background-color: white;
-    border-radius: 7px;
-}
-
-.contents-command .command-box .command-input-parent{
-    height: 100px;
-}
-
-.contents-middle-input-line {
-    width: 100%;
-    border: 0;
-    height: 0;
-    border-top: 1px solid #c6c6c6;
-    padding: 0;
-    margin: 0;
-}
-
-.button-command-parent {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 7px 5px;
-}
-
-.button-command {
+.image-file {
     cursor: pointer;
-    width: 120px;
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+}
+
+.button-edit {
+    cursor: pointer;
+    width: 354px;
     height: 37px;
     border: none;
-    border-radius: 15px; 
-    background-color: #ACA0EB; 
+    border-radius: 10px; 
+    background-color: #7F6AEE;
     color: white;
     font-weight: bold;    
     font-size: medium;
+    align-self: center;
 }
 
-.button-command:hover {
+.button-edit:hover {
     background-color: #7FA6EE;
 }
 
-.button-command:active {
+.button-edit:active {
     background-color: #7FA6EE;
 }
-
-.command-parent {
-    padding: 20px;
-}
-
-.command-parent .command-subtitle {
-    display: flex;
-    padding: 5px 0;
-    justify-content: space-between;
-}
-
-.command-parent p {
-    font-size: 15px;
-}
-
-.command-parent .command-profile {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    gap: 15px;
-}
-
-.command-parent .command-profile .user-image {
-    width: 40px;
-    height: 40px;
-    background-color: #D9D9D9;
-    border-radius: 50%;
-}
-
-.command-parent .command-profile .subtitle {
-    display: flex;
-    gap: 30px;    
-}
-
-.command-parent .command-profile .user-name {
-    font-size: 15px;
-}
-
-.command-parent .command-profile .date {
-    display: flex;
-    gap: 10px;
-}
-
-.command-parent .command-text p {
-    text-align: left;
-    font-weight: 200;
-    font-size: 14px;
-    margin-left: 55px;
-    text-align: left;
-}
-
-.command-parent .command-button-parent {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    gap: 10px;
-}
-
-/* 버튼 */
-
-.command-button-parent .button-edit {
-    cursor: pointer;
-    width: 52px;
-    height: 28px;
-    font-size: 14px;
-    background-color: transparent;
-    border: 1px solid #ccbef6;
-    border-radius: 7px;
-}
-
-.command-button-parent .button-delete {
-    cursor: pointer;
-    width: 52px;
-    height: 28px;
-    font-size: 14px;
-    background-color: transparent;
-    border: 1px solid #ccbef6;
-    border-radius: 7px;
-}
-

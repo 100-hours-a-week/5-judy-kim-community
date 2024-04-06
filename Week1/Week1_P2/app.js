@@ -31,17 +31,17 @@ app.get('/login', (req, res) => {
 
 // 회원가입
 app.get('/signup', (req, res) => {
-    res.send('회원가입 페이지입니다.');
+    res.render('signup'); 
 });
 
 // 회원정보 수정1
 app.get('/profile/edit1', (req, res) => {
-    res.send('회원정보 수정 페이지1입니다.');
+    res.render('profile-edit1'); 
 });
 
 // 회원정보 수정2
 app.get('/profile/edit2', (req, res) => {
-    res.send('회원정보 수정 페이지2입니다.');
+    res.render('profile-edit2'); 
 });
 
 // 게시글 목록 조회
