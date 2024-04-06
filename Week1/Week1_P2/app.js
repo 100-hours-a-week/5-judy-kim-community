@@ -61,14 +61,13 @@ app.get('/posts', (req, res) => {
 });
 
 // 게시글 상세 조회
-
 app.get('/post-contents', (req, res) => {
     const commands = [
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/path/to/image1.jpg" },
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 2", imagePath: "/path/to/image1.jpg" },
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 3", imagePath: "/path/to/image1.jpg" },
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 4", imagePath: "/path/to/image1.jpg" },
-    ];
+        { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/path/to/image1.jpg" },    ];
     res.render('post-contents', { commands: commands });
 });
 
@@ -78,11 +77,20 @@ app.get('/posts/:postId', (req, res) => {
 });
 
 // 게시글 수정
+app.get('/post-edit', (req, res) => {
+    res.render('post-edit'); 
+});
+
 app.get('/posts/:postId/edit', (req, res) => {
     res.send(`게시글 ${req.params.postId} 수정 페이지입니다.`);
 });
 
 // 게시글 작성
+app.get('/post-write', (req, res) => {
+    res.render('post-write'); 
+});
+
+
 app.get('/posts/new', (req, res) => {
     res.send('게시글 작성 페이지입니다.');
 });

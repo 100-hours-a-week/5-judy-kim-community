@@ -12,16 +12,18 @@
     align-items: center;
 }
 
-.overheader.button-back {
+.overheader .button-back {
     width: 40px;
     height: 40px;
+    justify-self: flex-start;
     background-color: #8c8c8c;
     border-radius: 10px;
 }
 
-.overheader.profile {
+.overheader .profile {
     width: 40px;
     height: 40px;
+    justify-self: flex-end;
     background-color: #8c8c8c;
     border-radius: 10px;
 }
