@@ -64,6 +64,7 @@
     background-color: transparent;
     border: 1px solid #ccbef6;
     border-radius: 7px;
+    align-content: center;
 }
 
 .edit-button-parent .button-delete {
@@ -151,11 +152,22 @@
 .contents-command {
     width: 100%;
     background-color: white;
-    border-radius: 7px;
+    border-radius: 10px;
 }
 
 .contents-command .command-box .command-input-parent{
     height: 100px;
+    border-radius: 10px;
+}
+
+.command-write {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    border: none;
+    font-size: 14px;
+    resize: none;
+    border-radius: 10px;
 }
 
 .contents-middle-input-line {

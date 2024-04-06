@@ -29,6 +29,7 @@
     color: white;
     font-weight: bold;    
     font-size: medium;
+    align-content: center;
 }
 
 .button-write:hover {
