@@ -8,11 +8,16 @@
 
 {% block overheader %}
 <div class="overheader">
-    <div class="button-back">
-
-    </div>
+    <a href="/login"><div class="button-back"></div></a>
     <div class="profile">
-
+        <div class="dropdown">
+            <button class="dropbtn"></button>
+            <div class="dropdown-content">
+              <a href="/profile-edit1">회원정보 수정</a>
+              <a href="/profile-edit2">비밀번호 수정</a>
+              <a href="/login">로그아웃</a>
+            </div>
+          </div>
     </div>
 </div>        
 {% endblock %}

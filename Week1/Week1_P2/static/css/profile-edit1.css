@@ -77,6 +77,11 @@
     font-size: 14px;
 }
 
+.button-edit-image i {
+    margin: 18px;
+    font-size: 20px;
+}
+
 input {
     width: 100%;
     height: 35px;
