@@ -28,4 +28,53 @@
     justify-self: flex-end;
     background-color: #8c8c8c;
     border-radius: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Drop Down */
+/* 드롭다운 버튼 스타일 */
+.dropbtn {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    padding: 17px;
+    border: none;
+  }
+  
+  /* 드롭다운 메뉴 전체 컨테이너 */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* 드롭다운 내용 */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-size: 14px;    
+  }
+  
+  /* 드롭다운 링크 */
+  .dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* 드롭다운 아이템 호버 */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* 드롭다운 버튼 호버 */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  

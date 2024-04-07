@@ -35,12 +35,12 @@ app.get('/signup', (req, res) => {
 });
 
 // 회원정보 수정1
-app.get('/profile/edit1', (req, res) => {
+app.get('/profile-edit1', (req, res) => {
     res.render('profile-edit1'); 
 });
 
 // 회원정보 수정2
-app.get('/profile/edit2', (req, res) => {
+app.get('/profile-edit2', (req, res) => {
     res.render('profile-edit2'); 
 });
 

@@ -1,3 +1,7 @@
+.button-back {
+    visibility:hidden;
+}
+
 .login-section {
     display: flex;
     flex-wrap: wrap;
