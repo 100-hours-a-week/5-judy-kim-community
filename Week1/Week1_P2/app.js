@@ -46,7 +46,14 @@ app.get('/profile-edit2', (req, res) => {
 
 // 게시글 목록 조회
 app.post('/posts', (req, res) => {
-    res.render('posts'); 
+    const cards = [
+        { title: "제목 1", likes: 0, comments: 0, views: 0, date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/path/to/image1.jpg" },
+        { title: "제목 2", likes: 10, comments: 5, views: 150, date: "2021-02-02", time: "12:00:00", author: "더미 작성자 2", imagePath: "/path/to/image2.jpg" },
+        { title: "제목 3", likes: 20, comments: 10, views: 200, date: "2021-03-03", time: "14:30:00", author: "더미 작성자 3", imagePath: "/path/to/image3.jpg" },
+        { title: "제목 4", likes: 5, comments: 2, views: 100, date: "2021-04-04", time: "16:45:00", author: "더미 작성자 4", imagePath: "/path/to/image4.jpg" },
+        { title: "제목 5", likes: 15, comments: 8, views: 175, date: "2021-05-05", time: "18:00:00", author: "더미 작성자 5", imagePath: "/path/to/image5.jpg" },
+    ];
+    res.render('posts', { cards: cards });
 });
 
 app.get('/posts', (req, res) => {
