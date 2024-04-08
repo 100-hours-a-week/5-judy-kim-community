@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="../static/css/card.css">
 {% endblock %}
 
+{% block js %}
+    <script src="../static/js/delete-modal.js"></script>
+{% endblock %}
+
 {% block overheader %}
 <div class="overheader">
     <a href="/posts"><div class="button-back"><i class="fa-solid fa-chevron-left"></i></div></a>
@@ -42,7 +46,20 @@
                 </div>
                 <div class="edit-button-parent">
                     <a href="/post-edit" class="button-edit">수정</a>    
-                    <button class="button-delete">삭제</button>
+                    <!-- 모달 컨텐츠 -->
+                    <div id="edit-button-modal" class="delete-modal">                        
+                        <div class="modal-content">
+                            <p class="text1">게시글을 삭제하시겠습니까?</p>
+                            <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                            <div class="space"></div>
+                            <div class="modal-actions">
+                                <button id="edit-cancel" class="modal-button cancel">취소</button>
+                                <button id="edit-delete" class="modal-button delete">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 모달 열기 버튼 -->
+                    <button id="edit-button-delete" class="button-delete">삭제</button>
                 </div>
             </div>            
         </article>
@@ -107,8 +124,21 @@
                     </div>
                     <div class="command-button-parent">
                         <button class="button-edit">수정</button>
-                        <button class="button-delete">삭제</button>
-                    </div>
+                        <!-- 모달 컨텐츠 -->
+                        <div id="command-button-modal" class="delete-modal">                        
+                            <div class="modal-content">
+                                <p class="text1">댓글을 삭제하시겠습니까?</p>
+                                <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                                <div class="space"></div>
+                                <div class="modal-actions">
+                                    <button id="command-cancel" class="modal-button cancel">취소</button>
+                                    <button id="command-delete" class="modal-button delete">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 모달 열기 버튼 -->
+                        <button id="command-button-delete" class="button-delete">삭제</button>
+                   </div>
                 </div>
                 <div class="command-text">
                     <p>덧글내용</p>
