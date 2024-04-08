@@ -61,8 +61,11 @@
 .card .profile .user-image {
     width: 40px;
     height: 40px;
-    background-color: #D9D9D9;
     border-radius: 50%;
+    background-color: #D9D9D9;
+    background-size: cover; 
+    background-image: url('../image/profile.png');
+
 }
 
 .card .profile .user-name {
