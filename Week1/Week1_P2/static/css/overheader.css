@@ -16,18 +16,29 @@
     cursor: pointer;
     width: 40px;
     height: 40px;
-    justify-self: flex-start;
     align-content: center;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overheader .button-back a {
+  width: 100%; /* 부모와 동일한 너비 */
+  height: 100%; /* 부모와 동일한 높이 */
+  display: flex; /* Flex 컨테이너로 만듭니다 */
+  justify-content: center; /* 가로축 기준으로 중앙 정렬 */
+  align-items: center; /* 세로축 기준으로 중앙 정렬 */
 }
 
 .overheader .profile {
     cursor: pointer;
     width: 40px;
     height: 40px;
-    justify-self: flex-end;
     background-size: cover; 
     background-color: #8c8c8c;
     background-image: url('../image/profile.png');
+    border: 1px solid transparent;
     border-radius: 100px;
 
     display: flex;
