@@ -1,27 +1,9 @@
 {% extends "base.html" %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="../static/css/overheader.css">
     <link rel="stylesheet" type="text/css" href="../static/css/posts.css">
     <link rel="stylesheet" type="text/css" href="../static/css/card.css">
 {% endblock %}
-
-{% block overheader %}
-<div class="overheader">
-    <a href="/login"><div class="button-back"><i class="fa-solid fa-chevron-left"></i>ㄴ</div></a>
-    <div class="profile">
-        <div class="dropdown">
-            <button class="dropbtn"></button>
-            <div class="dropdown-content">
-              <a href="/profile-edit1">회원정보 수정</a>
-              <a href="/profile-edit2">비밀번호 수정</a>
-              <a href="/login">로그아웃</a>
-            </div>
-          </div>
-    </div>
-</div>        
-{% endblock %}
-
 
 {% block content %}
     <section class="posts-section">

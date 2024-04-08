@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // functions
     function toggleModal() {
-      modal.classList.toggle("show");
+        modal.classList.toggle("show");
     }
   
     // events

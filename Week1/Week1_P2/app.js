@@ -25,23 +25,23 @@ app.get('/', (req, res) => {
 });
 
 // 로그인
-app.get('/login', (req, res) => {
-    res.render('login'); 
+app.get('/login', (req, res) => {   
+    res.render('login', { href: '/'}); 
 });
 
 // 회원가입
-app.get('/signup', (req, res) => {
-    res.render('signup'); 
+app.get('/signup', (req, res) => {   
+    res.render('signup', { href: '/login'}); 
 });
 
 // 회원정보 수정1
 app.get('/profile-edit1', (req, res) => {
-    res.render('profile-edit1'); 
+    res.render('profile-edit1', { href: '/'}); 
 });
 
 // 회원정보 수정2
 app.get('/profile-edit2', (req, res) => {
-    res.render('profile-edit2'); 
+    res.render('profile-edit2', { href: '/'}); 
 });
 
 // 게시글 목록 조회
@@ -53,7 +53,7 @@ app.post('/posts', (req, res) => {
         { title: "제목 4", likes: 5, comments: 2, views: 100, date: "2021-04-04", time: "16:45:00", author: "더미 작성자 4", imagePath: "/path/to/image4.jpg" },
         { title: "제목 5", likes: 15, comments: 8, views: 175, date: "2021-05-05", time: "18:00:00", author: "더미 작성자 5", imagePath: "/path/to/image5.jpg" },
     ];
-    res.render('posts', { cards: cards });
+    res.render('posts', { href: '/', cards: cards });
 });
 
 app.get('/posts', (req, res) => {
@@ -64,7 +64,7 @@ app.get('/posts', (req, res) => {
         { title: "제목 4", likes: 5, comments: 2, views: 100, date: "2021-04-04", time: "16:45:00", author: "더미 작성자 4", imagePath: "/path/to/image4.jpg" },
         { title: "제목 5", likes: 15, comments: 8, views: 175, date: "2021-05-05", time: "18:00:00", author: "더미 작성자 5", imagePath: "/path/to/image5.jpg" },
     ];
-    res.render('posts', { cards: cards });
+    res.render('posts', { href: '/', cards: cards });
 });
 
 // 게시글 상세 조회
@@ -75,7 +75,7 @@ app.get('/post-contents', (req, res) => {
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 3", imagePath: "/path/to/image1.jpg" },
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 4", imagePath: "/path/to/image1.jpg" },
         { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/path/to/image1.jpg" },    ];
-    res.render('post-contents', { commands: commands });
+    res.render('post-contents', { href: '/posts', commands: commands });
 });
 
 app.get('/posts/:postId', (req, res) => {
@@ -85,7 +85,7 @@ app.get('/posts/:postId', (req, res) => {
 
 // 게시글 수정
 app.get('/post-edit', (req, res) => {
-    res.render('post-edit'); 
+    res.render('post-edit', {href: '/post-contents'}); 
 });
 
 app.get('/posts/:postId/edit', (req, res) => {
@@ -94,7 +94,7 @@ app.get('/posts/:postId/edit', (req, res) => {
 
 // 게시글 작성
 app.get('/post-write', (req, res) => {
-    res.render('post-write'); 
+    res.render('post-write', {href: '/posts'}); 
 });
 
 
