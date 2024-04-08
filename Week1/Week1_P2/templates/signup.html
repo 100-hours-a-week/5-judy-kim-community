@@ -7,7 +7,7 @@
 
 {% block overheader %}
 <div class="overheader">
-    <a href="/login"><div class="button-back"></div></a>
+    <a href="/login"><div class="button-back"><i class="fa-solid fa-chevron-left"></i></div></a>
     <div class="profile">
         <div class="dropdown">
             <button class="dropbtn"></button>
@@ -30,7 +30,7 @@
                 <p class="helptext">* helper text</p>
                 <div class="profile-image-parent">
                     <div class="profile-image"></div>
-                    <div class="button-edit-image">+<i class="{{ card.icon }}"></i></div>
+                    <div class="button-edit-image"><i class="fa-solid fa-plus"></i></div>
                 </div>
                 <p class="formtext">이메일*</p>
                 <input type='email' name='email' placeholder='이메일을 입력하세요'>

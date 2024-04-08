@@ -50,7 +50,7 @@
     z-index: 0;
     width: 140px;
     height: 140px;
-    background-color: #ACA0EB;
+    background-color: #7FA6EE;
     border: none;
     border-radius: 50%;   
 
@@ -62,13 +62,10 @@
 .button-edit-image {
     cursor: pointer;
     z-index: 3;
-    background-color: rgb(0, 0, 0, 0.3);
-    border: 1px solid white;
-    border-radius: 100px;
     align-self: center;
     color: white;
     padding: 3px 10px;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 input {

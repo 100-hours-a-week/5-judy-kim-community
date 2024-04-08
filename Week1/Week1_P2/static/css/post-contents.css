@@ -34,8 +34,10 @@
 .contents-title .profile .user-image {
     width: 40px;
     height: 40px;
-    background-color: #D9D9D9;
     border-radius: 50%;
+    background-color: #D9D9D9;
+    background-size: cover; 
+    background-image: url('../image/profile.png');
 }
 
 .contents-title .profile .user-name {
@@ -99,6 +101,7 @@
     font-size: 16px;
     text-align: left;
     font-weight: 200;
+    line-height : 1.5;
 }
 
 .contents-middle .box-parent {
@@ -230,8 +233,10 @@
 .command-parent .command-profile .user-image {
     width: 40px;
     height: 40px;
-    background-color: #D9D9D9;
     border-radius: 50%;
+    background-color: #D9D9D9;
+    background-size: cover; 
+    background-image: url('../image/profile.png');
 }
 
 .command-parent .command-profile .subtitle {
