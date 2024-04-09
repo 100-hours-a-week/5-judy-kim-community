@@ -26,6 +26,10 @@ html, body {
     background-color: #F4F5F7;
 }
 
+html::-webkit-scrollbar {
+    display: none;
+}
+
 *{
     box-sizing: border-box;
 }

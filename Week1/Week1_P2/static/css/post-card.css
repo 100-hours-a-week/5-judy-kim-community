@@ -1,4 +1,4 @@
-.card {
+.post-card {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -9,37 +9,37 @@
     border-radius: 16px;
 }
 
-.card:hover {
+.post-card:hover {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
-.card:active {
+.post-card:active {
     transform: translateY(1px);
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
-.card .title {
+.post-card .title {
     padding: 25px 25px 10px 25px;
     text-align: left;
 }
 
-.card .subtitle {
+.post-card .subtitle {
     display: flex;
     padding: 5px 25px;
     justify-content: space-between;
 }
 
-.card .subtitle .subtitle-numbers {
+.post-card .subtitle .subtitle-numbers {
     display: flex;
     gap: 7px;
 }
 
-.card .subtitle .subtitle-date {
+.post-card .subtitle .subtitle-date {
     display: flex;
     gap: 7px;
 }
 
-.card .card-line {
+.post-card .card-line {
     width: 100%;
     border: 0;
     height: 0;
@@ -47,18 +47,18 @@
     padding: 0;
 }
 
-.card p {
+.post-card p {
     font-size: 15px;
 }
 
-.card .profile {
+.post-card .profile {
     display: flex;
     padding: 10px 25px 20px 25px;
     align-items: center;
     gap: 15px;
 }
 
-.card .profile .user-image {
+.post-card .profile .user-image {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -68,6 +68,6 @@
 
 }
 
-.card .profile .user-name {
+.post-card .profile .user-name {
     font-size: 16px;
 }

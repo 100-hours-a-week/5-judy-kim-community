@@ -44,44 +44,54 @@ app.get('/profile-edit2', (req, res) => {
     res.render('profile-edit2', { href: '/'}); 
 });
 
-// 게시글 목록 조회
-app.post('/posts', (req, res) => {
-    const cards = [
-        { title: "제목 1", likes: 0, comments: 0, views: 0, date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/path/to/image1.jpg" },
-        { title: "제목 2", likes: 10, comments: 5, views: 150, date: "2021-02-02", time: "12:00:00", author: "더미 작성자 2", imagePath: "/path/to/image2.jpg" },
-        { title: "제목 3", likes: 20, comments: 10, views: 200, date: "2021-03-03", time: "14:30:00", author: "더미 작성자 3", imagePath: "/path/to/image3.jpg" },
-        { title: "제목 4", likes: 5, comments: 2, views: 100, date: "2021-04-04", time: "16:45:00", author: "더미 작성자 4", imagePath: "/path/to/image4.jpg" },
-        { title: "제목 5", likes: 15, comments: 8, views: 175, date: "2021-05-05", time: "18:00:00", author: "더미 작성자 5", imagePath: "/path/to/image5.jpg" },
-    ];
-    res.render('posts', { href: '/', cards: cards });
-});
+const posts = [
+    { id: '1', title: "제목 1", likes: 0, comments: 0, views: 0, date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/static/image/picture1.png" },
+    { id: '2', title: "제목 2", likes: 10, comments: 5, views: 150, date: "2021-02-02", time: "12:00:00", author: "더미 작성자 2", imagePath: "/static/image/picture2.png" },
+    { id: '3', title: "제목 3", likes: 20, comments: 10, views: 200, date: "2021-03-03", time: "14:30:00", author: "더미 작성자 3", imagePath: "/static/image/picture3.png" },
+    { id: '4', title: "제목 4", likes: 5, comments: 2, views: 100, date: "2021-04-04", time: "16:45:00", author: "더미 작성자 4", imagePath: "/static/image/picture4.png" },
+    { id: '5', title: "제목 5", likes: 15, comments: 8, views: 175, date: "2021-05-05", time: "18:00:00", author: "더미 작성자 5", imagePath: "/static/image/picture5.png" },
+];
 
-app.get('/posts', (req, res) => {
-    const cards = [
-        { title: "제목 1", likes: 0, comments: 0, views: 0, date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/path/to/image1.jpg" },
-        { title: "제목 2", likes: 10, comments: 5, views: 150, date: "2021-02-02", time: "12:00:00", author: "더미 작성자 2", imagePath: "/path/to/image2.jpg" },
-        { title: "제목 3", likes: 20, comments: 10, views: 200, date: "2021-03-03", time: "14:30:00", author: "더미 작성자 3", imagePath: "/path/to/image3.jpg" },
-        { title: "제목 4", likes: 5, comments: 2, views: 100, date: "2021-04-04", time: "16:45:00", author: "더미 작성자 4", imagePath: "/path/to/image4.jpg" },
-        { title: "제목 5", likes: 15, comments: 8, views: 175, date: "2021-05-05", time: "18:00:00", author: "더미 작성자 5", imagePath: "/path/to/image5.jpg" },
-    ];
-    res.render('posts', { href: '/', cards: cards });
-});
+// 게시글 목록 조회
+app.route('/posts')
+  .get((req, res) => {
+      res.render('posts', { href: '/', posts: posts });
+  })
+  .post((req, res) => {
+      res.render('posts', { href: '/', posts: posts });
+  });
 
 // 게시글 상세 조회
+/*
 app.get('/post-contents', (req, res) => {
     const commands = [
-        { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/path/to/image1.jpg" },
-        { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 2", imagePath: "/path/to/image1.jpg" },
-        { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 3", imagePath: "/path/to/image1.jpg" },
-        { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 4", imagePath: "/path/to/image1.jpg" },
-        { date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/path/to/image1.jpg" },    ];
+        { id: '1', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/static/image/profile.png" },
+        { id: '2', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 2", imagePath: "/static/image/profile.png" },
+        { id: '3', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 3", imagePath: "/static/image/profile.png" },
+        { id: '4', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 4", imagePath: "/static/image/profile.png" },
+        { id: '5', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/static/image/profile.png" },    
+    ];
     res.render('post-contents', { href: '/posts', commands: commands });
-});
+});*/
 
 app.get('/posts/:postId', (req, res) => {
-    // :postId는 게시글의 고유 ID를 나타냅니다. 실제 사용 시 req.params.postId로 접근 가능
-    res.send(`게시글 ${req.params.postId}의 상세 조회 페이지입니다.`);
+    const postId = req.params.postId;
+    const post = posts.find(p => p.id === postId);
+
+    if (!post) {
+        return res.status(404).send('게시글을 찾을 수 없습니다.');
+    }
+
+    const commands = [
+        { id: '1', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/static/image/profile.png" },
+        { id: '2', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 2", imagePath: "/static/image/profile.png" },
+        { id: '3', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 3", imagePath: "/static/image/profile.png" },
+        { id: '4', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 4", imagePath: "/static/image/profile.png" },
+        { id: '5', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/static/image/profile.png" },    
+    ];
+    res.render('post-contents', { post: post, commands: commands, href: '/posts' });
 });
+
 
 // 게시글 수정
 app.get('/post-edit', (req, res) => {
