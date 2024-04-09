@@ -12,36 +12,36 @@
 {% block content %}
     <section class="posts-section">
         <article class="contents-title">
-            <div class="title"><h3>제목 1</h3></div>
+            <div class="title"><h3>{{ post.title }}</h3></div>
             <div class="subtitle">
                 <div class="profile">
                     <div class="user-image">
-                        <!-- 이미지 경로가 있다면 여기에 <img src="{{ card.imagePath }}" alt="..."> 추가 -->
+                        
                     </div>
                     <div class="user-name">
-                        <h4>더미 작성자 1</h4>
+                        <h4>{{ post.author }}</h4>
                     </div>
                     <div class="date">
-                        <p>2021-02-02</p>
-                        <p>00:00:00</p>
+                        <p>{{ post.date }}</p>
+                        <p>{{ post.time }}</p>
                     </div>
                 </div>
                 <div class="edit-button-parent">
                     <a href="/post-edit" class="button-edit">수정</a>    
                     <!-- 모달 컨텐츠 -->
-                    <div id="edit-button-modal" class="delete-modal">                        
+                    <div id="edit-button-modal" class="delete-modal edit-delete-modal">                        
                         <div class="modal-content">
                             <p class="text1">게시글을 삭제하시겠습니까?</p>
                             <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
                             <div class="space"></div>
                             <div class="modal-actions">
-                                <button id="edit-cancel" class="modal-button cancel">취소</button>
-                                <button id="edit-delete" class="modal-button delete">확인</button>
+                                <button id="edit-cancel" class="modal-button edit-cancel">취소</button>
+                                <button id="edit-delete" class="modal-button edit-delete">확인</button>
                             </div>
                         </div>
                     </div>
                     <!-- 모달 열기 버튼 -->
-                    <button id="edit-button-delete" class="button-delete">삭제</button>
+                    <button id="edit-button-delete" class="button-delete edit-button-delete">삭제</button>
                 </div>
             </div>            
         </article>
@@ -49,7 +49,7 @@
         <hr class="contents-title-line">
         <article class="contents-middle">
             <div class="image">
-                <img>
+                <img src="{{ post.imagePath }}" alt="이미지가 없습니다.">
             </div>
             <div class="space"></div>
             <div class="space"></div>
@@ -88,7 +88,7 @@
 
         {% for command in commands %}
         <article class="command-parent">
-            <div class="command-set"></div>
+            <div class="command-set">
                 <div class="command-subtitle">
                     <div class="command-profile">
                         <div class="user-image">
@@ -107,19 +107,19 @@
                     <div class="command-button-parent">
                         <button class="button-edit">수정</button>
                         <!-- 모달 컨텐츠 -->
-                        <div id="command-button-modal" class="delete-modal">                        
+                        <div id="command-button-modal-{{ loop.index }}" class="delete-modal command-delete-modal">                        
                             <div class="modal-content">
                                 <p class="text1">댓글을 삭제하시겠습니까?</p>
                                 <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
                                 <div class="space"></div>
                                 <div class="modal-actions">
-                                    <button id="command-cancel" class="modal-button cancel">취소</button>
-                                    <button id="command-delete" class="modal-button delete">확인</button>
+                                    <button id="command-cancel" class="modal-button command-cancel">취소</button>
+                                    <button id="command-delete" class="modal-button command-delete">확인</button>
                                 </div>
                             </div>
                         </div>
                         <!-- 모달 열기 버튼 -->
-                        <button id="command-button-delete" class="button-delete">삭제</button>
+                        <button id="command-button-delete-{{ loop.index }}" class="button-delete command-button-delete">삭제</button>
                    </div>
                 </div>
                 <div class="command-text">
@@ -127,7 +127,6 @@
                 </div>
             </div>            
         </article>
-
         {% endfor %}
   
   

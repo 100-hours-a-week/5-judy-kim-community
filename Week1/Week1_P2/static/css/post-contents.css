@@ -87,13 +87,23 @@
 }
 
 .contents-middle {
+    width: 600px;
     padding: 20px;
 }
 
 .contents-middle .image {
     width: 100%;
     height: 300px;
+    background-size: cover; 
     background-color: #D9D9D9;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contents-middle .image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 
 .contents-middle .text p {
@@ -279,7 +289,7 @@
     border-radius: 7px;
 }
 
-.command-button-parent .button-delete {
+.command-button-parent .command-button-delete {
     cursor: pointer;
     width: 52px;
     height: 28px;
@@ -364,12 +374,23 @@
     font-size: 18px;
 }
 
-.modal-actions .modal-button.cancel {
+.modal-actions .modal-button.edit-cancel {
     color: white;
     background-color: #202020;
 }
 
-.modal-actions .modal-button.delete {
+.modal-actions .modal-button.edit-delete {
+    color: white;
+    background-color: #ACA0EB;
+}
+
+
+.modal-actions .modal-button.command-cancel {
+    color: white;
+    background-color: #202020;
+}
+
+.modal-actions .modal-button.command-delete {
     color: white;
     background-color: #ACA0EB;
 }
