@@ -44,6 +44,7 @@ app.get('/profile-edit2', (req, res) => {
     res.render('profile-edit2', { href: '/'}); 
 });
 
+// 게시글 카드 목록 (각 내용)
 const posts = [
     { id: '1', title: "제목 1", likes: 0, comments: 0, views: 0, date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/static/image/picture1.png" },
     { id: '2', title: "제목 2", likes: 10, comments: 5, views: 150, date: "2021-02-02", time: "12:00:00", author: "더미 작성자 2", imagePath: "/static/image/picture2.png" },
@@ -62,18 +63,6 @@ app.route('/posts')
   });
 
 // 게시글 상세 조회
-/*
-app.get('/post-contents', (req, res) => {
-    const commands = [
-        { id: '1', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 1", imagePath: "/static/image/profile.png" },
-        { id: '2', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 2", imagePath: "/static/image/profile.png" },
-        { id: '3', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 3", imagePath: "/static/image/profile.png" },
-        { id: '4', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 4", imagePath: "/static/image/profile.png" },
-        { id: '5', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/static/image/profile.png" },    
-    ];
-    res.render('post-contents', { href: '/posts', commands: commands });
-});*/
-
 app.get('/posts/:postId', (req, res) => {
     const postId = req.params.postId;
     const post = posts.find(p => p.id === postId);
@@ -92,7 +81,6 @@ app.get('/posts/:postId', (req, res) => {
     res.render('post-contents', { post: post, commands: commands, href: '/posts' });
 });
 
-
 // 게시글 수정
 app.get('/post-edit', (req, res) => {
     res.render('post-edit', {href: '/post-contents'}); 
@@ -106,7 +94,6 @@ app.get('/posts/:postId/edit', (req, res) => {
 app.get('/post-write', (req, res) => {
     res.render('post-write', {href: '/posts'}); 
 });
-
 
 app.get('/posts/new', (req, res) => {
     res.send('게시글 작성 페이지입니다.');
