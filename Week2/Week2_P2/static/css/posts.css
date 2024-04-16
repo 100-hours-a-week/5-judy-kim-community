@@ -1,0 +1,41 @@
+.button-back {
+    visibility:hidden;
+}
+
+.posts-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+    align-self: center;
+    width: 600px;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.button-write-parent {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.button-write {
+    cursor: pointer;
+    width: 120px;
+    height: 37px;
+    border: none;
+    border-radius: 15px; 
+    background-color: #ACA0EB; 
+    color: white;
+    font-weight: bold;    
+    font-size: medium;
+    align-content: center;
+}
+
+.button-write:hover {
+    background-color: #7FA6EE;
+}
+
+.button-write:active {
+    background-color: #7FA6EE;
+}

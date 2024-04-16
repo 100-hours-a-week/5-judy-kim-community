@@ -1,0 +1,70 @@
+.card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    border-radius: 16px;
+}
+
+.card:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card:active {
+    transform: translateY(1px);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    padding: 25px 25px 10px 25px;
+    text-align: left;
+}
+
+.subtitle {
+    display: flex;
+    padding: 5px 25px;
+    justify-content: space-between;
+}
+
+.subtitle .subtitle-numbers {
+    display: flex;
+    gap: 7px;
+}
+
+.subtitle .subtitle-date {
+    display: flex;
+    gap: 7px;
+}
+
+.card-line {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #c6c6c6;
+    padding: 0;
+}
+
+.card p {
+    font-size: 15px;
+}
+
+.card .profile {
+    display: flex;
+    padding: 10px 25px 20px 25px;
+    align-items: center;
+    gap: 15px;
+}
+
+.card .profile .user-image {
+    width: 40px;
+    height: 40px;
+    background-color: #8c8c8c;
+    border-radius: 50%;
+}
+
+.card .profile .user-name {
+    font-size: 16px;
+}

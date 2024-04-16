@@ -1,0 +1,396 @@
+.posts-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+    width: 600px;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.contents-title .title {
+    padding: 12px 0;
+    text-align: left;
+}
+
+.contents-title .subtitle {
+    display: flex;
+    padding: 5px 0;
+    justify-content: space-between;
+}
+
+.contents-title p {
+    font-size: 15px;
+}
+
+.contents-title .profile {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+}
+
+.contents-title .profile .user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    background-size: cover; 
+    background-image: url('../image/profile.png');
+}
+
+.contents-title .profile .user-name {
+    font-size: 16px;
+}
+
+.contents-title .profile .date {
+    display: flex;
+    gap: 7px;
+}
+
+.contents-title  .edit-button-parent {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+}
+
+/* 버튼 */
+
+.edit-button-parent .button-edit {
+    cursor: pointer;
+    width: 56px;
+    height: 32px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid #ccbef6;
+    border-radius: 7px;
+    align-content: center;
+}
+
+.edit-button-parent .button-delete {
+    cursor: pointer;
+    width: 56px;
+    height: 32px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid #ccbef6;
+    border-radius: 7px;
+}
+
+.contents-title-line {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #c6c6c6;
+    padding: 0;
+}
+
+.contents-middle {
+    width: 600px;
+    padding: 20px;
+}
+
+.contents-middle .image {
+    width: 100%;
+    height: 300px;
+    background-size: cover; 
+    background-color: #D9D9D9;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contents-middle .image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.contents-middle .text p {
+    font-size: 16px;
+    text-align: left;
+    font-weight: 200;
+    line-height : 1.5;
+}
+
+.contents-middle .box-parent {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contents-middle .box-parent .box1 {
+    width: 100px;
+    height: 65px;
+    background-color: #D9D9D9;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+}
+
+.box1 .number {
+    font-size: 22px;
+}
+
+.contents-middle .box-parent .box2 {
+    width: 100px;
+    height: 65px;
+    background-color: #D9D9D9;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+}
+
+.box2 .number {
+    font-size: 22px;
+}
+
+.contents-middle-line {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #c6c6c6;
+    padding: 0;
+}
+
+.contents-command {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.contents-command .command-box .command-input-parent{
+    height: 100px;
+    border-radius: 10px;
+}
+
+.command-write {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    border: none;
+    font-size: 14px;
+    resize: none;
+    border-radius: 10px;
+}
+
+.contents-middle-input-line {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #c6c6c6;
+    padding: 0;
+    margin: 0;
+}
+
+.button-command-parent {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 7px 5px;
+}
+
+.button-command {
+    cursor: pointer;
+    width: 120px;
+    height: 37px;
+    border: none;
+    border-radius: 15px; 
+    background-color: #ACA0EB; 
+    color: white;
+    font-weight: bold;    
+    font-size: medium;
+}
+
+.button-command:hover {
+    background-color: #7FA6EE;
+}
+
+.button-command:active {
+    background-color: #7FA6EE;
+}
+
+.command-parent {
+    padding: 20px;
+}
+
+.command-parent .command-subtitle {
+    display: flex;
+    padding: 5px 0;
+    justify-content: space-between;
+}
+
+.command-parent p {
+    font-size: 15px;
+}
+
+.command-parent .command-profile {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+}
+
+.command-parent .command-profile .user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    background-size: cover; 
+    background-image: url('../image/profile.png');
+}
+
+.command-parent .command-profile .subtitle {
+    display: flex;
+    gap: 30px;    
+}
+
+.command-parent .command-profile .user-name {
+    font-size: 15px;
+}
+
+.command-parent .command-profile .date {
+    display: flex;
+    gap: 10px;
+}
+
+.command-parent .command-text p {
+    text-align: left;
+    font-weight: 200;
+    font-size: 14px;
+    margin-left: 55px;
+    text-align: left;
+}
+
+.command-parent .command-button-parent {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+}
+
+/* 버튼 */
+
+.command-button-parent .button-edit {
+    cursor: pointer;
+    width: 52px;
+    height: 28px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid #ccbef6;
+    border-radius: 7px;
+}
+
+.command-button-parent .command-button-delete {
+    cursor: pointer;
+    width: 52px;
+    height: 28px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid #ccbef6;
+    border-radius: 7px;
+}
+
+/* modal */
+.delete-modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    padding: 20px;
+
+    /* 트랜지션 효과 */
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+
+    /* 화면 전체를 덮게하는 코드 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* 중앙에 오게하는 코드 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 350px;
+    width: 100%;
+    height: 180px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    /* 트랜지션 효과 */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: scale(0.8);
+
+    justify-content: center;
+    align-content: center;
+}
+
+.modal-content .text1 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.modal-content .text2 {
+    font-size: 15px;
+    text-align: center;
+}
+
+.delete-modal.show {
+    /* 모달이 열렸을 때 보여지게 하는 코드 */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.delete-modal.show .modal-content {
+    /* 모달이 열렸을 때 보여지게 하는 코드 */
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal-actions .modal-button {
+    width: 100px;
+    height: 42px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.modal-actions .modal-button.edit-cancel {
+    color: white;
+    background-color: #202020;
+}
+
+.modal-actions .modal-button.edit-delete {
+    color: white;
+    background-color: #ACA0EB;
+}
+
+
+.modal-actions .modal-button.command-cancel {
+    color: white;
+    background-color: #202020;
+}
+
+.modal-actions .modal-button.command-delete {
+    color: white;
+    background-color: #ACA0EB;
+}

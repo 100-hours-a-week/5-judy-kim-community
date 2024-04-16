@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/post-contents.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/card.css">
+{% endblock %}
+
+{% block js %}
+    <script src="../static/js/delete-modal.js"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="posts-section">
+        <article class="contents-title">
+            <div class="title"><h3>{{ post.title }}</h3></div>
+            <div class="subtitle">
+                <div class="profile">
+                    <div class="user-image">
+                        
+                    </div>
+                    <div class="user-name">
+                        <h4>{{ post.author }}</h4>
+                    </div>
+                    <div class="date">
+                        <p>{{ post.date }}</p>
+                        <p>{{ post.time }}</p>
+                    </div>
+                </div>
+                <div class="edit-button-parent">
+                    <a href="/post-edit" class="button-edit">수정</a>    
+                    <!-- 모달 컨텐츠 -->
+                    <div id="edit-button-modal" class="delete-modal edit-delete-modal">                        
+                        <div class="modal-content">
+                            <p class="text1">게시글을 삭제하시겠습니까?</p>
+                            <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                            <div class="space"></div>
+                            <div class="modal-actions">
+                                <button id="edit-cancel" class="modal-button edit-cancel">취소</button>
+                                <button id="edit-delete" class="modal-button edit-delete">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 모달 열기 버튼 -->
+                    <button id="edit-button-delete" class="button-delete edit-button-delete">삭제</button>
+                </div>
+            </div>            
+        </article>
+        <div class="space"></div>
+        <hr class="contents-title-line">
+        <article class="contents-middle">
+            <div class="image">
+                <img src="{{ post.imagePath }}" alt="이미지가 없습니다.">
+            </div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="text">
+                <p>
+                    무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새 로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강 하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래 서 우리의 삶은 소중하고 의미가 있습니다.
+                    자연도 아름다운 이야기입니다. 우리 주변의 자연은 끝없는 아름다움과 신비로움을 담고 있습 니다. 산, 바다, 숲, 하늘 등 모든 것이 우리를 놀라게 만들고 감동시킵니다. 자연은 우리의 생명 과 안정을 지키며 우리에게 힘을 주는 곳입니다.
+                    마지막으로, 지식을 향한 탐구는 항상 흥미로운 여정입니다. 우리는 끝없는 지식의 바다에서 배 우고 발견할 수 있으며, 이것이 우리를 더 깊이 이해하고 세상을 더 넓게 보게 해줍니다.
+                    그런 의미에서, 삶은 놀라움과 경이로움으로 가득 차 있습니다. 새로운 경험을 즐기고 항상 앞 으로 나아가는 것이 중요하다고 생각합니다.
+                </p>
+            </div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="box-parent">
+                <div class="box1">
+                    <p class="number">123</p>
+                    <p>조회수</p>
+                </div>
+                <div class="box2">
+                    <p class="number">123</p>
+                    <p>댓글</p>
+                </div>
+            </div>
+        </article>
+        <hr class="contents-middle-line">
+        <div class="space"></div>
+        <article class="contents-command">
+            <div class="command-box">
+                <div class="command-input-parent">
+                    <textarea class="command-write" placeholder="댓글을 남겨주세요!"></textarea>
+                </div>
+                <hr class="contents-middle-input-line">
+                <div class="button-command-parent"><button class="button-command" type='submit'>댓글 등록</button></div>
+            </div>
+        </article>
+
+        {% for command in commands %}
+        <article class="command-parent">
+            <div class="command-set">
+                <div class="command-subtitle">
+                    <div class="command-profile">
+                        <div class="user-image">
+                            <!-- 이미지 경로가 있다면 여기에 <img src="{{ card.imagePath }}" alt="..."> 추가 -->
+                        </div>
+                        <div class="subtitle">
+                            <div class="user-name">
+                                <h4>{{ command.author }}</h4>
+                            </div>
+                            <div class="date">
+                                <p>{{ command.date }}</p>
+                                <p>{{ command.time }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-button-parent">
+                        <button class="button-edit">수정</button>
+                        <!-- 모달 컨텐츠 -->
+                        <div id="command-button-modal-{{ loop.index }}" class="delete-modal command-delete-modal">                        
+                            <div class="modal-content">
+                                <p class="text1">댓글을 삭제하시겠습니까?</p>
+                                <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                                <div class="space"></div>
+                                <div class="modal-actions">
+                                    <button id="command-cancel" class="modal-button command-cancel">취소</button>
+                                    <button id="command-delete" class="modal-button command-delete">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 모달 열기 버튼 -->
+                        <button id="command-button-delete-{{ loop.index }}" class="button-delete command-button-delete">삭제</button>
+                   </div>
+                </div>
+                <div class="command-text">
+                    <p>덧글내용</p>
+                </div>
+            </div>            
+        </article>
+        {% endfor %}
+  
+  
+    </section>
+{% endblock %}
