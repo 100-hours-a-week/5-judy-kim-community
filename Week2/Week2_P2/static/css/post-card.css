@@ -1,0 +1,73 @@
+.post-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    border-radius: 16px;
+}
+
+.post-card:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.post-card:active {
+    transform: translateY(1px);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.post-card .title {
+    padding: 25px 25px 10px 25px;
+    text-align: left;
+}
+
+.post-card .subtitle {
+    display: flex;
+    padding: 5px 25px;
+    justify-content: space-between;
+}
+
+.post-card .subtitle .subtitle-numbers {
+    display: flex;
+    gap: 7px;
+}
+
+.post-card .subtitle .subtitle-date {
+    display: flex;
+    gap: 7px;
+}
+
+.post-card .card-line {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #c6c6c6;
+    padding: 0;
+}
+
+.post-card p {
+    font-size: 15px;
+}
+
+.post-card .profile {
+    display: flex;
+    padding: 10px 25px 20px 25px;
+    align-items: center;
+    gap: 15px;
+}
+
+.post-card .profile .user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    background-size: cover; 
+    background-image: url('../image/profile.png');
+
+}
+
+.post-card .profile .user-name {
+    font-size: 16px;
+}

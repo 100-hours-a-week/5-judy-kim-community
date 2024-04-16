@@ -1,0 +1,72 @@
+.button-back {
+    visibility:hidden;
+}
+
+.login-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -20px;
+}
+
+.login-title h2 {
+    margin: 0;
+}
+
+.formbox {
+    display: flex;
+    flex-direction: column;
+    width: 392px;
+    padding: 20px 0;
+    border-radius: 10px;
+}
+
+.formtext {
+    font-weight: bold;    
+    font-size: medium;
+    text-align: left;
+    margin: 5px 0;
+}
+
+.helptext {
+    color: red;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 4px 10px;
+}
+
+.button-login {
+    cursor: pointer;
+    width: 383px;
+    height: 37px;
+    border: none;
+    border-radius: 10px; 
+    background-color: #ACA0EB;
+    color: white;
+    font-weight: bold;    
+    font-size: medium;
+    align-self: center;
+}
+
+.button-login:hover {
+    background-color: #7FA6EE;
+}
+
+.button-login:active {
+    background-color: #7FA6EE;
+}
+
+.login-signup {
+    margin: 10px 0;    
+}
