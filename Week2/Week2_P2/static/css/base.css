@@ -11,6 +11,10 @@ a {
     height: 15px;
 }
 
+.hide {
+    display: none;
+}
+
 @font-face {
     font-family : 'sagak-sagak';
     src : url(sagak-sagak.ttf)
