@@ -8,13 +8,14 @@
     <section class="login-section">
         <div class="login-title"><h2>로그인</h2></div>
         <div class="formbox">
-            <form method='post' action='/posts'>
+            <form method='post' action='/posts' onsubmit="validateForm(event)">
                 <p class="formtext">이메일</p>
                 <input type='email' name='email' placeholder='이메일을 입력하세요'>
                 <div class="space"></div>
                 <p class="formtext">비밀번호</p>
                 <input type='password' name='password' placeholder='비밀번호를 입력하세요'>
                 <p class="helptext">* helper text</p>
+                <p class="helptext loginErr hide">* 입력하신 계정 정보가 정확하지 않습니다.</p>
                 <div class="space"></div>
                 <div><button class="button-login" type='submit'>로그인</button></div>
                 <div class="space"></div>

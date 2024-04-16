@@ -10,11 +10,16 @@
         <div class="formbox">
             <form method='post' action='/posts'>
                 <p class="formtext">비밀번호</p>
-                <input type='password' name='password' placeholder='이메일을 입력하세요'>
-                <p class="helptext">* helper text</p>
+                <input type='password' name='password' placeholder='비밀번호를 입력하세요'>
+                <p class="helptext passwordSucc hide">* 사용할 수 있는 비밀번호 입니다.</p> 
+                <p class="helptext passwordErr1 hide">* 비밀번호를 입력해주세요.</p> 
+                <p class="helptext passwordErr2 hide">* 비밀번호는 8자 이상, 20자 이하이며, 대문자, 소문자, 숫자, 특수 문자를 각각 최소 1개 포함해야 합니다.</p>
+                
                 <p class="formtext">비밀번호 확인</p>
                 <input type='password' name='password' placeholder='비밀번호를 입력하세요'>
-                <p class="helptext">* helper text</p>
+                <p class="helptext retypeSucc hide">* 비밀번호가 일치합니다.</p>
+                <p class="helptext retypeErr1 hide">* 비밀번호를 한 번 더 입력해주세요.</p>
+                <p class="helptext retypeErr2 hide">* 비밀번호가 다릅니다.</p>
                 <div class="space"></div>
                 <div><button class="button-login" type='submit'>수정하기</button></div>
             </form>
