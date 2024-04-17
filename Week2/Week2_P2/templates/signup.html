@@ -4,10 +4,6 @@
     <link rel="stylesheet" type="text/css" href="../static/css/signup.css">
 {% endblock %}
 
-{% block js %}
-    <script src="../static/js/signup-upload-profile-img.js"></script>
-{% endblock %}
-
 {% block content %}
     <section class="login-section">
         <div class="login-title"><h2>회원가입</h2></div>
@@ -18,7 +14,7 @@
                 
                 <input type="file" id="uploadProfileImage" accept="image/*" style="display:none"/>
                 <div class="profile-image-parent" onclick="document.getElementById('uploadProfileImage').click()">
-                    <div id="inputProfileImage" class="profile-image"></div>               
+                    <div id="profileImagePreview" class="profile-image"></div>               
                     <div class="button-edit-image"><i class="fa-solid fa-plus"></i></div>  
                 </div>
                 
@@ -41,6 +37,9 @@
                 <div class="space"></div>
                 <div><button id="signupButton" class="button-signup" type="submit">회원가입</button></div> <!-- 버튼 활성화 - 색깔 바뀌기 -->
                 <div class="space"></div>
+
+                <div class="buttonss"></div>
+                
                 <div><a class="login-signup" href="/login">로그인하러 가기</a></div>
             </form>
         </div>

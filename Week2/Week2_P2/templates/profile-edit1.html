@@ -4,6 +4,10 @@
     <link rel="stylesheet" type="text/css" href="../static/css/profile-edit1.css">
 {% endblock %}
 
+{% block js %}
+    <script src="../static/js/delete-modal.js"></script>
+{% endblock %}
+
 {% block content %}
     <section class="login-section">
         <div class="login-title"><h2>회원정보 수정</h2></div>
@@ -18,13 +22,26 @@
                 <p class="email">startupcode@gmail.com</p>
                 
                 <p class="formtext">닉네임</p>
-                <input type='text' name='text' placeholder='닉네임을 입력하세요'>
+                <input id="inputNickname" type='text' name='text' placeholder='닉네임을 입력하세요'>
                 <p class="helptext nickname hide">* helptext</p> 
 
                 <div class="space"></div>
-                <div><button class="button-login" type='submit'>수정하기</button></div>
+                <div><button id="nicknameButton" class="button-login" type='submit'>수정하기</button></div>
                 <div class="space"></div>
-                <div><a class="login-signup" href="/login">회원 탈퇴</a></div>
+                <!-- 모달 컨텐츠 -->
+                <div id="edit-button-modal" class="delete-modal edit-delete-modal">                        
+                    <div class="modal-content">
+                        <p class="text1">게시글을 삭제하시겠습니까?</p>
+                        <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                        <div class="space"></div>
+                        <div class="modal-actions">
+                            <button id="edit-cancel" class="modal-button cancel">취소</button>
+                            <button id="edit-delete" class="modal-button delete"><a href="/login">확인</a></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 모달 열기 버튼 -->
+                <div id="edit-button-delete" class="login-signup button-delete edit-button-delete">회원 탈퇴</div>
                 <div class="large-space"></div>
                 <div><button class="button-final" type='submit'>수정완료</button></div>
             </form>

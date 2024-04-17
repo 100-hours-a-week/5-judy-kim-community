@@ -89,10 +89,6 @@ input, textarea {
     align-self: center;
 }
 
-.button-edit:hover {
-    background-color: #7FA6EE;
-}
-
-.button-edit:active {
-    background-color: #7FA6EE;
+#postButton.active {
+    background-color: #7FA6EE; /* 활성화 색상 */
 }

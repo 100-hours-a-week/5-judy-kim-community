@@ -59,11 +59,7 @@ input {
     align-self: center;
 }
 
-.button-login:hover {
-    background-color: #7FA6EE;
-}
-
-.button-login:active {
+#retypePasswordButton.active {
     background-color: #7FA6EE;
 }
 
