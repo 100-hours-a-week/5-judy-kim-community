@@ -76,7 +76,7 @@ input {
     padding: 4px 10px;
 }
 
-.button-login {
+.button-signup {
     cursor: pointer;
     width: 383px;
     height: 37px;
@@ -89,12 +89,8 @@ input {
     align-self: center;
 }
 
-.button-login:hover {
-    background-color: #7FA6EE;
-}
-
-.button-login:active {
-    background-color: #7FA6EE;
+#signupButton.active {
+    background-color: #7FA6EE; /* 활성화 색상 */
 }
 
 .login-signup {
