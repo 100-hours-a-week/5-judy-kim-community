@@ -38,6 +38,7 @@
 }
 
 .profile-image-parent {
+    cursor: pointer;
     position: relative;
     display: flex;
     justify-content: center;
@@ -50,7 +51,7 @@
     z-index: 0;
     width: 140px;
     height: 140px;
-    background-color: #7FA6EE;
+    background-color: #D9D9D9;
     border: none;
     border-radius: 50%;   
 
@@ -60,7 +61,6 @@
 }
 
 .button-edit-image {
-    cursor: pointer;
     z-index: 3;
     align-self: center;
     color: white;

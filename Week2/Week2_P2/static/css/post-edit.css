@@ -52,6 +52,7 @@ input, textarea {
 
 .input-content {
     height: 230px;
+    padding-top: 10px;
 }
 
 .image-file-parents {
