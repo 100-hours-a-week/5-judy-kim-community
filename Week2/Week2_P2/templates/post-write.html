@@ -4,6 +4,10 @@
     <link rel="stylesheet" type="text/css" href="../static/css/post-write.css">
 {% endblock %}
 
+{% block js %}
+    <script src="../static/js/uploadPostImage.js"></script>
+{% endblock %}
+
 {% block content %}
     <section class="login-section">
         <div class="login-title"><h3>게시글 작성</h3></div>
@@ -22,11 +26,12 @@
                 <div class="space"></div>
                 <p class="formtext">이미지</p>
                 <div class="image-file-parents">
-                    <button class="image-file">파일 선택</button>
+                    <input type="file" id="image-file" accept="image/*" style="display:none;">
+                    <button onclick="document.getElementById('image-file').click();" class="image-file">파일 선택</button>
                     <p>파일을 선택해 주세요</p>
                 </div>
                 <div class="space"></div>
-                <div><button class="button-write" type='submit'>완료</button></div>
+                <div><button id="postButton" class="button-write" type='submit'>완료</button></div>
             </form>
         </div>
     </section>

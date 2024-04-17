@@ -10,15 +10,15 @@
         <div class="formbox">
             <form method='post' action='/posts'>
                 <p class="formtext">비밀번호</p>
-                <input type='password' name='password' placeholder='비밀번호를 입력하세요'>
+                <input id="inputPassword" type='password' name='password' placeholder='비밀번호를 입력하세요'>
                 <p class="helptext password hide">* helptext</p> 
                 
                 <p class="formtext">비밀번호 확인</p>
-                <input type='password' name='password' placeholder='비밀번호를 입력하세요'>
+                <input id="inputRetypePassword" type='password' name='password' placeholder='비밀번호를 입력하세요'>
                 <p class="helptext retypePassword hide">* helptext</p> 
 
                 <div class="space"></div>
-                <div><button class="button-login" type='submit'>수정하기</button></div>
+                <div><button id="retypePasswordButton" class="button-login" type='submit'>수정하기</button></div>
             </form>
         </div>
     </section>
