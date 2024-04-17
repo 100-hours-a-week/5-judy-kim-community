@@ -249,10 +249,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const postButton = document.querySelector('#postButton');
 
-    let inputWriteValid = false; 
+    let inputWriteValid = false;
 
-
-    // 모든 검증을 통합하여 회원 가입 버튼 활성화
+    // 모든 검증을 통합하여 게시 버튼 활성화
     function updatePostButtonStatus() {
         if (inputWriteValid) {
             postButton.classList.add("active");
@@ -265,17 +264,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validatePost() {
         helpPost.classList.remove('hide');
-        if (inputTitle.value.trim() === '' || inputContent.value.trim() === '') {
+        // 제목 길이 검증
+        if (inputTitle.value.trim().length > 26) {
+            helpPost.textContent = "* 제목은 26자 이하로 작성해주세요.";
+            helpPost.style.color = "red";
+            inputWriteValid = false;
+        } else if (inputTitle.value.trim() === '' || inputContent.value.trim() === '') {
             helpPost.textContent = "* 제목과 내용을 모두 작성해주세요.";
             helpPost.style.color = "red";
-            inputWriteValid = false; 
+            inputWriteValid = false;
         } else {
             helpPost.textContent = "제목과 내용이 모두 입력되었습니다.";
             helpPost.style.color = "green";
-            inputWriteValid = true; 
+            inputWriteValid = true;
         }
         updatePostButtonStatus();
     }
+
+    // 제목 입력 길이 제한
+    inputTitle.addEventListener('input', function() {
+        inputTitle.value = inputTitle.value.slice(0, 26);        
+    });
 
     if (window.location.href.includes('/post-write') || window.location.href.includes('/post-edit')) {
         inputTitle.onkeyup = validatePost;
