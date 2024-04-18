@@ -14,10 +14,12 @@
         <div class="formbox">
             <form method='post' action='/posts'>
                 <p class="formtext">프로필 사진*</p>
-                <div class="profile-image-parent">
-                    <div class="profile-image"></div>
-                    <div class="button-edit-image">변경</div>
+                <input type="file" id="uploadProfileImage" accept="image/*" style="display:none"/>
+                <div class="profile-image-parent" onclick="document.getElementById('uploadProfileImage').click()">
+                    <div id="profileImagePreview" class="profile-image"></div>               
+                    <div class="button-edit-image">변경</div>  
                 </div>
+
                 <p class="formtext">이메일</p>
                 <p class="email">startupcode@gmail.com</p>
                 
