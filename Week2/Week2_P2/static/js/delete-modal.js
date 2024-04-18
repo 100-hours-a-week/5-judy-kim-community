@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.command-button-delete').forEach(function (modalBtn, index) {
         var modal = document.getElementById(`command-button-modal-${index + 1}`);
@@ -47,6 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-});
+});*/
 
 
