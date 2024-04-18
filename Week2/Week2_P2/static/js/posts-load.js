@@ -1,11 +1,10 @@
-// DOM이 완전히 로드된 후에 실행됩니다.
 document.addEventListener('DOMContentLoaded', function() {
     
     if (window.location.href.includes('/posts')) {
         fetch('/api/posts')
-        .then(response => response.json()) // 응답을 JSON 형태로 변환
+        .then(response => response.json()) 
         .then(data => {
-            const postsContainer = document.getElementById('posts-container'); // 게시물을 삽입할 컨테이너를 선택합니다.
+            const postsContainer = document.getElementById('posts-container');
             let postsHTML = '';
 
             // 각 게시물 데이터에 대한 HTML 생성
@@ -119,6 +118,15 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error:', error);
         });
+        
+        // 모달을 클릭한 외부를 클릭했을 때 모달을 닫는 이벤트
+        window.addEventListener("click", function(event) {
+            document.querySelectorAll('.command-delete-modal').forEach(function(modal) {
+                if (event.target === modal) {
+                    modal.classList.remove("show");
+                }
+            });
+        });      
     }
 
     /*  <p>
@@ -145,8 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="command-profile">
                                     <div class="user-image" style="background-image: url('${comment.imagePath}');"></div>
                                     <div class="subtitle">
-                                        <div class="user-name"><h4>${comment.author}</h4></div>
-                                        <div class="date"><p>${commentDate} ${commentTime}</p></div>
+                                        <div class="user-name">
+                                            <h4>${comment.author}</h4>
+                                        </div>
+                                        <div class="date">
+                                            <p>${commentDate}</p>
+                                            <p>${commentTime}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="command-button-parent">
@@ -158,13 +171,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
                                             <div class="space"></div>
                                             <div class="modal-actions">
-                                                <button id="command-cancel-${index}" class="modal-button command-cancel">취소</button>
-                                                <button id="command-delete-${index}" class="modal-button command-delete">확인</button>
+                                                <button id="command-cancel" class="modal-button command-cancel">취소</button>
+                                                <button id="command-delete" class="modal-button command-delete">확인</button>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- 모달 열기 버튼 -->
-                                    <button id="command-button-delete-${index}" class="button-delete command-button-delete">삭제</button>
+                                    <button id="command-button-delete-${index}" class="button-delete command-button-delete" data-modal-id="${index}">삭제</button>
                                 </div>
                             </div>
                             <div class="command-text"><p>${comment.content}</p></div>
@@ -173,9 +186,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 commentsContainer.innerHTML += commentHTML;
             });
+
+            // 모달 동작 리스너 추가
+            document.querySelectorAll('.command-button-delete').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var modalId = button.getAttribute('data-modal-id');
+                    var modal = document.getElementById(`command-button-modal-${modalId}`);
+                    modal.classList.toggle('show');
+                });
+            });
+
+            document.querySelectorAll('.command-cancel, .command-delete').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var modal = button.closest('.delete-modal');
+                    modal.classList.remove('show');
+                });
+            });
         })
         .catch(error => console.error('Error loading comments:', error));
-    }
-        
+    }     
 });
 
