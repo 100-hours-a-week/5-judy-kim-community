@@ -36,7 +36,6 @@
     border-radius: 50%;
     background-color: #D9D9D9;
     background-size: cover; 
-    background-image: url('../image/profile.png');
 }
 
 .contents-title .profile .user-name {
@@ -244,8 +243,7 @@
     height: 40px;
     border-radius: 50%;
     background-color: #D9D9D9;
-    background-size: cover; 
-    background-image: url('../image/profile.png');
+    background-size: cover;
 }
 
 .command-parent .command-profile .subtitle {
