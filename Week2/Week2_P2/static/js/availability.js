@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         buttonName.disabled = true;
     }
 
-    // signup
-    if (window.location.href.includes('/signup')) {
+    // signup, profile-edit1
+    if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
         updateSignupButtonStatus();
 
         // 프로필 이미지 검증    
@@ -69,16 +69,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     profileImagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
-                    helpProfileImage.classList.remove('hide');
-                    helpProfileImage.textContent = "* 프로필 사진이 업로드 되었습니다.";
-                    helpProfileImage.style.color = "green";
+                    if(helpProfileImage){
+                        helpProfileImage.classList.remove('hide');
+                        helpProfileImage.textContent = "* 프로필 사진이 업로드 되었습니다.";
+                        helpProfileImage.style.color = "green";
+                    }
                     uploadProfileImageValid = true;
                 };
                 reader.readAsDataURL(this.files[0]);
             } else {
                 profileImagePreview.style.backgroundImage = 'none'; // 이미지 제거
-                helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
-                helpProfileImage.style.color = "red";
+                if(helpProfileImage){
+                    helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
+                    helpProfileImage.style.color = "red";
+                }
                 uploadProfileImageValid = false;
             }
             updateSignupButtonStatus();
@@ -88,17 +92,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
         uploadProfileImage.addEventListener('click', function () {
             setTimeout(() => {
                 if (uploadProfileImage.files.length === 0) {
-                    helpProfileImage.classList.remove('hide');
-                    helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
-                    helpProfileImage.style.color = "red";
+                    if(helpProfileImage){
+                        helpProfileImage.classList.remove('hide');
+                        helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
+                        helpProfileImage.style.color = "red";
+                    }
                     profileImagePreview.style.backgroundImage = 'none'; 
                     uploadProfileImageValid = false;
                     updateSignupButtonStatus();
                 }
             }, 100);
         });
+    }
 
-        // signup
+    // signup
+    if (window.location.href.includes('/signup')) {
         // 이메일 검증
         inputEmail.onkeyup = function () {
             helpEmail.classList.remove('hide');
