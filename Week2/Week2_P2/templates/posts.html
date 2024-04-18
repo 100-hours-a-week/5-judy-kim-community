@@ -5,6 +5,10 @@
     <link rel="stylesheet" type="text/css" href="../static/css/post-card.css">
 {% endblock %}
 
+{% block js %}
+    <script src="../static/js/posts-load.js"></script>
+{% endblock %}
+
 {% block content %}
     <section class="posts-section">
         <div class="space"></div>
@@ -15,37 +19,8 @@
         </div>
         <div class="space"></div>
 
-        {% for post in posts %}
-        <a href="/posts/{{ post.id }}" class="post-link">
-        <article class="post-card">
-            <div class="title"><h3>{{ post.title }}</h3></div>
-            <div class="subtitle">
-                <div class="subtitle-numbers">
-                    <p>좋아요 {{ post.likes }}</p>
-                    <p>댓글 {{ post.comments }}</p>
-                    <p>조회수 {{ post.views }}</p>
-                </div>
-                <div class="subtitle-date">
-                    <p>{{ post.date }}</p>
-                    <p>{{ post.time }}</p>
-                </div>
-            </div>
-            <hr class="card-line">
-            <div class="profile">
-                <div class="user-image">
-                    <!--
-                    {% if post.imagePath %}
-                        <img src="{{ post.imagePath }}" alt="Profile Image">
-                    {% endif %}-->
-                </div>
-                <div class="user-name">
-                    <h4>{{ post.author }}</h4>
-                </div>
-            </div>            
-        </article>
-        </a>
-        {% endfor %}
-  
-  
+        <!--게시글 동적 생성-->
+        <div id="posts-container"></div>
+        
     </section>
 {% endblock %}
