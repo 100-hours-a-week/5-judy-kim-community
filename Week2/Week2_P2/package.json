@@ -1,11 +1,13 @@
 {
   "name": "week1_p2",
   "version": "0.0.1",
-  "type": "module",
+  "type": "module", 
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start:frontend": "node frontend.js",
+    "start:backend": "node backend.js",
+    "start": "npm run start:frontend & npm run start:backend"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -13,8 +15,7 @@
     "ejs": "^3.1.9",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",
-    "http-errors": "^2.0.0",
-    "nunjucks": "^3.2.4"
+    "http-errors": "^2.0.0"
   },
   "keywords": [],
   "author": "",

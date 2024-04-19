@@ -36,6 +36,49 @@ app.get('/signup', (req, res) => {
     res.render('signup', { href: '/login'}); 
 });
 
+
+// 회원가입 경로
+app.post('/signup', express.json(), (req, res) => {
+    const newUser = req.body;
+    const filePath = path.join(__dirname, 'static', 'json-file', 'users.json');
+    
+    // 파일에서 기존 사용자 데이터를 읽어옴
+    fs.readJson(filePath, { throws: false }).then(users => {
+        users = users || [];
+        users.push(newUser);
+        
+        // 사용자 데이터를 파일에 다시 쓰기
+        fs.writeJson(filePath, users, { spaces: 2 })
+            .then(() => res.status(201).send('사용자 등록 완료'))
+            .catch(err => {
+                console.error(err);
+                res.status(500).send('사용자 데이터 저장 실패');
+            });
+    }).catch(err => {
+        console.error(err);
+        res.status(500).send('사용자 데이터 읽기 실패');
+    });
+});
+
+// 저장된 사용자 데이터 불러오기
+app.get('/api/users', (req, res) => {
+    const filePath = path.join(__dirname, 'static', 'json-file', 'users.json');
+    
+    fs.readJson(filePath, { throws: false })
+        .then(users => {
+            if (!users) {
+                res.status(404).send('사용자 데이터가 없습니다.');
+            } else {
+                res.json(users);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('사용자 데이터 읽기 실패');
+        });
+});
+
+
 // 회원정보 수정1
 app.get('/profile-edit1', (req, res) => {
     res.render('profile-edit1', { href: '/'}); 
