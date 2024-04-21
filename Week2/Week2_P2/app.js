@@ -1,5 +1,21 @@
 import express from 'express';
-import ejs from 'ejs';
+import path from 'path';
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/static', express.static(path.join(__dirname, 'static')));
+
+export default app;
+
+
+
+//---------//---------//---------
+
+
+
+import express from 'express';
+
 import nunjucks from 'nunjucks';
 import fs from 'fs';
 import path from 'path';
