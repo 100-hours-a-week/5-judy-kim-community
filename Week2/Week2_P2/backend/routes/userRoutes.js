@@ -27,4 +27,4 @@ const upload = multer({ storage: storage });
 router.post('/signup', upload.single('profileImage'), postSignup);
 router.get('/', getUsers);
 
-export default router;
+export default router; 
