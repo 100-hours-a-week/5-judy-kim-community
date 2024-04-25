@@ -14,54 +14,39 @@ app.use(bodyParser.json());
 // 사용자 관련 라우트
 app.use('/users', userRoutes);
 
+import { User } from './models/User.js';
+app.get('/check-email', async (req, res) => {
+    const emailToCheck = req.query.email;
+    if (!emailToCheck) {
+        console.error('No email provided in query');
+        return res.status(400).json({ error: 'Email parameter is missing' });
+    }
+    try {
+        const users = await User.readUsers();
+        const emailExists = users.some(user => user.email === emailToCheck);
+        res.json({ emailExists });
+    } catch (err) {
+        console.error('Error checking email:', err);
+        res.status(500).json({ error: 'Internal server error: ' + err.message });
+    }
+});
+
+app.post('/posts', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findByEmail(email);
+        if (user && await bcrypt.compare(password, user.password)) {
+            res.send('로그인 성공!');
+        } else {
+            res.status(401).send('로그인 실패: 잘못된 이메일 또는 비밀번호');
+        }
+    } catch (err) {
+        console.error('Error during login:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 app.listen(backendPort, () => {
     console.log(`Backend server running on http://localhost:${backendPort}`);
 });
-
-
-
-  
-
-
-
-/* import app from '../app';
-import fs from 'fs';
-import path from 'path';
-import userRoutes from './routes/userRoutes';
-
-app.use('/api', userRoutes);
-
-
-app.post('/signup', express.json(), (req, res) => {
-    const newUser = req.body;
-    const filePath = path.join(__dirname, 'static', 'json-file', 'users.json');
-
-    fs.promises.readJson(filePath)
-        .then(users => {
-            users = users || [];
-            users.push(newUser);
-            return fs.promises.writeJson(filePath, users, { spaces: 2 });
-        })
-        .then(() => res.status(201).send('사용자 등록 완료'))
-        .catch(err => {
-            console.error(err);
-            res.status(500).send('사용자 데이터 처리 실패');
-        });
-});
-
-app.get('/api/users', (req, res) => {
-    const filePath = path.join(__dirname, 'static', 'json-file', 'users.json');
-
-    fs.promises.readFile(filePath, 'utf8')
-        .then(data => res.json(JSON.parse(data)))
-        .catch(err => {
-            console.error(err);
-            res.status(500).send('사용자 데이터 읽기 실패');
-        });
-});
-
-const backendPort = 3001;
-app.listen(backendPort, () => {
-    console.log(`Backend server running on http://localhost:${backendPort}`);
-});
-*/

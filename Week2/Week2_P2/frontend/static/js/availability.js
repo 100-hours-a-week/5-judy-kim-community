@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const retypePasswordButton = document.querySelector('#retypePasswordButton');
     
     // 중복 이메일 예시 데이터
-    const existingEmails = ['example@example.com', 'test@test.com'];
+    // const existingEmails = ['example@example.com', 'test@test.com'];
     const existingNicknames = ['nickname1', 'nickname2'];
 
     let uploadProfileImageValid = false; 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 activeButton(signupButton);
             }
             else{
-                console.log(inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid, uploadProfileImageValid);
+                console.log(uploadProfileImageValid, inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid);
                 disableButton(signupButton);
             }
         }
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // 프로필 이미지 검증    
         uploadProfileImage.addEventListener('change', function() {
             if (this.files && this.files[0]) {
-                uploadProfileImageValid = true; // 상태를 먼저 true로 설정
+                uploadProfileImageValid = true;
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     profileImagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
                 uploadProfileImageValid = false;
             }
-            updateSignupButtonStatus(); // 상태 업데이트 호출 위치 조정
+            updateSignupButtonStatus(); 
         });
 
         // 파일을 선택하지 않고 취소를 누른 경우 이미지 사라짐
@@ -131,27 +131,46 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // signup
     if (window.location.href.includes('/signup')) {
         // 이메일 검증
-        inputEmail.onkeyup = function () {
+        inputEmail.onkeyup = async function() {
             helpEmail.classList.remove('hide');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailRegex.test(inputEmail.value)) {
-                if (existingEmails.includes(inputEmail.value)) {
-                    helpEmail.textContent = "* 중복된 이메일입니다.";
-                    helpEmail.style.color = "red";
-                    inputEmailValid = false;
-                } else {
-                    helpEmail.textContent = "* 사용할 수 있는 이메일 입니다.";
-                    helpEmail.style.color = "green";
-                    inputEmailValid = true;
-                }
-            } else {
+            const emailValue = inputEmail.value;
+            if (!emailRegex.test(emailValue)) {
                 helpEmail.textContent = "* 올바른 이메일 형식을 입력해주세요.";
                 helpEmail.style.color = "red";
                 inputEmailValid = false;
+            } else {
+                const url = `http://127.0.0.1:8000/check-email?email=${encodeURIComponent(emailValue)}`;
+                try {
+                    const response = await fetch(url, {
+                        method: 'GET',  
+                        cache: 'no-cache', 
+                        headers: {
+                            'Content-Type': 'application/json' 
+                        }
+                    });
+                    if (!response.ok) {
+                        throw new Error(`Server responded with status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    if (data.emailExists) {
+                        helpEmail.textContent = "* 중복된 이메일입니다.";
+                        helpEmail.style.color = "red";
+                        inputEmailValid = false;
+                    } else {
+                        helpEmail.textContent = "* 사용할 수 있는 이메일 입니다.";
+                        helpEmail.style.color = "green";
+                        inputEmailValid = true;
+                    }
+                } catch (error) {
+                    console.error('Error fetching:', error);
+                    helpEmail.textContent = "* 이메일 검사 중 오류가 발생했습니다. 서버 응답 확인 필요.";
+                    helpEmail.style.color = "red";
+                    inputEmailValid = false;
+                }
             }
-
             updateSignupButtonStatus();
-        };            
+        };        
     }
 
 

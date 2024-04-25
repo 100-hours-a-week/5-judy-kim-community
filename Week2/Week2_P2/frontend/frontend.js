@@ -27,6 +27,11 @@ app.get('/signup', (req, res) => {
     res.render('signup.html');
 });
 
+// 로그인 페이지
+app.get('/login', (req, res) => {
+    res.render('login.html');
+});
+
 app.listen(frontendPort, () => {
     console.log(`Frontend server running on http://localhost:${frontendPort}`);
 });
