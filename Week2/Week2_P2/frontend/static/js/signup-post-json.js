@@ -16,17 +16,15 @@
 document.addEventListener('DOMContentLoaded', (event) => {    
     const form = document.getElementById('signupForm');
     form.addEventListener('submit', function(e) {
-        e.preventDefault();  // 폼 제출을 막습니다.
+        e.preventDefault();  // 폼 제출 막깅..
 
         const formData = new FormData(form);
 
-        // FormData 내용 로깅
         formData.forEach((value, key) => {
             console.log(`${key}: ${value}`);
         });
         console.log([...formData]);
 
-        // 백엔드 서버로 요청 보내기
         fetch('http://127.0.0.1:8000/users/signup', {
             method: 'POST',
             cache: 'no-cache',
@@ -36,11 +34,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();  // JSON 응답을 파싱합니다.
+            return response.json();  //json 파싱
         })
         .then(data => {
             console.log(data.message);
-            alert(data.message);  // 서버 응답 메시지를 alert로 보여줍니다.
+            alert(data.message);  
+            window.location.href = '/login';
         })
         .catch(error => {
             console.error('Error fetching:', error);

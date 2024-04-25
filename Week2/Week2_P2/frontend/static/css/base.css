@@ -15,9 +15,11 @@ a {
     display: none;
 }
 
+
 @font-face {
-    font-family : 'sagak-sagak';
-    src : url(sagak-sagak.ttf)
+    font-family: 'Sagak-Sagak';
+    src: url('http://127.0.0.1:3000/css/sagak-sagak.ttf') format('truetype');
+    font-display: swap; /* 폰트 로드 중에 대체 폰트 사용 */
 }
 
 html, body {

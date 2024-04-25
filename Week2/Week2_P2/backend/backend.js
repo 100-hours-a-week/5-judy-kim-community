@@ -2,19 +2,19 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import bcrypt from 'bcrypt';
 import userRoutes from './routes/userRoutes.js';
+import { User } from './models/User.js';
 
+const backendPort = process.env.PORT || 8000;
 const app = express();
 app.use(cors());
-const backendPort = process.env.PORT || 8000;
-
-// 바디 파서 설정
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true })); 
+app.use(bodyParser.json()); // JSON 바디 파서
 
 // 사용자 관련 라우트
 app.use('/users', userRoutes);
 
-import { User } from './models/User.js';
 app.get('/check-email', async (req, res) => {
     const emailToCheck = req.query.email;
     if (!emailToCheck) {
@@ -31,21 +31,46 @@ app.get('/check-email', async (req, res) => {
     }
 });
 
-app.post('/posts', async (req, res) => {
+// 평문 비밀번호
+app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findByEmail(email);
-        if (user && await bcrypt.compare(password, user.password)) {
-            res.send('로그인 성공!');
+        if (!user) {
+            return res.status(401).send({ message: '로그인 실패: 사용자를 찾을 수 없습니다.' });
+        }
+        // 평문 비밀번호 직접 비교
+        if (password === user.password) {
+            res.send({ message: '로그인 성공!' });
         } else {
-            res.status(401).send('로그인 실패: 잘못된 이메일 또는 비밀번호');
+            res.status(401).send({ message: '로그인 실패: 잘못된 비밀번호입니다.' });
         }
     } catch (err) {
         console.error('Error during login:', err);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).send({ message: 'Internal server error' });
     }
 });
 
+
+/* 비밀번호를 해싱하여 저장
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findByEmail(email);
+        if (!user) {
+            return res.status(401).send({ message: '로그인 실패: 사용자를 찾을 수 없습니다.' });
+        }
+        const match = await bcrypt.compare(password, user.password);
+        if (match) {
+            res.send({ message: '로그인 성공!' });
+        } else {
+            res.status(401).send({ message: '로그인 실패: 잘못된 비밀번호' });
+        }
+    } catch (err) {
+        console.error('Error during login:', err);
+        res.status(500).send({ message: 'Internal server error' });
+    }
+});*/
 
 app.listen(backendPort, () => {
     console.log(`Backend server running on http://localhost:${backendPort}`);

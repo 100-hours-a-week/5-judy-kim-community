@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         buttonName.disabled = true;
     }
 
-    window.fillDevData = function() {
+    window.fillSignupDevData = function() {
         inputEmail.value = 'test@example.com';
         inputPassword.value = 'Password123!';
         inputRetypePassword.value = 'Password123!';
@@ -80,6 +80,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const event = new Event('keyup', { bubbles: true, cancelable: true });
             document.getElementById(id).dispatchEvent(event);
         });
+    };  
+
+    window.fillLoginDevData = function() {
+        let inputEmailLogin = document.querySelector('#inputEmailLogin');
+        let inputPasswordLogin = document.querySelector('#inputPasswordLogin')
+        inputEmailLogin.value = 'test@example.com';
+        inputPasswordLogin.value = 'Password123!';
+        ['inputEmailLogin', 'inputPasswordLogin'].forEach(id => {
+            const event = new Event('keyup', { bubbles: true, cancelable: true });
+            document.getElementById(id).dispatchEvent(event);
+        }); 
     }; 
 
     // signup, profile-edit1
@@ -280,6 +291,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     
     // login
+    // login-post-form 에 구현됨
+    /*
     if (window.location.href.includes('/login')) {
 
         // 로그인 검증
@@ -292,7 +305,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             helpLogin.textContent = "* 입력하신 계정 정보가 정확하지 않습니다";
             helpLogin.style.color = "red";
         });
-    }
+    } */
 });
 
 // post-write, post-edit
