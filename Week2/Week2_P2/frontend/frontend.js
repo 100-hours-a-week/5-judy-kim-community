@@ -32,6 +32,11 @@ app.get('/login', (req, res) => {
     res.render('login.html');
 });
 
+app.get('/posts-dashboard', (req, res) => {
+    res.render('posts.html');
+});
+
+
 app.listen(frontendPort, () => {
     console.log(`Frontend server running on http://localhost:${frontendPort}`);
 });
@@ -40,21 +45,6 @@ app.listen(frontendPort, () => {
 
 
 /*
-
-
-import express from 'express';
-import path from 'path';
-
-const app = express();
-const port = 8000;
-
-const __dirname = path.dirname(__filename);
-
-app.use('/static', express.static(path.join(__dirname, 'static')));
-
-
-app.set('views', path.join(__dirname, 'templates'));
-app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
     res.render('base');
