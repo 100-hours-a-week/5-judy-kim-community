@@ -40,5 +40,40 @@
     "password": "password123",
     "nickname": "testUser",
     "profileImage": "/images/profileImage-1714012877703.png"
+  },
+  {
+    "id": 9,
+    "email": "test@example.com",
+    "password": "Password123!",
+    "nickname": "testUser",
+    "profileImage": null
+  },
+  {
+    "id": 10,
+    "email": "test@example.com",
+    "password": "Password123!",
+    "nickname": "testUser",
+    "profileImage": null
+  },
+  {
+    "id": 11,
+    "email": "test@example.com",
+    "password": "Password123!",
+    "nickname": "testUser",
+    "profileImage": null
+  },
+  {
+    "id": 12,
+    "email": "test@example.com",
+    "password": "password123",
+    "nickname": "testUser",
+    "profileImage": "/images/profileImage-1714015085174.png"
+  },
+  {
+    "id": 13,
+    "email": "test@example.com",
+    "password": "Password123!",
+    "nickname": "testUser",
+    "profileImage": "/images/profileImage-1714015202876.png"
   }
 ]

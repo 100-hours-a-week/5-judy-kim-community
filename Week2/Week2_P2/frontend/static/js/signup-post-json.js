@@ -18,12 +18,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     form.addEventListener('submit', function(e) {
         e.preventDefault();  // 폼 제출을 막습니다.
 
-        const formData = new FormData(this);
+        const formData = new FormData(form);
 
         // FormData 내용 로깅
         formData.forEach((value, key) => {
             console.log(`${key}: ${value}`);
         });
+        console.log([...formData]);
 
         // 백엔드 서버로 요청 보내기
         fetch('http://127.0.0.1:8000/users/signup', {

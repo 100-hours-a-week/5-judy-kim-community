@@ -64,6 +64,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
         buttonName.disabled = true;
     }
 
+    window.fillDevData = function() {
+        inputEmail.value = 'test@example.com';
+        inputPassword.value = 'Password123!';
+        inputRetypePassword.value = 'Password123!';
+        inputNickname.value = 'testUser';
+        /*
+        const profileImage = document.getElementById('profileImagePreview');
+        if (profileImage) {
+            profileImagePreview.style.backgroundImage = 'url(/image/profile.png)';
+            const event = new Event('change', { bubbles: true, cancelable: true });
+            profileImage.dispatchEvent(event); // 이벤트 발생
+        }*/
+        ['inputEmail', 'inputPassword', 'inputRetypePassword', 'inputNickname'].forEach(id => {
+            const event = new Event('keyup', { bubbles: true, cancelable: true });
+            document.getElementById(id).dispatchEvent(event);
+        });
+    }; 
+
     // signup, profile-edit1
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
         updateSignupButtonStatus();
@@ -108,8 +126,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             }, 100);
         });
-    }
-
+    } 
+ 
     // signup
     if (window.location.href.includes('/signup')) {
         // 이메일 검증
@@ -139,15 +157,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // signup, profile-edit2
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit2')) {
-
         // 비밀번호 검증
         inputPassword.onkeyup = function () {
             helpPassword.classList.remove('hide');
             if (inputPassword.value.length > 0) {
-                if (inputPassword.value.length >= 8 && inputPassword.value.length <= 20) {
+                const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+
+                if (regex.test(inputPassword.value)) {
                     helpPassword.textContent = "* 사용할 수 있는 비밀번호 입니다.";
                     helpPassword.style.color = "green";
                     inputPasswordValid = true;
+                } else if (inputPassword.value.includes(' ')) {
+                    helpPassword.textContent = "* 띄어쓰기를 없애주세요."; 
+                    helpPassword.style.color = "red";
+                    inputPasswordValid = false;
                 } else {
                     helpPassword.textContent = "* 비밀번호는 8자 이상, 20자 이하이며, 대문자, 소문자, 숫자, 특수 문자를 각각 최소 1개 포함해야 합니다.";
                     helpPassword.style.color = "red";
