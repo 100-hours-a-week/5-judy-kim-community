@@ -1,3 +1,5 @@
+
+/*
 import express from 'express';
 import path from 'path';
 
@@ -183,7 +185,7 @@ app.get('/posts/:postId', (req, res) => {
         { id: '5', date: "2021-01-01", time: "00:00:00", author: "더미 작성자 5", imagePath: "/static/image/profile.png" },    
     ];
     res.render('post-contents', { post: post, commands: commands, href: '/posts' });
-});*/
+});
 
 // 게시글 수정
 app.get('/post-edit', (req, res) => {
@@ -230,3 +232,4 @@ apiApp.get('/api/posts', (req, res) => {
 apiApp.listen(apiPort, () => {
   console.log(`API server listening on port ${apiPort}`);
 });
+*/
