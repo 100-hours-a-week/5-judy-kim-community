@@ -26,3 +26,18 @@ export const getUsers = async (req, res) => {
         res.status(500).send("Failed to load users");
     }
 };
+
+export const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findByEmail(email);
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            res.status(401).json({ message: 'Authentication failed' });
+            return;
+        }
+        req.session.userId = user.id;
+        res.json({ message: 'Login successful' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};

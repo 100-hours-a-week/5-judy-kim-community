@@ -1,5 +1,6 @@
 // /backend/models/User.js
 
+import bcrypt from 'bcrypt';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -40,6 +41,8 @@ export class User {
             if (userExists) {
                 throw new Error('Email already exists');
             }
+            const hashedPassword = await bcrypt.hash(newUser.password, 10);
+            newUser.password = hashedPassword; // 비밀번호를 해시하여 저장
             newUser.id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
             users.push(newUser);
             await fs.promises.writeFile(dataPath, JSON.stringify(users, null, 2));

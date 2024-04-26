@@ -1,65 +1,64 @@
+// frontend/static/js/post-load.js
+
 document.addEventListener('DOMContentLoaded', function() {
-    
-    if (window.location.href.includes('/posts')) {
-        fetch('/api/posts')
-        .then(response => response.json()) 
+    if (window.location.pathname === '/posts') {
+        fetch('http://127.0.0.1:8000/api/posts')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('서버에서 문제가 발생했습니다: ' + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
             const postsContainer = document.getElementById('posts-container');
             let postsHTML = '';
-
+    
             // 각 게시물 데이터에 대한 HTML 생성
-            data.forEach(post => { 
-            const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
-            const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-            
-            /*
-            const date = new Date(post.createdAt);
-            const year = date.getFullYear();
-            const month = (date.getMonth() + 1).toString().padStart(2, '0'); // getMonth는 0부터 시작하므로 +1 필요
-            const day = date.getDate().toString().padStart(2, '0');
-            const hours = date.getHours().toString().padStart(2, '0');
-            const minutes = date.getMinutes().toString().padStart(2, '0');
-            const seconds = date.getSeconds().toString().padStart(2, '0');
-
-            // YYYY-MM-DDHH:MM:SS 형태로 조합
-            const formattedDateTime = `${year}-${month}-${day}${hours}:${minutes}:${seconds}`;
-            */
-
-            postsHTML += `
-                <a href="/posts/${post.id}" class="post-link">
-                <article class="post-card">
-                    <div class="title"><h3>${post.title}</h3></div>
-                    <div class="subtitle">
-                    <div class="subtitle-numbers">
-                        <p>좋아요 ${post.likes}</p>
-                        <p>댓글 ${post.comments}</p>
-                        <p>조회수 ${post.views}</p>
-                    </div>
-                    <div class="subtitle-date">
-                        <p>${postDate}</p>
-                        <p>${postTime}</p>
-                    </div>
-                    </div>
-                    <hr class="card-line">
-                    <div class="profile">
-                        <div class="user-image" style="background-image:url('${post.userImagePath}');" alt="Profile Image"></div>
-                        <div class="user-name">
-                        <h4>${post.author}</h4>
-                    </div>
-                </article>
-                </a>`;
+            data.forEach(post => {
+                const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
+                const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+    
+                postsHTML += `
+                    <a href="/posts/${post.id}" class="post-link">
+                    <article class="post-card">
+                        <div class="title"><h3>${post.title}</h3></div>
+                        <div class="subtitle">
+                        <div class="subtitle-numbers">
+                            <p>좋아요 ${post.likes}</p>
+                            <p>댓글 ${post.comments}</p>
+                            <p>조회수 ${post.views}</p>
+                        </div>
+                        <div class="subtitle-date">
+                            <p>${postDate}</p>
+                            <p>${postTime}</p>
+                        </div>
+                        </div>
+                        <hr class="card-line">
+                        <div class="profile">
+                            <div class="user-image" style="background-image:url('${post.userImagePath}');" alt="Profile Image"></div>
+                            <div class="user-name">
+                            <h4>${post.author}</h4>
+                        </div>
+                    </article>
+                    </a>`;
             });
-            postsContainer.innerHTML = postsHTML; // 생성된 HTML을 페이지에 삽입
+            if (!postsContainer) {
+                console.error('Cannot find the posts-container element');
+            }
+            postsContainer.innerHTML = postsHTML;
         })
         .catch(error => {
             console.error('Error:', error);
         });
     }
-
-    if (window.location.href.includes('/posts')) {
+    
+    
+    if (window.location.href.includes('/posts')  && !isNaN(parseInt(window.location.pathname.split('/').pop()))) {
         const postId = window.location.pathname.split('/').pop(); // Assuming postId is in the URL
+        console.log("Extracted postId:", postId);
+        console.log("Current URL:", window.location.pathname);
 
-        fetch(`/api/posts/${postId}`)
+        fetch(`http://127.0.0.1:8000/api/posts/${postId}`)
         .then(response => response.json())
         .then(post => {
             const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
@@ -138,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     */
 
     function loadComments(postId) {
-        fetch(`/api/posts/${postId}/comments`)
+        fetch(`http://127.0.0.1:8000/api/posts/${postId}/comments`)
         .then(response => response.json())
         .then(comments => {
             const commentsContainer = document.getElementById('comments-container');

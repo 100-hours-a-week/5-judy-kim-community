@@ -32,8 +32,12 @@ app.get('/login', (req, res) => {
     res.render('login.html');
 });
 
-app.get('/posts-dashboard', (req, res) => {
+app.get('/posts', (req, res) => {
     res.render('posts.html');
+});
+
+app.get('/posts/:postId', (req, res) => {
+    res.render('post-contents.html');
 });
 
 
