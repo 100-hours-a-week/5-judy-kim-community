@@ -10,6 +10,9 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { User } from './models/User.js';
+import postRoutes from './routes/postRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
+
 
 const backendPort = process.env.PORT || 8000;
 const app = express();
@@ -49,6 +52,10 @@ app.use(session({
 
 // 사용자 관련 라우트
 app.use('/users', userRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/posts', commentRoutes);
+
 
 app.get('/check-email', async (req, res) => {
     const emailToCheck = req.query.email;
@@ -89,6 +96,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
+/*
 // 게시글 데이터가 저장된 JSON 파일
 app.get('/api/posts', (req, res) => {
     const filePath = path.join(__dirname, '..', 'data', 'posts.json');
@@ -147,7 +155,7 @@ app.get('/api/posts/:postId/comments', (req, res) => {
         const postComments = comments.filter(comment => comment.postId === parseInt(postId));
         res.json(postComments);
     });
-});
+});*/ㅈ
 
 app.listen(backendPort, () => {
     console.log(`Backend server running on http://localhost:${backendPort}`);
