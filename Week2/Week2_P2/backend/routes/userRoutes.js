@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 // 회원 가입을 위한 라우트 
-import { postSignup, getUsers } from '../controllers/userController.js';
+import { postSignup, getUsers, loginUser } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -27,6 +27,8 @@ const upload = multer({ storage: storage });
 
 router.post('/signup', upload.single('profileImage'), postSignup);
 router.get('/', getUsers);
+router.post('/login', loginUser);
+
 
 // 이메일 인증을 위한 라우트 ------------------------------
 
