@@ -1,58 +1,9 @@
 [
   {
     "id": 1,
-    "email": "test@example.com2",
-    "password": "Password1232!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714020996307.png"
-  },
-  {
-    "id": 18,
-    "email": "test@example.com6",
-    "password": "Password123!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714020996307.png"
-  },
-  {
-    "id": 19,
-    "email": "test@example.com7",
-    "password": "Password123!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714020999693.png"
-  },
-  {
-    "id": 20,
-    "email": "test@example.com10",
-    "password": "Password123!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714021023388.png"
-  },
-  {
-    "id": 21,
-    "email": "test@example.com1",
-    "password": "Password123!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714021237940.png"
-  },
-  {
-    "id": 22,
-    "email": "test@example.com222",
-    "password": "Password123!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714047304098.png"
-  },
-  {
-    "id": 23,
-    "email": "test@example.com22323",
-    "password": "Password123!",
-    "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714047500379.png"
-  },
-  {
-    "id": 24,
     "email": "test@example.com",
-    "password": "Password123!",
+    "password": "$2b$10$mFME0BpUwHIYG4ptbY0VmOFRwcH8oItl5n9H0yG9foxVsPPcqT5Wq",
     "nickname": "testUser",
-    "profileImage": "/images/profileImage-1714047928204.png"
+    "profileImage": "/images/profileImage-1714096665366.png"
   }
 ]
