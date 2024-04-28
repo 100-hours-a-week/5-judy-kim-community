@@ -1,6 +1,5 @@
 // frontend/frontend.js
 import express from 'express';
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import nunjucks from 'nunjucks';
@@ -10,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const frontendPort = process.env.PORT || 3000;
+
 
 app.use(express.static(path.join(__dirname, 'static')));
 nunjucks.configure(path.join(__dirname, 'templates'), {
@@ -24,21 +24,38 @@ app.get('/', (req, res) => {
  
 // 회원가입 페이지
 app.get('/signup', (req, res) => {
-    res.render('signup.html');
+    res.render('signup.html', { href: '/login' });
 });
 
 // 로그인 페이지
 app.get('/login', (req, res) => {
-    res.render('login.html');
+    res.render('login.html', { href: '/' });
 });
 
 app.get('/posts', (req, res) => {
-    res.render('posts.html');
+    res.render('posts.html', { href: '/login' });
 });
 
 app.get('/posts/:postId', (req, res) => {
-    res.render('post-contents.html');
+    res.render('post-contents.html', { href: '/posts' });
 });
+
+app.get('/profile-edit1', (req, res) => {
+    res.render('profile-edit1.html', { href: '/' });
+});
+
+app.get('/profile-edit2', (req, res) => {
+    res.render('profile-edit2.html', { href: '/' });
+});
+
+app.get('/post-edit', (req, res) => {
+    res.render('post-edit.html', { href: '/posts' });
+});
+
+app.get('/post-write', (req, res) => {
+    res.render('post-write.html', { href: '/posts' });
+});
+
 
 
 app.listen(frontendPort, () => {
@@ -46,48 +63,3 @@ app.listen(frontendPort, () => {
 });
 
  
-
-
-/*
-
-app.get('/', (req, res) => {
-    res.render('base');
-});
-
-app.get('/login', (req, res) => {
-    res.render('login', { href: '/' });
-});
-
-app.get('/signup', (req, res) => {
-    res.render('signup', { href: '/login' });
-});
-
-app.get('/profile-edit1', (req, res) => {
-    res.render('profile-edit1', { href: '/' });
-});
-
-app.get('/profile-edit2', (req, res) => {
-    res.render('profile-edit2', { href: '/' });
-});
-
-app.get('/posts', (req, res) => {
-    res.render('posts');
-});
-
-app.get('/posts/:postId', (req, res) => {
-    res.render('post-contents');
-});
-
-app.get('/post-edit', (req, res) => {
-    res.render('post-edit', { href: '/post-contents' });
-});
-
-app.get('/post-write', (req, res) => {
-    res.render('post-write', { href: '/posts' });
-});
-
-const frontendPort = 3000;
-app.listen(frontendPort, () => {
-    console.log(`Frontend server running on http://localhost:${frontendPort}`);
-});
-*/

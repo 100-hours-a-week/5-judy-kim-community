@@ -19,5 +19,12 @@
     "password": "$2b$10$5lsAYRYADL.1KBAb9H5/m.qJrcqBfj8pGnRSYMfCPUAXtCpeXx01i",
     "nickname": "testUser",
     "profileImage": "/images/profileImage-1714135222925.png"
+  },
+  {
+    "id": 4,
+    "email": "test10@example.com",
+    "password": "$2b$10$I4/FXkVq.QG5dov2b1sIKeG1NquSV1TunaanuJ7/T6ltIPG.gyh7K",
+    "nickname": "testUser",
+    "profileImage": "/images/profileImage-1714308102662.png"
   }
 ]
