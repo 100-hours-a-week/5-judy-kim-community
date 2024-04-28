@@ -4,14 +4,12 @@ import session from 'express-session';
 import sessionFileStore from 'session-file-store';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import bcrypt from 'bcrypt';
 import userRoutes from './routes/userRoutes.js';
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { User } from './models/User.js';
 import postRoutes from './routes/postRoutes.js';
 import commentRoutes from './routes/commentRoutes.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 
 const backendPort = process.env.PORT || 8000;
@@ -29,8 +27,6 @@ app.use(cors({
 }));
 app.use(express.urlencoded({ extended: true })); 
 app.use(bodyParser.json()); // JSON 바디 파서
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const FileStore = sessionFileStore(session);
 
 app.use(session({
@@ -44,18 +40,26 @@ app.use(session({
     resave: false,             // 세션을 항상 저장할지 여부를 정하는 값
     saveUninitialized: true,   // 초기화되지 않은 세션을 스토어에 저장
     cookie: {
-      httpOnly: true,          // 클라이언트 JavaScript가 쿠키를 볼 수 없도록 함
-      secure: true,            // HTTPS를 통해서만 쿠키가 전송됨, 개발 환경에서는 false, HTTPS 환경에서는 true로 설정
-      maxAge: 24 * 60 * 60 * 1000 // 쿠키 유효기간 (여기서는 24시간)
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000
     }
 }));
 
 // 사용자 관련 라우트
-app.use('/users', userRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/posts', commentRoutes);
+app.use(errorHandler);
 
+app.listen(backendPort, () => {
+    console.log(`Backend server running on http://localhost:${backendPort}`);
+});
+
+/*
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.get('/check-email', async (req, res) => {
     const emailToCheck = req.query.email;
@@ -72,6 +76,7 @@ app.get('/check-email', async (req, res) => {
         res.status(500).json({ error: 'Internal server error: ' + err.message });
     }
 });
+
 
 // 비밀번호를 해싱하여 비교, 로그인
 app.post('/login', async (req, res) => {
@@ -96,7 +101,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-/*
+
 // 게시글 데이터가 저장된 JSON 파일
 app.get('/api/posts', (req, res) => {
     const filePath = path.join(__dirname, '..', 'data', 'posts.json');
@@ -155,8 +160,5 @@ app.get('/api/posts/:postId/comments', (req, res) => {
         const postComments = comments.filter(comment => comment.postId === parseInt(postId));
         res.json(postComments);
     });
-});*/ㅈ
+});*/
 
-app.listen(backendPort, () => {
-    console.log(`Backend server running on http://localhost:${backendPort}`);
-});

@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 helpEmail.style.color = "red";
                 inputEmailValid = false;
             } else {
-                const url = `http://127.0.0.1:8000/check-email?email=${encodeURIComponent(emailValue)}`;
+                const url = `http://127.0.0.1:8000/api/users/check-email?email=${encodeURIComponent(emailValue)}`;
                 try {
                     const response = await fetch(url, {
                         method: 'GET',  
@@ -289,23 +289,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateSignupButtonStatus();
         };
     }
-    
-    // login
-    // login-post-form 에 구현됨
-    /*
-    if (window.location.href.includes('/login')) {
-
-        // 로그인 검증
-        let loginButton = document.querySelector('#button-login');
-        let helpLogin = document.querySelector('.helptext.login');  
-
-        loginButton.addEventListener('click', function() {
-            // 서버 검증 후 실패 응답 가정
-            helpLogin.classList.remove('hide');
-            helpLogin.textContent = "* 입력하신 계정 정보가 정확하지 않습니다";
-            helpLogin.style.color = "red";
-        });
-    } */
 });
 
 // post-write, post-edit

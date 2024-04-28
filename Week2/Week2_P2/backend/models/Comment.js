@@ -2,8 +2,12 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const commentsPath = path.join(__dirname, '..', 'data', 'comments.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const commentsPath = path.join(__dirname, '..', '..', 'data', 'comments.json');
 
 export default class Comment {
     static findAllByPostId(postId) {

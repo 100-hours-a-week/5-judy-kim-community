@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
         console.log([...formData]);
 
-        fetch('http://127.0.0.1:8000/users/signup', {
+        fetch('http://127.0.0.1:8000/api/users/signup', {
             method: 'POST',
             cache: 'no-cache',
             body: formData
@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();  //json 파싱
+            return response.json();  // json 파싱
         })
         .then(data => {
             console.log(data.message);
             alert(data.message);  
-            window.location.href = '/login';
+            window.location.href = '/login';     // front
         })
         .catch(error => {
             console.error('Error fetching:', error);
