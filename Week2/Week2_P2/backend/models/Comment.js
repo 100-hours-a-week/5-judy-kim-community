@@ -10,6 +10,27 @@ const __dirname = path.dirname(__filename);
 const commentsPath = path.join(__dirname, '..', '..', 'data', 'comments.json');
 
 export default class Comment {
+    static findAll() {
+        return new Promise((resolve, reject) => {
+            fs.readFile(commentsPath, 'utf8', (err, data) => {
+                if (err) {
+                    reject(new Error('Error reading comments data'));
+                    return;
+                }
+                try {
+                    const comments = JSON.parse(data);
+                    resolve(comments);
+                } catch (parseErr) {
+                    reject(new Error('Error parsing comments data'));
+                }
+            });
+        });
+    }
+
+    static findByPostId(postId) {
+        return this.findAll().then(comments => comments.filter(comment => comment.postId === parseInt(postId)));
+    }
+    
     static findAllByPostId(postId) {
         return new Promise((resolve, reject) => {
             fs.readFile(commentsPath, 'utf8', (err, data) => {
@@ -24,6 +45,34 @@ export default class Comment {
                 } catch (parseErr) {
                     reject(new Error('Error parsing comments data'));
                 }
+            });
+        });
+    }
+
+    static deleteByPostId(postId) {
+        return this.findAll().then(comments => {
+            const filteredComments = comments.filter(comment => comment.postId !== parseInt(postId));
+            return new Promise((resolve, reject) => {
+                fs.writeFile(commentsPath, JSON.stringify(filteredComments, null, 2), 'utf8', (err) => {
+                    if (err) reject(new Error('Error writing comments data'));
+                    resolve();
+                });
+            });
+        });
+    }
+    
+    static findById(commentId) {
+        return this.findAll().then(comments => comments.find(comment => comment.id === parseInt(commentId)));
+    }
+
+    static deleteById(commentId) {
+        return this.findAll().then(comments => {
+            const filteredComments = comments.filter(comment => comment.id !== parseInt(commentId));
+            return new Promise((resolve, reject) => {
+                fs.writeFile(commentsPath, JSON.stringify(filteredComments, null, 2), 'utf8', (err) => {
+                    if (err) reject(new Error('Error writing comments data'));
+                    resolve();
+                });
             });
         });
     }

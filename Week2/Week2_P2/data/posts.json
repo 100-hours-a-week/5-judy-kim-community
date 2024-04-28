@@ -1,38 +1,26 @@
 [
-    {
-        "id": 1,
-        "title": "첫 번째 게시물",
-        "content": " 무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강 하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래 서 우리의 삶은 소중하고 의미가 있습니다.",
-        "author": "작성자1",
-        "userImagePath": "/image/profile.png",
-        "postImagePath": "/image/picture1.png",
-        "createdAt": "2021-01-01T00:00:00.000Z",
-        "likes": 100,
-        "comments": 10,
-        "views": 100
-    },
-    {
-        "id": 2,
-        "title": "두 번째 게시물",
-        "content": "게시물 내용이 여기에 들어갑니다.",
-        "author": "작성자2",
-        "userImagePath": "/image/profile.png",
-        "postImagePath": "/image/picture2.png",
-        "createdAt": "2021-01-01T00:00:00.000Z",
-        "likes": 100,
-        "comments": 10,
-        "views": 100
-    },
-    {
-      "id": 3,
-      "title": "세 번째 게시물",
-      "content": "게시물 내용이 여기에 들어갑니다.",
-      "author": "작성자3",
-      "userImagePath": "/image/profile.png",
-      "postImagePath": "/image/picture3.png",
-      "createdAt": "2021-01-01T00:00:00.000Z",
-      "likes": 100,
-      "comments": 10,
-      "views": 100
-    }
+  {
+    "id": 1,
+    "title": "첫 번째 게시물",
+    "content": " 무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강 하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래 서 우리의 삶은 소중하고 의미가 있습니다.",
+    "author": "작성자1",
+    "userImagePath": "/image/profile.png",
+    "postImagePath": "/image/picture1.png",
+    "createdAt": "2021-01-01T00:00:00.000Z",
+    "likes": 100,
+    "comments": 10,
+    "views": 20000
+  },
+  {
+    "id": 2,
+    "title": "두 번째 게시물",
+    "content": " 무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강 하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래 서 우리의 삶은 소중하고 의미가 있습니다.",
+    "author": "작성자1",
+    "userImagePath": "/image/profile.png",
+    "postImagePath": "/image/picture1.png",
+    "createdAt": "2021-01-01T00:00:00.000Z",
+    "likes": 100,
+    "comments": 10,
+    "views": 20000
+  }
 ]

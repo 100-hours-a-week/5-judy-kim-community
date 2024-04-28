@@ -29,6 +29,18 @@ class Post {
     static findById(postId) {
         return this.findAll().then(posts => posts.find(post => post.id === parseInt(postId)));
     }
+
+    static deleteById(postId) {
+        return this.findAll().then(posts => {
+            const filteredPosts = posts.filter(post => post.id !== parseInt(postId));
+            return new Promise((resolve, reject) => {
+                fs.writeFile(postsPath, JSON.stringify(filteredPosts, null, 2), 'utf8', (err) => {
+                    if (err) reject(new Error('Error writing posts data'));
+                    resolve();
+                });
+            });
+        });
+    }
 }
 
 export default Post;

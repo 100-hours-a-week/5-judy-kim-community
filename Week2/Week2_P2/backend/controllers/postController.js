@@ -24,3 +24,13 @@ export const getPostById = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+export const deletePost = async (req, res) => {
+    const postId = parseInt(req.params.postId);
+    try {
+        await Post.deleteById(postId);
+        res.status(200).json({ message: 'Post deleted successfully.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to delete post', error: error.toString() });
+    }
+};

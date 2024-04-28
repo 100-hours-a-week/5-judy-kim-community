@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     if (window.location.href.includes('/posts')  && !isNaN(parseInt(window.location.pathname.split('/').pop()))) {
-        const postId = window.location.pathname.split('/').pop(); // Assuming postId is in the URL
+        const postId = window.location.pathname.split('/').pop(); // post id 가져오기
         console.log("Extracted postId:", postId);
         console.log("Current URL:", window.location.pathname);
 
@@ -101,9 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     
             // Update likes and comments count
-            const likesElement = document.getElementById('likes');
+            const likesElement = document.getElementById('views');
             if (likesElement) {
-                likesElement.innerHTML = `${post.likes}`;
+                likesElement.innerHTML = `${post.views}`;
             }
     
             const commentsElement = document.getElementById('comments');
@@ -137,16 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 
     function loadComments(postId) {
-        fetch(`http://127.0.0.1:8000/api/posts/${postId}/comments`)
+        fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`)
         .then(response => response.json())
         .then(comments => {
             const commentsContainer = document.getElementById('comments-container');
             commentsContainer.innerHTML = ''; // Clear previous comments
-            comments.forEach((comment, index) => {
+            comments.forEach((comment) => {
                 const commentDate = new Date(comment.createdAt).toLocaleDateString('ko-KR');
                 const commentTime = new Date(comment.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
                 const commentHTML = `
-                    <article class="command-parent">
+                    <article id="comment-${comment.id}" class="command-parent">
                         <div class="command-set">
                             <div class="command-subtitle">
                                 <div class="command-profile">
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="command-button-parent">
                                     <button class="button-edit">수정</button>
                                     <!-- 모달 컨텐츠 -->
-                                    <div id="command-button-modal-${index}" class="delete-modal command-delete-modal">
+                                    <div id="command-button-modal-${comment.id}" class="delete-modal command-delete-modal">
                                         <div class="modal-content">
                                             <p class="text1">댓글을 삭제하시겠습니까?</p>
                                             <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         </div>
                                     </div>
                                     <!-- 모달 열기 버튼 -->
-                                    <button id="command-button-delete-${index}" class="button-delete command-button-delete" data-modal-id="${index}">삭제</button>
+                                    <button id="command-button-delete-${comment.id}" class="button-delete command-button-delete" data-modal-id="${comment.id}">삭제</button>
                                 </div>
                             </div>
                             <div class="command-text"><p>${comment.content}</p></div>
@@ -186,23 +186,66 @@ document.addEventListener('DOMContentLoaded', () => {
                 commentsContainer.innerHTML += commentHTML;
             });
 
-            // 모달 동작 리스너 추가
-            document.querySelectorAll('.command-button-delete').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    var modalId = button.getAttribute('data-modal-id');
-                    var modal = document.getElementById(`command-button-modal-${modalId}`);
-                    modal.classList.toggle('show');
-                });
-            });
-
-            document.querySelectorAll('.command-cancel, .command-delete').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    var modal = button.closest('.delete-modal');
-                    modal.classList.remove('show');
-                });
-            });
+            attachEventListeners();
         })
         .catch(error => console.error('Error loading comments:', error));
     }     
+    
+    // 모달 동작 리스너 추가
+    function attachEventListeners() {
+        let commentId;
+        document.querySelectorAll('.button-delete').forEach(button => {
+            button.addEventListener('click', function() {
+                commentId = button.dataset.modalId;
+                console.log(commentId);
+                const modal = document.getElementById(`command-button-modal-${commentId}`);
+                modal.classList.add('show');
+            });
+        });
+    
+        document.querySelectorAll('.command-cancel').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = button.closest('.delete-modal');
+                modal.classList.remove('show');
+            });
+        });
+    
+        document.querySelectorAll('.command-delete').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log(commentId);
+                deleteComments(commentId);
+                const modal = button.closest('.delete-modal');
+                modal.classList.remove('show');
+            });
+        });
+    }
+    
+    function deleteComments(commentId) {
+        console.log(commentId);
+        fetch(`http://127.0.0.1:8000/api/comments/${commentId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('서버에서 문제가 발생했습니다: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(() => {
+            const deletedComment = document.getElementById(`comment-${commentId}`);
+            if (deletedComment) {
+                deletedComment.remove();
+                console.log('댓글이 삭제되었습니다.');
+            } else {
+                console.log('댓글이 없습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('댓글 삭제 실패:', error);
+        });
+    }
 });
 
