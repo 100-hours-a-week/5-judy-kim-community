@@ -1,6 +1,6 @@
 // frontend/static/js/post-load.js
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname === '/posts') {
         fetch('http://127.0.0.1:8000/api/posts')
         .then(response => {

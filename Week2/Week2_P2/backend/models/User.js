@@ -18,6 +18,15 @@ export class User {
         this.profileImage = profileImage;
     }
 
+    static async authenticate(email, password) {
+        const users = await this.readUsers();
+        const user = users.find(user => user.email === email);
+        if (!user) return null;  // 사용자가 없으면 null 반환
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return null;  // 비밀번호가 맞지 않으면 null 반환
+        return user;  // 검증 성공시 사용자 객체 반환
+    }
+
     static async readUsers() {
         try {
             const data = await fs.promises.readFile(dataPath, 'utf8');
@@ -32,6 +41,11 @@ export class User {
     static async findByEmail(email) {
         const users = await User.readUsers();
         return users.find(user => user.email === email);
+    }
+
+    static async findById(id) {
+        const users = await this.readUsers();
+        return users.find(user => user.id === parseInt(id));
     }
 
     static async save(newUser) {

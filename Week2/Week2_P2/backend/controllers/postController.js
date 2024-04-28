@@ -1,6 +1,6 @@
 // /backend/controllers/userController.js
 
-import Post from './models/Post.js';
+import Post from '../models/Post.js';
 
 export const getPosts = async (req, res) => {
     try {
@@ -12,14 +12,14 @@ export const getPosts = async (req, res) => {
 };
 
 export const getPostById = async (req, res) => {
+    const postId = parseInt(req.params.postId);
     try {
-        const postId = parseInt(req.params.postId);
         const post = await Post.findById(postId);
         if (!post) {
             res.status(404).json({ message: 'Post not found' });
-            return;
+        } else {
+            res.json(post);
         }
-        res.json(post);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

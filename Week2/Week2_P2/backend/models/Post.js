@@ -6,9 +6,9 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const postsPath = path.join(__dirname, '..', 'data', 'posts.json');
+const postsPath = path.join(__dirname, '..', '..', 'data', 'posts.json');
 
-export default class Post {
+class Post {
     static findAll() {
         return new Promise((resolve, reject) => {
             fs.readFile(postsPath, 'utf8', (err, data) => {
@@ -26,13 +26,9 @@ export default class Post {
         });
     }
 
-    static async findById(postId) {
-        try {
-            const posts = await this.findAll();
-            const post = posts.find(post => post.id === postId);
-            return post;
-        } catch (err) {
-            throw new Error('Error finding post by ID');
-        }
+    static findById(postId) {
+        return this.findAll().then(posts => posts.find(post => post.id === parseInt(postId)));
     }
 }
+
+export default Post;
