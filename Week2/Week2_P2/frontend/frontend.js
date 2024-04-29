@@ -12,6 +12,8 @@ const frontendPort = process.env.PORT || 3000;
 
 
 app.use(express.static(path.join(__dirname, 'static')));
+app.use('/images', express.static('images'));
+
 nunjucks.configure(path.join(__dirname, 'templates'), {
     autoescape: true,
     express: app
@@ -32,14 +34,6 @@ app.get('/login', (req, res) => {
     res.render('login.html', { href: '/' });
 });
 
-app.get('/posts', (req, res) => {
-    res.render('posts.html', { href: '/login' });
-});
-
-app.get('/posts/:postId', (req, res) => {
-    res.render('post-contents.html', { href: '/posts' });
-});
-
 app.get('/profile-edit1', (req, res) => {
     res.render('profile-edit1.html', { href: '/' });
 });
@@ -48,7 +42,15 @@ app.get('/profile-edit2', (req, res) => {
     res.render('profile-edit2.html', { href: '/' });
 });
 
-app.get('/post-edit', (req, res) => {
+app.get('/posts', (req, res) => {
+    res.render('posts.html', { href: '/login' });
+});
+
+app.get('/posts/:postId', (req, res) => {
+    res.render('post-contents.html', { href: '/posts' });
+});
+
+app.get('/post-edit/:postId', (req, res) => {
     res.render('post-edit.html', { href: '/posts' });
 });
 

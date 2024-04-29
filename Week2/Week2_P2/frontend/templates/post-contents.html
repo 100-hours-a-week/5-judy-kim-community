@@ -7,6 +7,7 @@
 {% block js %}
     <script src="/js/posts-load.js"></script>
     <script src="/js/modal.js"></script>
+    <script src="/js/post-edit.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -20,9 +21,9 @@
                     <div id="date" class="date"></div>
                 </div>
                 <div class="edit-button-parent">
-                    <a href="/post-edit" class="button-edit">수정</a>    
+                    <a id="button-edit" class="button-edit">수정</a>
                     <!-- 모달 컨텐츠 -->
-                    <div id="edit-button-modal" class="delete-modal edit-delete-modal">                        
+                    <div id="edit-button-modal" class="delete-modal edit-delete-modal">
                         <div class="modal-content">
                             <p class="text1">게시글을 삭제하시겠습니까?</p>
                             <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>

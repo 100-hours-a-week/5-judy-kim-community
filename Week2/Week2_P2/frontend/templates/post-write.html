@@ -15,18 +15,18 @@
             <div method='post' action='/posts'>
                 <p class="formtext">제목*</p>
                 <hr class="line">
-                <div class="input-parent"><input id="inputTitle" class="input-title" type='text' placeholder='제목을 입력해주세요. (최대 26글자)'></div>
+                <div class="input-parent"><input id="inputTitle" class="input-title" type='text' name="title" placeholder='제목을 입력해주세요. (최대 26글자)'></div>
                 <hr class="line">
                 <div class="space"></div>
                 <p class="formtext">내용*</p>
                 <hr class="line">
-                <div class="input-parent"><textarea id="inputContent" class="input-content" type='text' placeholder='내용을 입력해주세요'></textarea></div>
+                <div class="input-parent"><textarea id="inputContent" class="input-content" type='text' name="content" placeholder='내용을 입력해주세요'></textarea></div>
                 <hr class="line">
                 <p class="helptext helpPost hide">* helptext</p>
                 <div class="space"></div>
                 <p class="formtext">이미지</p>
                 <div class="image-file-parents">
-                    <input type="file" id="image-file" accept="image/*" style="display:none;">
+                    <input type="file" id="image-file" accept="image/*" style="display:none;" name="postImagePath">
                     <button onclick="document.getElementById('image-file').click();" class="image-file">파일 선택</button>
                     <p>파일을 선택해 주세요</p>
                 </div>

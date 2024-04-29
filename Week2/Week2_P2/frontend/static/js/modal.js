@@ -75,4 +75,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 댓글 모달은 posts-load.js에 있음
-

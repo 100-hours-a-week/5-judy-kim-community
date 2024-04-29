@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname === '/posts') {
-        fetch('http://127.0.0.1:8000/api/posts')
+        fetch('http://127.0.0.1:8000/api/posts/')
         .then(response => {
             if (!response.ok) {
                 throw new Error('서버에서 문제가 발생했습니다: ' + response.status);
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error loading comments:', error));
     }     
 
-    //댓글 수정 기능
+    // 댓글 수정 기능
     function attachEditContentsEventListeners() {
         document.querySelectorAll('.button-edit').forEach(button => {
             button.addEventListener('click', function() {
@@ -214,8 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const commentId = button.dataset.commentId;
                 const commentElement = document.getElementById(`comment-${commentId}`);
                 const newText = commentElement.querySelector('.edit-input').value;
-    
-                // Fetch 요청을 통해 서버에 댓글 수정 사항 전송
+
                 fetch(`http://127.0.0.1:8000/api/comments/${commentId}`, {
                     method: 'PUT',
                     headers: {
