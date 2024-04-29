@@ -31,3 +31,15 @@ export const deleteCommentById = async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 };
+
+export const updateCommentById = async (req, res) => {
+    const { commentId } = req.params;
+    const { content } = req.body;  // Assuming the new content is passed in the request body
+
+    try {
+        await Comment.updateById(commentId, content);
+        res.json({ message: 'Comment updated successfully.' });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+};

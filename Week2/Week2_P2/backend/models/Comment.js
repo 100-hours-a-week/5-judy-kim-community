@@ -60,7 +60,7 @@ export default class Comment {
             });
         });
     }
-    
+
     static findById(commentId) {
         return this.findAll().then(comments => comments.find(comment => comment.id === parseInt(commentId)));
     }
@@ -76,4 +76,22 @@ export default class Comment {
             });
         });
     }
+
+    static updateById(commentId, newContent) {
+        return this.findAll().then(comments => {
+            const updatedComments = comments.map(comment => {
+                if (comment.id === parseInt(commentId)) {
+                    return { ...comment, content: newContent, updatedAt: new Date().toISOString() };
+                }
+                return comment;
+            });
+            return new Promise((resolve, reject) => {
+                fs.writeFile(commentsPath, JSON.stringify(updatedComments, null, 2), 'utf8', (err) => {
+                    if (err) reject(new Error('Error writing updated comments data'));
+                    resolve();
+                });
+            });
+        });
+    }
+    
 }
