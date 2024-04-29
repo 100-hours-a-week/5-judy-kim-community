@@ -41,6 +41,29 @@ class Post {
             });
         });
     }
+
+    static updateById(postId, updates) {
+        return this.findAll().then(posts => {
+            const updatedPosts = posts.map(post => {
+                if (post.id === parseInt(postId)) {
+                    // 새 이미지가 없으면 기존 이미지 경로를 유지
+                    if (!updates.postImagePath && post.postImagePath) {
+                        updates.postImagePath = post.postImagePath;
+                    }
+                    return { ...post, ...updates, updatedAt: new Date().toISOString() };
+                }
+                return post;
+            });
+            return new Promise((resolve, reject) => {
+                fs.writeFile(postsPath, JSON.stringify(updatedPosts, null, 2), 'utf8', (err) => {
+                    if (err) reject(err);
+                    else resolve();
+                });
+            });
+        });
+    }
+    
+    
 }
 
 export default Post;

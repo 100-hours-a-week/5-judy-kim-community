@@ -34,7 +34,7 @@ export const deleteCommentById = async (req, res) => {
 
 export const updateCommentById = async (req, res) => {
     const { commentId } = req.params;
-    const { content } = req.body;  // Assuming the new content is passed in the request body
+    const { content } = req.body; 
 
     try {
         await Comment.updateById(commentId, content);
