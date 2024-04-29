@@ -278,6 +278,7 @@
 /* 버튼 */
 
 .command-button-parent .button-edit {
+    display: block;
     cursor: pointer;
     width: 52px;
     height: 28px;
@@ -288,6 +289,7 @@
 }
 
 .command-button-parent .command-button-delete {
+    display: block;
     cursor: pointer;
     width: 52px;
     height: 28px;
@@ -392,4 +394,29 @@
 .modal-actions .modal-button.command-delete {
     color: white;
     background-color: #ACA0EB;
+}
+
+.edit-form {
+    display: none;
+    font-weight: 200;
+    font-size: 14px;
+    margin-left: 55px;
+    text-align: left;
+    gap: 10px;
+}
+
+.edit-form textarea {
+    width: 443px;
+    height: 60px;
+}
+
+.edit-form .button-save {
+    justify-self: flex-end;
+    cursor: pointer;
+    width: 52px;
+    height: 28px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid #ccbef6;
+    border-radius: 7px;
 }

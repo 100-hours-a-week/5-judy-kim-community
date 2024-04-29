@@ -162,8 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
                                 </div>
                                 <div class="command-button-parent">
-                                    <button class="button-edit">수정</button>
-                                    <!-- 모달 컨텐츠 -->
+                                    <!-- 댓글 수정 컨텐츠 -->
+                                    <button class="button-edit" data-comment-id="${comment.id}">수정</button>
+                                    <!-- 댓글 삭제 컨텐츠, 모달 -->
                                     <div id="command-button-modal-${comment.id}" class="delete-modal command-delete-modal">
                                         <div class="modal-content">
                                             <p class="text1">댓글을 삭제하시겠습니까?</p>
@@ -179,20 +180,64 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <button id="command-button-delete-${comment.id}" class="button-delete command-button-delete" data-modal-id="${comment.id}">삭제</button>
                                 </div>
                             </div>
-                            <div class="command-text"><p>${comment.content}</p></div>
+                            <div class="edit-form" style="display: none;">
+                                <textarea class="edit-input">${comment.content}</textarea>
+                                <button class="button-save" data-comment-id="${comment.id}">저장</button>
+                            </div>
+                            <div class="comment-content command-text"><p>${comment.content}</p></div>
                         </div>
                     </article>
                 `;
                 commentsContainer.innerHTML += commentHTML;
             });
 
-            attachEventListeners();
+            attachEditContentsEventListeners();
+            attachModalEventListeners();
         })
         .catch(error => console.error('Error loading comments:', error));
     }     
+
+    //댓글 수정 기능
+    function attachEditContentsEventListeners() {
+        document.querySelectorAll('.button-edit').forEach(button => {
+            button.addEventListener('click', function() {
+                const commentId = button.dataset.commentId;
+                const commentElement = document.getElementById(`comment-${commentId}`);
+                commentElement.querySelector('.edit-form').style.display = 'flex';
+                commentElement.querySelector('.button-edit').style.display = 'none';
+                commentElement.querySelector('.comment-content').style.display = 'none';
+            });
+        });
+    
+        document.querySelectorAll('.button-save').forEach(button => {
+            button.addEventListener('click', function() {
+                const commentId = button.dataset.commentId;
+                const commentElement = document.getElementById(`comment-${commentId}`);
+                const newText = commentElement.querySelector('.edit-input').value;
+    
+                // Fetch 요청을 통해 서버에 댓글 수정 사항 전송
+                fetch(`http://127.0.0.1:8000/api/comments/${commentId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content: newText })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    commentElement.querySelector('.comment-content p').innerText = newText;
+                    commentElement.querySelector('.edit-form').style.display = 'none';
+                    commentElement.querySelector('.button-edit').style.display = 'block';
+                    commentElement.querySelector('.comment-content').style.display = 'flex';
+                })
+                .catch(error => console.error('Error updating comment:', error));
+            });
+        });
+    }
+
     
     // 모달 동작 리스너 추가
-    function attachEventListeners() {
+    function attachModalEventListeners() {
         let commentId;
         document.querySelectorAll('.button-delete').forEach(button => {
             button.addEventListener('click', function() {
