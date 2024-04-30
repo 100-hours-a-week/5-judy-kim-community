@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     
             // Load comments for the post
-            loadComments(postId);
+            window.loadComments(postId);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     */
 
-    function loadComments(postId) {
+        window.loadComments = function(postId) {
         fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`)
         .then(response => response.json())
         .then(comments => {

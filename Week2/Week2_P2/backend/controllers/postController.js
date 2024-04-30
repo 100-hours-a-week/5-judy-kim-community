@@ -31,18 +31,24 @@ export const getPostById = async (req, res) => {
     }
 };
 
-export const createPost = (req, res) => {
-    const { title, content } = req.body;
-    let imagePath = '';
+export async function createPost(req, res) {
+    try {
+        const { title, content } = req.body;
+        let imagePath = req.file ? path.join('/images', req.file.filename) : undefined;
 
-    if (req.file) {
-        imagePath = req.file.path;
+        if (!title.trim() || !content.trim()) {
+            return res.status(400).json({ success: false, message: 'Title and content are required.' });
+        }
+
+        const post = await Post.create({ title, content, imagePath });
+        res.status(201).json({ success: true, message: 'Post created successfully', post });
+    } catch (err) {
+        console.error('Error creating post:', err);
+        res.status(500).json({ success: false, message: 'Error creating post', error: err.message });
     }
+}
 
-    const post = new Post(title, content, imagePath);
-    post.save();
-    res.status(201).send({ message: 'Post created successfully' });
-};
+
 
 export const deletePost = async (req, res) => {
     const postId = parseInt(req.params.postId);
@@ -77,7 +83,7 @@ export const updatePost = async (req, res) => {
         
         // 기존 이미지 파일 삭제 처리
         if (post && post.postImagePath) {
-            const oldImagePath = path.join(__dirname, '..', '..', 'images', post.postImagePath);
+            const oldImagePath = path.join(__dirname, '..', '..', 'images', req.file.filename);
             if (fs.existsSync(oldImagePath)) { // 기존 파일 존재 여부 확인
                 fs.unlinkSync(oldImagePath); // 기존 이미지 파일 삭제
             }

@@ -7,10 +7,10 @@
     "userImagePath": "/image/profile.png",
     "postImagePath": "/images/postImage-1714392131131-picture4.png",
     "createdAt": "2021-01-01T00:00:00.000Z",
+    "updatedAt": "2024-04-29T12:02:11.139Z",
     "likes": 100,
     "comments": 10,
-    "views": 20000,
-    "updatedAt": "2024-04-29T12:02:11.139Z"
+    "views": 20000
   },
   {
     "id": 2,
@@ -20,9 +20,16 @@
     "userImagePath": "/image/profile.png",
     "postImagePath": "/images/profileImage-1714019340735.png",
     "createdAt": "2021-01-01T00:00:00.000Z",
+    "updatedAt": "2024-04-29T04:43:17.408Z",
     "likes": 100,
     "comments": 10,
-    "views": 20000,
-    "updatedAt": "2024-04-29T04:43:17.408Z"
+    "views": 20000
+  },
+  {
+    "id": 3,
+    "title": "d",
+    "content": "d",
+    "createdAt": "2024-04-30T04:21:44.203Z",
+    "updatedAt": "2024-04-30T04:21:44.205Z"
   }
 ]

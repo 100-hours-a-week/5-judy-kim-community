@@ -26,7 +26,7 @@ const router = express.Router();
 // 라우터
 router.get('/', getPosts);
 router.get('/:postId', getPostById);
-router.post('/', upload.single('postImagePath'), createPost);
+router.post('/write', upload.single('postImagePath'), createPost);
 router.delete('/:postId', deletePost);
 router.get('/:postId/edit', getEditPostPage);
 router.put('/:postId/update', upload.single('postImagePath'), updatePost);

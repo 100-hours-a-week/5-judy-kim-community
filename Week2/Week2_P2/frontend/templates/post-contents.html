@@ -8,6 +8,7 @@
     <script src="/js/posts-load.js"></script>
     <script src="/js/modal.js"></script>
     <script src="/js/post-edit.js"></script>
+    <script src="/js/comment-write.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -63,11 +64,13 @@
         <div class="space"></div>
         <article class="contents-command">
             <div class="command-box">
-                <div class="command-input-parent">
-                    <textarea class="command-write" placeholder="댓글을 남겨주세요!"></textarea>
-                </div>
-                <hr class="contents-middle-input-line">
-                <div class="button-command-parent"><button class="button-command" type='submit'>댓글 등록</button></div>
+                <form id="commentForm">
+                    <div class="command-input-parent">
+                        <textarea class="command-write" name="content" placeholder="댓글을 남겨주세요!"></textarea>
+                    </div>
+                    <hr class="contents-middle-input-line">
+                    <div class="button-command-parent"><button class="button-command" type='submit'>댓글 등록</button></div>
+                </form> 
             </div>
         </article>
 

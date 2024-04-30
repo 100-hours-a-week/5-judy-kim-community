@@ -7,7 +7,7 @@ import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import commentRoutes from './routes/commentRoutes.js';
-import { errorHandler } from './middlewares/errorHandler.js';
+// import { errorHandler } from './middlewares/errorHandler.js';
 
 
 const backendPort = process.env.PORT || 8000;
@@ -18,8 +18,10 @@ const corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
 app.use(bodyParser.json()); // JSON 바디 파서
+app.use(express.urlencoded({ extended: true })); 
+
 
 const FileStore = sessionFileStore(session);
 app.use(session({
@@ -43,7 +45,12 @@ app.use(session({
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
-app.use(errorHandler);
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
 
 app.listen(backendPort, () => {
     console.log(`Backend server running on http://localhost:${backendPort}`);
