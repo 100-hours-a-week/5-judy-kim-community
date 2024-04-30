@@ -9,6 +9,30 @@ const __dirname = path.dirname(__filename);
 const postsPath = path.join(__dirname, '..', '..', 'data', 'posts.json');
 
 class Post {
+    constructor({ id, title, content, imagePath }) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.postImagePath = imagePath;
+        this.createdAt = new Date().toISOString();
+        this.updatedAt = new Date().toISOString();
+    }
+
+    static async create({ title, content, imagePath }) {
+        const posts = JSON.parse(await fs.readFile(postsPath, 'utf8'));
+        const id = posts.length + 1;
+        const newPost = new Post({ id, title, content, imagePath });
+        posts.push(newPost);
+        await fs.writeFile(postsPath, JSON.stringify(posts, null, 2), 'utf8');
+        return newPost;
+    }
+
+    static async nextId() {
+        const posts = await this.findAll();
+        const lastPost = posts[posts.length - 1];
+        return lastPost ? lastPost.id + 1 : 1;
+    }
+
     static findAll() {
         return new Promise((resolve, reject) => {
             fs.readFile(postsPath, 'utf8', (err, data) => {

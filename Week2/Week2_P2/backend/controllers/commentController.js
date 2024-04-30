@@ -43,3 +43,17 @@ export const updateCommentById = async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 };
+
+export const addCommentToPost = async (req, res) => {
+    const { postId } = req.params;
+    const { content } = req.body; // Assuming these fields are provided in the request body.
+    console.log(req.body.content);
+    console.log("Received content:", req.body.content);
+
+    try {
+        const newComment = await Comment.add(postId, content);
+        res.status(201).json(newComment);
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+};

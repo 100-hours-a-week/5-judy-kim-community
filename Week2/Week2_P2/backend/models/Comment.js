@@ -94,4 +94,26 @@ export default class Comment {
         });
     }
     
+    static add(postId, content, author, imagePath) {
+        return this.findAll().then(comments => {
+            const newId = comments.length + 1; // Simple ID generation
+            const newComment = {
+                id: newId,
+                postId: parseInt(postId),
+                content: content,
+                author: author,
+                imagePath: imagePath,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+            comments.push(newComment);
+            return new Promise((resolve, reject) => {
+                fs.writeFile(commentsPath, JSON.stringify(comments, null, 2), 'utf8', (err) => {
+                    if (err) reject(new Error('Error writing new comment to comments data'));
+                    resolve(newComment);
+                });
+            });
+        });
+    }
+    
 }

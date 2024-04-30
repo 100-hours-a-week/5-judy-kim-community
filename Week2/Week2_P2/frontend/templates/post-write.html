@@ -6,13 +6,14 @@
 
 {% block js %}
     <script src="/js/uploadPostImage.js"></script>
+    <script src="/js/post-write.js"></script>
 {% endblock %}
 
 {% block content %}
     <section class="login-section">
         <div class="login-title"><h3>게시글 작성</h3></div>
         <div class="formbox">
-            <div method='post' action='/posts'>
+            <form id="postForm" enctype="multipart/form-data">
                 <p class="formtext">제목*</p>
                 <hr class="line">
                 <div class="input-parent"><input id="inputTitle" class="input-title" type='text' name="title" placeholder='제목을 입력해주세요. (최대 26글자)'></div>
@@ -26,8 +27,8 @@
                 <div class="space"></div>
                 <p class="formtext">이미지</p>
                 <div class="image-file-parents">
-                    <input type="file" id="image-file" accept="image/*" style="display:none;" name="postImagePath">
-                    <button onclick="document.getElementById('image-file').click();" class="image-file">파일 선택</button>
+                    <input type="file" id="image-file" accept="image/*" style="display:none;" name="imageFile">
+                    <button onclick="document.getElementById('image-file').click();" class="image-file" type="button">파일 선택</button>
                     <p>파일을 선택해 주세요</p>
                 </div>
                 <div class="space"></div>
