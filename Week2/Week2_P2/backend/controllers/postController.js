@@ -31,23 +31,20 @@ export const getPostById = async (req, res) => {
     }
 };
 
-export async function createPost(req, res) {
+
+export const createPost = async (req, res) => {
     try {
-        const { title, content } = req.body;
-        let imagePath = req.file ? path.join('/images', req.file.filename) : undefined;
+        const imagePath = req.file ? `/images/${req.file.filename}` : null;
+        const newPost = new Post({ ...req.body, imagePath });
+        const savedPost = await Post.create(newPost);
+        console.log("Post saved successfully:", savedPost);
+        res.status(201).json({ message: 'Post registered successfully', post: savedPost });
 
-        if (!title.trim() || !content.trim()) {
-            return res.status(400).json({ success: false, message: 'Title and content are required.' });
-        }
-
-        const post = await Post.create({ title, content, imagePath });
-        res.status(201).json({ success: true, message: 'Post created successfully', post });
     } catch (err) {
         console.error('Error creating post:', err);
         res.status(500).json({ success: false, message: 'Error creating post', error: err.message });
     }
 }
-
 
 
 export const deletePost = async (req, res) => {

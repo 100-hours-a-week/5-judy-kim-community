@@ -24,12 +24,5 @@
     "likes": 100,
     "comments": 10,
     "views": 20000
-  },
-  {
-    "id": 3,
-    "title": "d",
-    "content": "d",
-    "createdAt": "2024-04-30T04:21:44.203Z",
-    "updatedAt": "2024-04-30T04:21:44.205Z"
   }
 ]

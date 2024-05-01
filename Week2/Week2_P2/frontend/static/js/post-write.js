@@ -5,27 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         fetch(`http://127.0.0.1:8000/api/posts/write`, {
             method: 'POST',
-            body: formData,
-            credentials: 'same-origin'
+            body: formData
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('서버에서 문제가 발생했습니다. 상태 코드: ' + response.status);
-            }
-            return response.json();  // 상태 코드가 200-299인 경우에만 JSON 파싱 시도
-        })
+        .then(response => response.json())  // 응답을 JSON으로 변환
         .then(data => {
-            if (data.success) {
-                alert('게시글이 성공적으로 등록되었습니다!');
-                window.location.href = '/posts';
-            } else {
-                throw new Error(data.message);
-            }
+            console.log(data.message);
+            alert('게시글이 성공적으로 등록되었습니다!');
+            window.location.href = '/posts';  // 성공 시 페이지 리디렉션
         })
         .catch(error => {
-            console.error('Error:', error);
-            alert('게시글 등록에 실패했습니다. 에러: ' + error);
+            // 네트워크 에러 또는 응답 처리 중 발생한 오류 처리
+            console.error('Error during post submission:', error);
+            alert(`게시글 등록에 실패했습니다. 에러: ${error.message}`);
         });
-
     });
 });

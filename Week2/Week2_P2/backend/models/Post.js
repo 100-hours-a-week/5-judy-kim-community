@@ -18,13 +18,16 @@ class Post {
         this.updatedAt = new Date().toISOString();
     }
 
-    static async create({ title, content, imagePath }) {
-        const posts = JSON.parse(await fs.readFile(postsPath, 'utf8'));
-        const id = posts.length + 1;
-        const newPost = new Post({ id, title, content, imagePath });
-        posts.push(newPost);
-        await fs.writeFile(postsPath, JSON.stringify(posts, null, 2), 'utf8');
-        return newPost;
+    static async create(newPost) {
+        try {
+            newPost.id = await this.nextId();
+            const posts = await this.findAll();
+            posts.push(newPost);
+            await fs.promises.writeFile(postsPath, JSON.stringify(posts, null, 2), 'utf8');
+            return newPost;
+        } catch (err) {
+            throw new Error('Failed to save Post: ' + err.message);
+        }
     }
 
     static async nextId() {
