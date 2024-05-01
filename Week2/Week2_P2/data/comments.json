@@ -15,19 +15,5 @@
     "author": "작성자2",
     "imagePath": "/image/profile.png",
     "createdAt": "2021-01-02T12:00:00.000Z"
-  },
-  {
-    "id": 3,
-    "postId": 1,
-    "content": "ㄴㄴㄴㄴ",
-    "createdAt": "2024-04-30T05:34:49.237Z",
-    "updatedAt": "2024-04-30T05:34:49.240Z"
-  },
-  {
-    "id": 4,
-    "postId": 1,
-    "content": "ㄴㄴㄴㄴㄴㅇㄹㄴㅇㄹ",
-    "createdAt": "2024-04-30T05:35:01.547Z",
-    "updatedAt": "2024-04-30T05:35:01.550Z"
   }
 ]
