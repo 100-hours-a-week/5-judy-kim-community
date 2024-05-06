@@ -697,3 +697,13 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 Everything up-to-date
 Everything up-to-date
+[main 2086673] backup Mon May  6 12:40:00 KST 2024
+ 1 file changed, 6 insertions(+)
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   60470ed..2086673  main -> main
+remote: 
+remote: GitHub found 3 vulnerabilities on 100-hours-a-week/5-judy-kim-community's default branch (1 high, 2 moderate). To find out more, visit:        
+remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/dependabot        
+remote: 
+To github.com:100-hours-a-week/5-judy-kim-community.git
+   60470ed..2086673  main -> main
