@@ -92,3 +92,6 @@ fatal: could not read Username for 'https://github.com': Device not configured
 [main 18d94b6] backup Mon May  6 11:30:00 KST 2024
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': Device not configured
+[main 84f6aa7] backup Mon May  6 11:31:00 KST 2024
+ 1 file changed, 3 insertions(+)
+fatal: could not read Username for 'https://github.com': Device not configured
