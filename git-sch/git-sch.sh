@@ -8,13 +8,5 @@ WorkDir="$HomeDir/kakao/kakao HW"
 
 cd $WorkDir
 git add .
-git commit -m "update $(date)"
-git push
-
-cd $HomeDir/$GitRep1
-git pull
-git push
-
-cd $HomeDir/$GitRep2
-git pull
+git commit -m "backup $(date)"
 git push
