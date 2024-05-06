@@ -108,3 +108,10 @@ fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
+[main 149c9fa] backup Mon May  6 11:35:00 KST 2024
+ 1 file changed, 7 insertions(+)
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
