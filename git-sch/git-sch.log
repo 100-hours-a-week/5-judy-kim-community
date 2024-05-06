@@ -14,3 +14,6 @@ fatal: not a git repository (or any of the parent directories): .git
  2 files changed, 13 insertions(+), 1 deletion(-)
  create mode 100644 git-sch/git-sch.log
 fatal: could not read Username for 'https://github.com': Device not configured
+[main 36422b6] backup Mon May  6 11:05:00 KST 2024
+ 1 file changed, 4 insertions(+)
+fatal: could not read Username for 'https://github.com': Device not configured
