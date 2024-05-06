@@ -9,4 +9,5 @@ WorkDir="/Users/kimsohui/kakao/kakaoHW"
 cd $WorkDir
 git add .
 git commit -m "backup $(date)"
-git push
+git push origin main
+git push origin2 main
