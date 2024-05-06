@@ -191,3 +191,13 @@ To github.com:judy-kimsohui/Kakao-Cloud-School.git
 fatal: remote error: 
  judy-kimsohui/100-hours-a-week/5-judy-kim-community is not a valid repository name
 Visit https://support.github.com/ for help
+[main 9080c28] backup Mon May  6 11:49:00 KST 2024
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   b88b967..9080c28  main -> main
+remote: 
+remote: GitHub found 3 vulnerabilities on 100-hours-a-week/5-judy-kim-community's default branch (1 high, 2 moderate). To find out more, visit:        
+remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/dependabot        
+remote: 
+To github.com:100-hours-a-week/5-judy-kim-community.git
+   1e2e97a..9080c28  main -> main
