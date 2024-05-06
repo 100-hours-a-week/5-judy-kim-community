@@ -10,3 +10,7 @@ fatal: not a git repository (or any of the parent directories): .git
 fatal: not a git repository (or any of the parent directories): .git
 fatal: not a git repository (or any of the parent directories): .git
 fatal: not a git repository (or any of the parent directories): .git
+[main 7e2b39c] backup Mon May  6 11:04:01 KST 2024
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+ create mode 100644 git-sch/git-sch.log
+fatal: could not read Username for 'https://github.com': Device not configured
