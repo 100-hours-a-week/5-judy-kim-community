@@ -461,3 +461,13 @@ remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/d
 remote: 
 To github.com:100-hours-a-week/5-judy-kim-community.git
    2e08be9..7b2bd45  main -> main
+[main 6343408] backup Mon May  6 12:16:01 KST 2024
+ 1 file changed, 10 insertions(+)
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   7b2bd45..6343408  main -> main
+remote: 
+remote: GitHub found 3 vulnerabilities on 100-hours-a-week/5-judy-kim-community's default branch (1 high, 2 moderate). To find out more, visit:        
+remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/dependabot        
+remote: 
+To github.com:100-hours-a-week/5-judy-kim-community.git
+   7b2bd45..6343408  main -> main
