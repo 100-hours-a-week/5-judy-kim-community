@@ -776,3 +776,15 @@ remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/d
 remote: 
 To github.com:100-hours-a-week/5-judy-kim-community.git
    bc0afc9..3704b69  main -> main
+[main c8349ac] backup Wed May  8 18:00:00 KST 2024
+ 5 files changed, 76 insertions(+), 16 deletions(-)
+ create mode 100644 Week5/creation/src/reducers/counterRuducer.js
+ create mode 100644 "Week5/creation/src/\354\212\244\355\201\254\353\246\260\354\203\267 2024-05-08 \354\230\244\355\233\204 3.46.49.png"
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   3704b69..c8349ac  main -> main
+remote: 
+remote: GitHub found 5 vulnerabilities on 100-hours-a-week/5-judy-kim-community's default branch (2 high, 3 moderate). To find out more, visit:        
+remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/dependabot        
+remote: 
+To github.com:100-hours-a-week/5-judy-kim-community.git
+   3704b69..c8349ac  main -> main

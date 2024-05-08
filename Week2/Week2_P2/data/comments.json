@@ -2,8 +2,8 @@
   {
     "id": 1,
     "postId": 1,
-    "content": "다람지 똥먹고싶당!\n아아",
-    "author": "작성자1",
+    "content": "우아아아아",
+    "author": "주디 좋아해요",
     "imagePath": "/image/profile.png",
     "createdAt": "2021-01-02T10:00:00.000Z",
     "updatedAt": "2024-04-29T11:12:09.506Z"
@@ -11,9 +11,16 @@
   {
     "id": 2,
     "postId": 1,
-    "content": "첫 번째 게시물의 두 번째 댓글입니다.",
-    "author": "작성자2",
+    "content": "댓글이예요!!!",
+    "author": "주디 힘내요",
     "imagePath": "/image/profile.png",
     "createdAt": "2021-01-02T12:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "postId": 1,
+    "content": "우아아아아아아안ㄴㄴ니ㅣㅣ오노",
+    "createdAt": "2024-05-08T09:14:39.299Z",
+    "updatedAt": "2024-05-08T09:14:39.300Z"
   }
 ]

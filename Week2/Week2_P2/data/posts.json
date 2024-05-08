@@ -1,26 +1,13 @@
 [
   {
     "id": 1,
-    "title": "ㅈㅈㅈ",
+    "title": "이 과제 언제까지 하나요",
     "content": " 무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강 하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래 서 우리의 삶은 소중하고 의미가 있습니다.2222222",
-    "author": "작성자1",
+    "author": "주디",
     "userImagePath": "/image/profile.png",
-    "postImagePath": "/images/postImage-1714392131131-picture4.png",
+    "postImagePath": "/images/picture3.png",
     "createdAt": "2021-01-01T00:00:00.000Z",
     "updatedAt": "2024-04-29T12:02:11.139Z",
-    "likes": 100,
-    "comments": 10,
-    "views": 20000
-  },
-  {
-    "id": 2,
-    "title": "두 번째 게시물",
-    "content": " 무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강 하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래 서 우리의 삶은 소중하고 의미가 있습니다.",
-    "author": "작성자2",
-    "userImagePath": "/image/profile.png",
-    "postImagePath": "/images/profileImage-1714019340735.png",
-    "createdAt": "2021-01-01T00:00:00.000Z",
-    "updatedAt": "2024-04-29T04:43:17.408Z",
     "likes": 100,
     "comments": 10,
     "views": 20000
