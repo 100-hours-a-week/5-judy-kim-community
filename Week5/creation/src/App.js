@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useReducer, useState } from 'react';
+import {init, initialState, reducer} from "./reducers/counterRuducer"
+
 import './App.css';
 
+
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  
+  function up() {
+    dispatch({ type: "INCREMENT"});
+  }
+
+  function down() {
+    dispatch({ type: "DECREMENT"});
+  }
+  
+  function multiply() {
+    dispatch({ type: "MULTIPLY"});
+  }
+  
+  function reset() {
+    dispatch({ type: "RESET"});
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{state}</h1>
+      <button onClick={up}>Up</button>
+      <button onClick={down}>Down</button>
+      <button onClick={multiply}>Multiply</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }
