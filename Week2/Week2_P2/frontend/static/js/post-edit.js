@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error('Error loading post:', error));
     }
 
+    // TODO 수정 후 이미지 로드 안되는것 고치기
     if (window.location.pathname.includes('/post-edit/')) {
         fetchPost(postId);
 

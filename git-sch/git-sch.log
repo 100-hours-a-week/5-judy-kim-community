@@ -815,3 +815,57 @@ remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/d
 remote: 
 To github.com:100-hours-a-week/5-judy-kim-community.git
    252305c..6e78bf0  main -> main
+[main d8cbc1d] backup Mon May 13 12:00:01 KST 2024
+ 59 files changed, 104 insertions(+), 58 deletions(-)
+ create mode 100644 "Week2/Week2_P2/images/postImage-1715568272528-\303\241\302\204\302\211\303\241\302\205\302\263\303\241\302\204\302\217\303\241\302\205\302\263\303\241\302\204\302\205\303\241\302\205\302\265\303\241\302\206\302\253\303\241\302\204\302\211\303\241\302\205\302\243\303\241\302\206\302\272 2024-05-02 \303\241\302\204\302\213\303\241\302\205\302\251\303\241\302\204\302\214\303\241\302\205\302\245\303\241\302\206\302\253 10.34.34.png"
+ create mode 100644 "Week2/Week2_P2/images/postImage-1715568496337-\303\241\302\204\302\211\303\241\302\205\302\263\303\241\302\204\302\217\303\241\302\205\302\263\303\241\302\204\302\205\303\241\302\205\302\265\303\241\302\206\302\253\303\241\302\204\302\211\303\241\302\205\302\243\303\241\302\206\302\272 2024-05-02 \303\241\302\204\302\213\303\241\302\205\302\251\303\241\302\204\302\214\303\241\302\205\302\245\303\241\302\206\302\253 11.14.47.png"
+ delete mode 100644 Week2/Week2_P2/sessions/06wKEfDJocPj5n3USuaWBKqp74c-meNE.json
+ delete mode 100644 Week2/Week2_P2/sessions/0odZ_KPwGkGp-ARfXsK2mHzglEAyF1an.json
+ delete mode 100644 Week2/Week2_P2/sessions/3YHxl4bV8UIs9wlVmFYBk-WhYY_cc7Gi.json
+ delete mode 100644 Week2/Week2_P2/sessions/87x_VHM4XPDre62Zb4UQdQRapQSazbmk.json
+ delete mode 100644 Week2/Week2_P2/sessions/9k3gYXwjHlMfIMd-v9k0896Bag82gc0K.json
+ delete mode 100644 Week2/Week2_P2/sessions/A7C9nIjQYE3nsM_hQUo-RW0BZu4mhSRJ.json
+ delete mode 100644 Week2/Week2_P2/sessions/ACbRLTFmpsrBDEq0QSFMawhvbGRD81K8.json
+ delete mode 100644 Week2/Week2_P2/sessions/BSSH2v_CKd4lzFw-4Fl3f61Rf8YOiYpG.json
+ delete mode 100644 Week2/Week2_P2/sessions/GqIaMm4AFvipUaef-cvSldfOJ-2ASbBw.json
+ delete mode 100644 Week2/Week2_P2/sessions/H-M8dWkJI93ujSRbPK2jryM8-Lyw8kev.json
+ delete mode 100644 Week2/Week2_P2/sessions/IF-IyyivG8iDHtqF6DMYz_hGaDPmCe8Q.json
+ delete mode 100644 Week2/Week2_P2/sessions/K9lX_k_D2dxkSLcgsrU2KZX_q0Ee5m0o.json
+ delete mode 100644 Week2/Week2_P2/sessions/Lk4J3aKEVKiRaY-K340xyS4vhQQD5lar.json
+ delete mode 100644 Week2/Week2_P2/sessions/MLKQgLxFYJKDer69vRHzppv4v1OR8HeP.json
+ delete mode 100644 Week2/Week2_P2/sessions/NKI-Emmc3-9_Do3dVspZH2fgWhK7fKIm.json
+ delete mode 100644 Week2/Week2_P2/sessions/PR8Fs3-9ny5Wd93xg7drGTf7eB-fRTXl.json
+ delete mode 100644 Week2/Week2_P2/sessions/Qabqm27DsM5WznKHINrZhLR1S0Xds2Yb.json
+ delete mode 100644 Week2/Week2_P2/sessions/RWrCRZxAuSiUOM9yMlAxshmWVqLsiXoQ.json
+ delete mode 100644 Week2/Week2_P2/sessions/Sr5r9D-OwpAg3_MNPk0twRbIDtl8XCKH.json
+ delete mode 100644 Week2/Week2_P2/sessions/U-7zaZ74r16Isn9B26kHvNvphiZgJMgh.json
+ delete mode 100644 Week2/Week2_P2/sessions/WIGDcgwwo2TFvSdeFSlPfKCosLNehA0X.json
+ delete mode 100644 Week2/Week2_P2/sessions/XpMnJKNOvi4a8jqxAK45oXec4x6kmdJE.json
+ delete mode 100644 Week2/Week2_P2/sessions/YNoESdLY4mB43wwWFCvYQufHB8VfOScO.json
+ delete mode 100644 Week2/Week2_P2/sessions/YvWvbhBk_SOM_L35Gq6pDqwXyzj3hVPG.json
+ delete mode 100644 Week2/Week2_P2/sessions/_HqSRbHiXuyfThHZVK5XaTXzbnwgP-Ru.json
+ delete mode 100644 Week2/Week2_P2/sessions/_jvTtUAhw1vDS2UkmtgU6RBOzB4wFKn2.json
+ delete mode 100644 Week2/Week2_P2/sessions/aobqWJOeAaC-_aw8Ckv6mcTsJQ4EFTIA.json
+ delete mode 100644 Week2/Week2_P2/sessions/eNYuiQjFw2DNN8_Jv48heeskEPA8cCy3.json
+ delete mode 100644 Week2/Week2_P2/sessions/eycFrgMvAHFIySWy8gKdyfZ4D1fbayUq.json
+ delete mode 100644 Week2/Week2_P2/sessions/hPCyi1Ba5xUFw4FOwxqZBH7V3Aj6tQW3.json
+ delete mode 100644 Week2/Week2_P2/sessions/hQlUu3jSjTYiMypPZl8DdNCkG1jBck24.json
+ delete mode 100644 Week2/Week2_P2/sessions/it0zRlodtRTOp2WUPvPv3cwZcUogtKjl.json
+ delete mode 100644 Week2/Week2_P2/sessions/jOM2TpZ7rl1h0jhS_Y8Gu0FntTdZiaLQ.json
+ delete mode 100644 Week2/Week2_P2/sessions/k4zN8TC470iEcyrv7T6HqMto2tQrJG5a.json
+ delete mode 100644 Week2/Week2_P2/sessions/nEBsDiTlj_jAeBDlbOAXYJPG4G4G8eRW.json
+ delete mode 100644 Week2/Week2_P2/sessions/oRnDxGZwIKRVzzxwYN5z82HEWRR_cYQc.json
+ delete mode 100644 Week2/Week2_P2/sessions/wrAdMQxd7zA0VQ-joy1MDpxiNfiy6SEH.json
+ delete mode 100644 Week2/Week2_P2/sessions/xIm0CMq56uXdWP4swGoq2I3GzUtGm6uX.json
+ delete mode 100644 Week2/Week2_P2/sessions/zCwVm4ev33ey2KD-9swOO5yfdAyz_78H.json
+ create mode 100644 Week2/Week2_P2/sessions/zaAjJET6DzTjX8X1dcfdTjq44vbkw-Yr.json
+ delete mode 100644 Week2/Week2_P2/sessions/zr8e6SEq1XbWr6B0AveKrOHjL4WMDtZz.json
+ delete mode 100644 Week2/Week2_P2/sessions/zxpJ1L2eryjLtzifT32RtEbwiWfOB1AT.json
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   6e78bf0..d8cbc1d  main -> main
+remote: 
+remote: GitHub found 5 vulnerabilities on 100-hours-a-week/5-judy-kim-community's default branch (2 high, 3 moderate). To find out more, visit:        
+remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/dependabot        
+remote: 
+To github.com:100-hours-a-week/5-judy-kim-community.git
+   6e78bf0..d8cbc1d  main -> main

@@ -25,6 +25,8 @@ const router = express.Router();
 
 // 라우터
 router.get('/', getPosts);
+
+// TODO 조회수 업데이트하기
 router.get('/:postId', getPostById);
 router.post('/write', upload.single('postImagePath'), createPost);
 router.delete('/:postId', deletePost);

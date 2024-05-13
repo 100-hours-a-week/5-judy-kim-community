@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Post from '../models/Post.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -93,27 +94,30 @@ export default class Comment {
             });
         });
     }
-    
-    static add(postId, content, author, imagePath) {
-        return this.findAll().then(comments => {
-            const newId = comments.length + 1; // Simple ID generation
+
+    // TODO 댓글 id 생성 로직 바꾸기 (length +1이 아니라 index++로)
+    static async create(newCommentData) {
+        try {
+            const comments = await this.findAll();
+            const newId = comments.length + 1;
+            const post = await Post.findById(newCommentData.postId);
+            if (!post) {
+                throw new Error('Post not found');
+            }
+            const isAuthor = newCommentData.authorId === post.authorId;
             const newComment = {
                 id: newId,
-                postId: parseInt(postId),
-                content: content,
-                author: author,
-                imagePath: imagePath,
+                ...newCommentData,
+                authorIsPoster: isAuthor,
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
             };
             comments.push(newComment);
-            return new Promise((resolve, reject) => {
-                fs.writeFile(commentsPath, JSON.stringify(comments, null, 2), 'utf8', (err) => {
-                    if (err) reject(new Error('Error writing new comment to comments data'));
-                    resolve(newComment);
-                });
-            });
-        });
+            await fs.promises.writeFile(commentsPath, JSON.stringify(comments, null, 2), 'utf8');
+            return newComment;
+        } catch (err) {
+            throw new Error('Failed to save Comment: ' + err.message);
+        }
     }
     
 }

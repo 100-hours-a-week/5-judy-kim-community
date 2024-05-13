@@ -11,6 +11,8 @@
 
     <script src="/js/availability.js">console.log('Add JS File');</script>
     <script src="/js/base.js"></script>
+    <script src="/js/getuserinfo.js"></script>
+    <script src="/js/logout.js"></script>
     {% block js %}{% endblock %}
  
 </head>
@@ -33,7 +35,7 @@
                     <div class="dropdown-content">
                       <a href="/profile-edit1">회원정보 수정</a>
                       <a href="/profile-edit2">비밀번호 수정</a>
-                      <a href="/login">로그아웃</a>
+                      <a id="logoutLink">로그아웃</a>
                     </div>
                   </div>
             </div>

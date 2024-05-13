@@ -27,6 +27,23 @@ export class User {
         return user;  // 검증 성공시 사용자 객체 반환
     }
 
+    static findAll() {
+        return new Promise((resolve, reject) => {
+            fs.readFile(dataPath, 'utf8', (err, data) => {
+                if (err) {
+                    reject(new Error('Error reading users data'));
+                    return;
+                }
+                try {
+                    const users = JSON.parse(data);
+                    resolve(users);
+                } catch (parseErr) {
+                    reject(new Error('Error parsing users data'));
+                }
+            });
+        });
+    }
+
     static async readUsers() {
         try {
             const data = await fs.promises.readFile(dataPath, 'utf8');
@@ -37,6 +54,7 @@ export class User {
             throw new Error('Failed to read user data');
         }
     }
+    
 
     static async findByEmail(email) {
         const users = await User.readUsers();
@@ -46,6 +64,17 @@ export class User {
     static async findById(id) {
         const users = await this.readUsers();
         return users.find(user => user.id === parseInt(id));
+    }
+
+    static async deleteById(userId) {
+        console.log(userId);
+        const users = await this.readUsers();
+        const filteredUsers = users.filter(user => user.id !== parseInt(userId));
+        try {
+            await fs.promises.writeFile(dataPath, JSON.stringify(filteredUsers, null, 2), 'utf8');
+        } catch (err) {
+            throw new Error('Error writing users data');
+        }
     }
 
     static async save(newUser) {
