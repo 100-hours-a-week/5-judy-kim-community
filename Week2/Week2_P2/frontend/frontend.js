@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
 const frontendPort = process.env.PORT || 3000;
 
 
@@ -58,7 +59,10 @@ app.get('/post-write', (req, res) => {
     res.render('post-write.html', { href: '/posts' });
 });
 
-
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 app.listen(frontendPort, () => {
     console.log(`Frontend server running on http://localhost:${frontendPort}`);

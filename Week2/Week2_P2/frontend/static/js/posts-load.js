@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname === '/posts') {
-        fetch('http://127.0.0.1:8000/api/posts/')
+        fetch('http://127.0.0.1:8000/api/posts')
         .then(response => {
             // if (!response.ok) {
             //     throw new Error('서버에서 문제가 발생했습니다: ' + response.status);
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     */
 
-        window.loadComments = function(postId) {
+    window.loadComments = function(postId) {
         fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`)
         .then(response => response.json())
         .then(comments => {

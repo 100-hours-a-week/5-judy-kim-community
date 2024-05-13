@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import Post from '../models/Post.js';
+import User from '../models/User.js';
 
 export const getPosts = async (req, res) => {
     try {
@@ -33,15 +34,33 @@ export const getPostById = async (req, res) => {
 
 
 export const createPost = async (req, res) => {
+    if (!req.session.userId) {
+        return res.status(401).json({ message: "Unauthorized access. Please login." });
+    }
     try {
-        const imagePath = req.file ? `/images/${req.file.filename}` : null;
-        const newPost = new Post({ ...req.body, imagePath });
+        const user = await User.findById(req.session.userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+        const postImagePath = req.file ? `/images/${req.file.filename}` : null;
+        console.log("Author:", req.session.username, "Author ID:", req.session.userId);
+        const newPost = new Post({
+            title: req.body.title,
+            content: req.body.content,
+            author: req.session.username,  
+            authorId: req.session.userId,  
+            userImagePath: user.profileImage,
+            postImagePath,
+            likes: 0,
+            comments: 0,
+            views: 0
+        });
         const savedPost = await Post.create(newPost);
         console.log("Post saved successfully:", savedPost);
         res.status(201).json({ message: 'Post registered successfully', post: savedPost });
 
     } catch (err) {
-        console.error('Error creating post:', err);
+        console.error('Error creating post:', err.message, err.stack);
         res.status(500).json({ success: false, message: 'Error creating post', error: err.message });
     }
 }

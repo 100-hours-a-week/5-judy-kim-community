@@ -14,5 +14,11 @@
     "express": "^4.19.2",
     "nunjucks": "^3.2.4"
   },
-  "description": ""
+  "description": "",
+  "nodemonConfig": {
+    "ignore": [
+      "./data/**",
+      "./sessions/**"
+    ]
+  }
 }

@@ -27,6 +27,7 @@ export const getUsers = async (req, res) => {
     }
 };
 
+// 로그인
 export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -36,13 +37,24 @@ export const loginUser = async (req, res) => {
         }
         // 세션 설정
         req.session.userId = user.id;
-        req.session.username = user.nickname;  // 사용자 닉네임도 세션에 저장
+        req.session.username = user.nickname;
         res.json({ message: '로그인 성공', user: { id: user.id, username: user.nickname } });
     } catch (err) {
         console.error('로그인 중 오류 발생:', err);
         res.status(500).json({ message: '서버 내부 오류' });
     }
 };
+
+// 로그아웃
+export const logoutUser = (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ message: '로그아웃 실패' });
+        }
+        res.json({ message: '로그아웃 성공' });
+    });
+};
+
 
 export const checkEmailExists = async (req, res) => {
     const emailToCheck = req.query.email;
