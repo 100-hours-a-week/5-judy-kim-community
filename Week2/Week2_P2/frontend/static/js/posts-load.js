@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
             data.forEach(post => {
                 const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
                 const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-    
+                
+                // TODO 자신이 작성한 게시글만 수정/삭제할 수 있도록 고치기
+
                 postsHTML += `
                     <a href="/posts/${post.id}" class="post-link">
                     <article class="post-card">
@@ -136,6 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     */
 
+    // TODO 자신이 작성한 댓글만 수정/삭제할 수 있도록 고치기
+
+    // TODO 댓글 수 업데이트하기
+    
     window.loadComments = function(postId) {
         fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`)
         .then(response => response.json())
@@ -145,15 +151,21 @@ document.addEventListener('DOMContentLoaded', () => {
             comments.forEach((comment) => {
                 const commentDate = new Date(comment.createdAt).toLocaleDateString('ko-KR');
                 const commentTime = new Date(comment.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+                
+                // 색상 변경 및 표시 조건 추가
+                const authorClass = comment.authorIsPoster ? 'author-comment' : '';
+                const colorStyle = comment.authorIsPoster ? 'style="color: #ff9595;"' : '';
+                const authorText = comment.authorIsPoster ? `${comment.author} (글쓴이)` : comment.author;
+                
                 const commentHTML = `
-                    <article id="comment-${comment.id}" class="command-parent">
+                    <article id="comment-${comment.id}" class="command-parent ${authorClass}">
                         <div class="command-set">
                             <div class="command-subtitle">
                                 <div class="command-profile">
                                     <div class="user-image" style="background-image: url('${comment.imagePath}');"></div>
                                     <div class="subtitle">
-                                        <div class="user-name">
-                                            <h4>${comment.author}</h4>
+                                        <div class="user-name" ${colorStyle}>
+                                            <h4>${authorText}</h4>
                                         </div>
                                         <div class="date">
                                             <p>${commentDate}</p>

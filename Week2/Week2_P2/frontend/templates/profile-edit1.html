@@ -8,11 +8,12 @@
     <script src="/js/delete-modal.js"></script>
 {% endblock %}
 
+// TODO 모달 이상함
 {% block content %}
     <section class="login-section">
         <div class="login-title"><h2>회원정보 수정</h2></div>
         <div class="formbox">
-            <form method='post' action='/posts'>
+            <form method='post'>
                 <p class="formtext">프로필 사진*</p>
                 <input type="file" id="uploadProfileImage" accept="image/*" style="display:none"/>
                 <div class="profile-image-parent" onclick="document.getElementById('uploadProfileImage').click()">
@@ -21,10 +22,10 @@
                 </div>
 
                 <p class="formtext">이메일</p>
-                <p class="email">startupcode@gmail.com</p>
+                <p class="email">email</p>
                 
                 <p class="formtext">닉네임</p>
-                <input id="inputNickname" type='text' name='text' placeholder='닉네임을 입력하세요'>
+                <input class="inputNickname" id="inputNickname" type='text' name='text' placeholder='닉네임을 입력하세요'>
                 <p class="helptext nickname hide">* helptext</p> 
 
                 <div class="space"></div>
@@ -38,7 +39,7 @@
                         <div class="space"></div>
                         <div class="modal-actions">
                             <button id="edit-cancel" class="modal-button cancel">취소</button>
-                            <button id="edit-delete" class="modal-button delete"><a href="/login">확인</a></button>
+                            <button id="edit-delete" class="modal-button delete">확인</button>
                         </div>
                     </div>
                 </div>

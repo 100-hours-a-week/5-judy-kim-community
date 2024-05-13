@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`, {
             method: 'POST',
+            credentials: 'include',
             body: formData
         })
         .then(response => {

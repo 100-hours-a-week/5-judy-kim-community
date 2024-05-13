@@ -55,6 +55,18 @@ export const logoutUser = (req, res) => {
     });
 };
 
+// 회원 탈퇴
+export const deleteUser = async (req, res) => {
+    try {
+        console.log(req.session.username);
+        console.log(req.session.userId);
+        await User.deleteById(req.session.userId);
+        res.send({ message: '유저가 성공적으로 삭제되었습니다.' });
+    } catch (err) {
+        console.error('유저 삭제 실패:', err);
+        res.status(500).send({ message: '유저 삭제 실패' });
+    }
+};
 
 export const checkEmailExists = async (req, res) => {
     const emailToCheck = req.query.email;
@@ -71,6 +83,9 @@ export const checkEmailExists = async (req, res) => {
         res.status(500).json({ error: 'Internal server error: ' + err.message });
     }
 };
+
+// TODO 로그인 후 프로필 이미지 넣기
+// TODO 로그인 후 이메일 검증, 회원 정보 수정 정보
 
 export const getUserInfo = async (req, res) => {
     if (!req.session || !req.session.userId) {
