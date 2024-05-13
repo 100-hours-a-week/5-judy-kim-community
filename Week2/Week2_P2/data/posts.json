@@ -11,5 +11,18 @@
     "likes": 100,
     "comments": 10,
     "views": 20000
+  },
+  {
+    "id": 2,
+    "title": "sdsdsssss",
+    "content": "sdsdsd",
+    "author": "testUser",
+    "authorId": 1,
+    "userImagePath": "/images/profileImage-1715159582066.png",
+    "createdAt": "2024-05-13T02:52:21.050Z",
+    "updatedAt": "2024-05-13T02:52:44.175Z",
+    "likes": 0,
+    "comments": 0,
+    "views": 0
   }
 ]

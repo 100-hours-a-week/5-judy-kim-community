@@ -9,13 +9,19 @@ const __dirname = path.dirname(__filename);
 const postsPath = path.join(__dirname, '..', '..', 'data', 'posts.json');
 
 class Post {
-    constructor({ id, title, content, imagePath }) {
+    constructor({ id, title, content, author, authorId, userImagePath, postImagePath, likes, comments, views }) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.postImagePath = imagePath;
+        this.author = author;
+        this.authorId = authorId;
+        this.userImagePath = userImagePath;
+        this.postImagePath = postImagePath;
         this.createdAt = new Date().toISOString();
         this.updatedAt = new Date().toISOString();
+        this.likes = likes;
+        this.comments = comments;
+        this.views = views;
     }
 
     static async create(newPost) {

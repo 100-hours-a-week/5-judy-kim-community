@@ -14,7 +14,7 @@ const backendPort = process.env.PORT || 8000;
 const app = express();
 
 const corsOptions = {
-    origin: 'http://127.0.0.1:3000',
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000',],
     credentials: true,
 };
 app.use(cors(corsOptions));
@@ -33,10 +33,10 @@ app.use(session({
     name: 'seesion_id',
     secret: 'your_secret_key', // 세션을 암호화하기 위한 비밀키
     resave: false,             // 세션을 항상 저장할지 여부를 정하는 값
-    saveUninitialized: true,   // 초기화되지 않은 세션을 스토어에 저장
+    saveUninitialized: false,   // 초기화되지 않은 세션을 스토어에 저장
     cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: false,
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
