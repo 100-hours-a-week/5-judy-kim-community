@@ -25,6 +25,8 @@ export const getPostById = async (req, res) => {
         if (!post) {
             res.status(404).json({ message: 'Post not found' });
         } else {
+            // 조회수 업데이트
+            await Post.updateById(postId, {views: post.views += 1});
             res.json(post);
         }
     } catch (err) {
@@ -92,25 +94,20 @@ export const getEditPostPage = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const postId = req.params.postId;
+    console.log(req.body);
+    console.log(req.file);
     const { title, content } = req.body;
     try {
-        // postId로 기존 포스트 정보 조회
+        let imagePath = req.file ? path.join('/images', req.file.filename) : null;
         const post = await Post.findById(postId);
-        
-        // 기존 이미지 파일 삭제 처리
-        if (post && post.postImagePath) {
-            const oldImagePath = path.join(__dirname, '..', '..', 'images', req.file.filename);
-            if (fs.existsSync(oldImagePath)) { // 기존 파일 존재 여부 확인
-                fs.unlinkSync(oldImagePath); // 기존 이미지 파일 삭제
-            }
+        if (!post) {
+            return res.status(404).send({ success: false, message: '게시글을 찾을 수 없습니다.' });
         }
-
-        // 새 이미지 파일 경로 설정
-        let imagePath = req.file ? `/images/${req.file.filename}` : undefined;
-
-        // 포스트 데이터 업데이트
-        await Post.updateById(postId, { title, content, postImagePath: imagePath });
-        
+        await Post.updateById(postId, {
+            title, 
+            content, 
+            postImagePath: imagePath || post.postImagePath  // 새 이미지가 없다면 기존 경로 유지
+        });        
         res.json({ success: true, message: '게시글이 성공적으로 업데이트되었습니다.' });
     } catch (error) {
         console.error('Error updating post:', error);

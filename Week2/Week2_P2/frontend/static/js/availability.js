@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {    
 
     // 요소 참조
-    let uploadProfileImage = document.querySelector('#uploadProfileImage');   
+    let uploadProfileImage1 = document.querySelector('#uploadProfileImage');
+    let uploadProfileImage2 = document.querySelector('#uploadProfileImage2');  
     let helpProfileImage = document.querySelector('.helptext.profileImage');
     let profileImagePreview = document.querySelector('#profileImagePreview');
     let inputEmail = document.querySelector('#inputEmail');     
@@ -31,27 +32,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function updateSignupButtonStatus() {
 
         // signup : 회원가입 제출 조건
-        if (signupButton) {
-            if (inputEmailValid && inputPasswordValid && inputRetypePasswordValid && inputNicknameValid && uploadProfileImageValid){
-                console.log(inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid, uploadProfileImageValid);
-                activeButton(signupButton);
-            }
-            else{
-                console.log(uploadProfileImageValid, inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid);
-                disableButton(signupButton);
+        if (window.location.href.includes('/signup')){
+            if (signupButton) {
+                if (inputEmailValid && inputPasswordValid && inputRetypePasswordValid && inputNicknameValid && uploadProfileImageValid){
+                    console.log(inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid, uploadProfileImageValid);
+                    activeButton(signupButton);
+                }
+                else{
+                    console.log(uploadProfileImageValid, inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid);
+                    disableButton(signupButton);
+                }
             }
         }
         // profile-edit1 : 닉네임 변경 조건
-        if (nicknameButton && inputNicknameValid)
-            activeButton(nicknameButton);
-        else if (nicknameButton && !inputNicknameValid)
-            disableButton(nicknameButton);
-
+        if (window.location.href.includes('/profile-edit1')){
+            if (nicknameButton && uploadProfileImageValid && inputNicknameValid)
+                activeButton(nicknameButton);
+            else {
+                console.log(uploadProfileImageValid, inputNicknameValid);
+                disableButton(nicknameButton);
+            }
+        }
         // profile-edit2 : 비밀번호 변경 조건
-        if (retypePasswordButton && inputRetypePasswordValid)
-            activeButton(retypePasswordButton);
-        else if (retypePasswordButton && !inputRetypePasswordValid)
-            disableButton(retypePasswordButton);
+        if (window.location.href.includes('/profile-edit2')){
+            if (retypePasswordButton && inputRetypePasswordValid)
+                activeButton(retypePasswordButton);
+            else if (retypePasswordButton && !inputRetypePasswordValid)
+                disableButton(retypePasswordButton);
+        }
     }
 
     function activeButton(buttonName){
@@ -94,11 +102,60 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }; 
 
     // signup, profile-edit1
+    function setupProfileImageHandlers(element) {
+        if (!element) return;  // 요소가 없다면 함수를 종료합니다.
+        console.log(element);
+        console.log(profileImagePreview);
+        element.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                uploadProfileImageValid = true;
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
+                    if(helpProfileImage){
+                        helpProfileImage.classList.remove('hide');
+                        helpProfileImage.textContent = "* 프로필 사진이 업로드 되었습니다.";
+                        helpProfileImage.style.color = "green";
+                    } 
+                };
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                profileImagePreview.style.backgroundImage = 'none';
+                if(helpProfileImage){
+                    helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
+                    helpProfileImage.style.color = "red";
+                }
+                uploadProfileImageValid = false;
+            }
+            updateSignupButtonStatus(); 
+        });
+    
+        element.addEventListener('click', function() {
+            console.log("클릭!");
+            setTimeout(() => {
+                if (element.files.length === 0) {
+                    if(helpProfileImage){
+                        helpProfileImage.classList.remove('hide');
+                        helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
+                        helpProfileImage.style.color = "red";
+                    }
+                    profileImagePreview.style.backgroundImage = 'none';
+                    uploadProfileImageValid = false;
+                    updateSignupButtonStatus();
+                }
+            }, 100);
+        });
+    }
+    
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
+        setupProfileImageHandlers(uploadProfileImage1);
+        setupProfileImageHandlers(uploadProfileImage2);
+/*
         updateSignupButtonStatus();
 
         // 프로필 이미지 검증    
         uploadProfileImage.addEventListener('change', function() {
+            // console.log('dkdk');
             if (this.files && this.files[0]) {
                 uploadProfileImageValid = true;
                 var reader = new FileReader();
@@ -124,6 +181,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // 파일을 선택하지 않고 취소를 누른 경우 이미지 사라짐
         uploadProfileImage.addEventListener('click', function () {
+            console.log("클릭!");
             setTimeout(() => {
                 if (uploadProfileImage.files.length === 0) {
                     if(helpProfileImage){
@@ -136,7 +194,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     updateSignupButtonStatus();
                 }
             }, 100);
-        });
+        });*/
     } 
  
     // signup
@@ -260,6 +318,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
 
         // 닉네임 검증
+        // TODO 닉네임 중복 검증 : 이메일과 같이 만들기
         inputNickname.onkeyup = function () {
             helpNickname.classList.remove('hide');
             if (inputNickname.value.length === 0) {

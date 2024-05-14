@@ -1,13 +1,18 @@
 // /backend/controllers/commentController.js
 
+import Post from '../models/Post.js';
 import Comment from '../models/Comment.js';
 import User from '../models/User.js';
 
 export const getCommentsByPostId = async (req, res) => {
-    try {
+    try { 
         const postId = req.params.postId;
         const comments = await Comment.findAllByPostId(postId);
-        res.json(comments);
+        const commentsCount = comments.length;
+        const post = await Post.findById(postId);
+        post.comments = commentsCount; // 'comments' 필드가 게시글 모델에 존재한다고 가정
+        await Post.updateById(postId, {comments: post.comments});
+        res.status(200).json(comments);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetch('http://127.0.0.1:8000/api/users/userinfo', {
         method: 'GET',
-        credentials: 'include'
+        credentials: 'include' 
     })
-    .then(response => {
+    .then(response => { 
         if (!response.ok) {
             throw new Error('Failed to fetch user info');
         }
@@ -24,8 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const nicknameInput = document.querySelector('.inputNickname');
-            if (nicknameInput && userInfo.nickname) {
+            if (nicknameInput && userInfo.nickname) { 
                 nicknameInput.value = userInfo.nickname;
+            }
+            const event = new Event('keyup', { bubbles: true, cancelable: true });
+            document.getElementById('inputNickname').dispatchEvent(event);
+        
+            
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage && userInfo.profileImage) {
+                profileImage.style.backgroundImage = `url(${userInfo.profileImage})`;
             }
         }
     })

@@ -36,6 +36,7 @@
     width: 40px;
     height: 40px;
     background-size: cover; 
+    background-position: center;
     background-color: #8c8c8c;
     
     border: 1px solid transparent;

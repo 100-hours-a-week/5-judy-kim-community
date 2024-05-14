@@ -17,16 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function fetchPost(postId) {
         fetch(`http://127.0.0.1:8000/api/posts/${postId}`)
-            .then(response => response.json())
-            .then(post => {
-                document.getElementById('inputTitle').value = post.title;
-                document.getElementById('inputContent').value = post.content;
-                document.getElementById('current-file-name').textContent = post.postImagePath ? post.postImagePath.split('/').pop() : 'No file uploaded';
-            })
-            .catch(error => console.error('Error loading post:', error));
+        .then(response => response.json())
+        .then(post => {
+            document.getElementById('inputTitle').value = post.title;
+            document.getElementById('inputContent').value = post.content;
+            document.getElementById('current-file-name').textContent = post.postImagePath ? post.postImagePath.split('/').pop() : 'No file uploaded';
+        })
+        .catch(error => console.error('Error loading post:', error));
     }
 
-    // TODO 수정 후 이미지 로드 안되는것 고치기
     if (window.location.pathname.includes('/post-edit/')) {
         fetchPost(postId);
 
