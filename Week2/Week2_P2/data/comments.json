@@ -75,5 +75,71 @@
     "authorIsPoster": true,
     "createdAt": "2024-05-14T01:59:55.612Z",
     "updatedAt": "2024-05-14T01:59:55.612Z"
+  },
+  {
+    "id": 11,
+    "postId": 6,
+    "content": "으",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715668784571.jpeg",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T08:30:24.274Z",
+    "updatedAt": "2024-05-14T08:30:24.274Z"
+  },
+  {
+    "id": 12,
+    "postId": 7,
+    "content": "앙",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715668784571.jpeg",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T08:30:34.733Z",
+    "updatedAt": "2024-05-14T08:30:34.733Z"
+  },
+  {
+    "id": 13,
+    "postId": 7,
+    "content": "으",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715668784571.jpeg",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T08:30:41.368Z",
+    "updatedAt": "2024-05-14T08:30:41.368Z"
+  },
+  {
+    "id": 14,
+    "postId": 1,
+    "content": "아",
+    "author": "testUser",
+    "authorId": 3,
+    "imagePath": "/images/profileImage-1715676436124.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-14T08:33:56.800Z",
+    "updatedAt": "2024-05-14T08:33:56.800Z"
+  },
+  {
+    "id": 15,
+    "postId": 1,
+    "content": "우",
+    "author": "testUser",
+    "authorId": 3,
+    "imagePath": "/images/profileImage-1715676436124.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-14T08:40:53.527Z",
+    "updatedAt": "2024-05-14T08:40:53.527Z"
+  },
+  {
+    "id": 16,
+    "postId": 8,
+    "content": "아\r\n",
+    "author": "testUser",
+    "authorId": 3,
+    "imagePath": "/images/profileImage-1715676436124.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T08:47:54.728Z",
+    "updatedAt": "2024-05-14T08:47:54.728Z"
   }
 ]

@@ -4,12 +4,15 @@
     <link rel="stylesheet" type="text/css" href="/css/profile-edit2.css">
 {% endblock %}
 
-// TODO 비밀번호 수정하기 만들기
+{% block js %}
+    <script src="/js/profile-edit2.js"></script>
+{% endblock %}
+
 {% block content %}
     <section class="login-section">
         <div class="login-title"><h2>비밀번호 수정</h2></div>
         <div class="formbox">
-            <form method='post' action='/posts'>
+            <form id="edit2Form">
                 <p class="formtext">새로운 비밀번호</p>
                 <input id="inputPassword" type='password' name='password' placeholder='비밀번호를 입력하세요'>
                 <p class="helptext password hide">* helptext</p> 

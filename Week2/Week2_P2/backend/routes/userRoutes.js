@@ -6,9 +6,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 // 회원 가입을 위한 라우트 
-import { postSignup, getUsers, getUserInfo, loginUser, logoutUser, deleteUser, checkEmailExists, updateUser } from '../controllers/userController.js';
-
-const router = express.Router();
+import { postSignup, getUsers, getUserInfo, loginUser, logoutUser, deleteUser, checkEmailExists, checkNicknameExists, updateUser, updatePassword } from '../controllers/userController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,16 +21,23 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ 
+    storage: storage,
+    limits: { fileSize: 10 * 1024 * 1024 } // 10MB 제한
+});
+const router = express.Router();
 
 router.post('/signup', upload.single('profileImage'), postSignup);
 router.post('/login', loginUser);
 router.post('/logout', logoutUser);
 router.delete('/', deleteUser);
 router.get('/check-email', checkEmailExists);
+router.get('/check-nickname', checkNicknameExists);
 router.get('/userinfo', getUserInfo);
 router.get('/', getUsers);
-router.post('/update', updateUser);
+// router.patch('/update', updateUser);
+router.patch('/update1', upload.single('profileImage'), updateUser);
+router.patch('/update2', updatePassword);
 
 // 이메일 인증을 위한 라우트 ------------------------------
 

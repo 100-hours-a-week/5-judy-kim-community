@@ -68,25 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log(data.id);
                 if (data.id === post.authorId) {
-                    /*
-                    const EditButtonElement = document.getElementById('edit-button-parent');
-                    if (EditButtonElement) {
-                        // 동적으로 버튼 추가
-                        const editButton = document.createElement('a');
-                        editButton.id = 'button-edit';
-                        editButton.className = 'button-edit';
-                        editButton.textContent = '수정';
-
-                        const deleteButton = document.createElement('button');
-                        deleteButton.id = 'edit-button-delete';
-                        deleteButton.className = 'button-delete edit-button-delete';
-                        deleteButton.textContent = '삭제';
-
-                        EditButtonElement.appendChild(editButton);
-                        EditButtonElement.appendChild(deleteButton);
-                        // 모달 관련 코드는 별도로 추가
-                    }
-                    */
                     const EditButtonElement = document.getElementById('edit-button-parent');
                     //EditButtonElement.innerHTML = ``;
                     if (EditButtonElement) {
@@ -128,8 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // post content
             const postImageElement = document.getElementById('post-image');
-            if (postImageElement) {
+            const postImageSpace1 = document.getElementById('post-image-space1');
+            const postImageSpace2 = document.getElementById('post-image-space2');
+            console.log("postImage", post.postImagePath);
+            if (postImageElement && post.postImagePath != null) {
+                postImageElement.style.display = ""; 
+                postImageSpace1.style.display = ""; 
+                postImageSpace2.style.display = ""; 
                 postImageElement.innerHTML = `<img src="${post.postImagePath}" alt="이미지가 없습니다.">`;
+            }else {
+                // 게시글에 이미지가 없으면 표시하지 않음
+                postImageElement.style.display = "none";
+                postImageSpace1.style.display = "none"; 
+                postImageSpace2.style.display = "none"; 
             }
     
             // post content

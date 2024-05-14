@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
         // profile-edit1 : 닉네임 변경 조건
         if (window.location.href.includes('/profile-edit1')){
-            if (nicknameButton && uploadProfileImageValid && inputNicknameValid)
+            if (nicknameButton && (uploadProfileImageValid || inputNicknameValid))
                 activeButton(nicknameButton);
             else {
                 console.log(uploadProfileImageValid, inputNicknameValid);
@@ -150,51 +150,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
         setupProfileImageHandlers(uploadProfileImage1);
         setupProfileImageHandlers(uploadProfileImage2);
-/*
-        updateSignupButtonStatus();
-
-        // 프로필 이미지 검증    
-        uploadProfileImage.addEventListener('change', function() {
-            // console.log('dkdk');
-            if (this.files && this.files[0]) {
-                uploadProfileImageValid = true;
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    profileImagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
-                    if(helpProfileImage){
-                        helpProfileImage.classList.remove('hide');
-                        helpProfileImage.textContent = "* 프로필 사진이 업로드 되었습니다.";
-                        helpProfileImage.style.color = "green";
-                    }
-                };
-                reader.readAsDataURL(this.files[0]);
-            } else {
-                profileImagePreview.style.backgroundImage = 'none'; // 이미지 제거
-                if(helpProfileImage){
-                    helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
-                    helpProfileImage.style.color = "red";
-                }
-                uploadProfileImageValid = false;
-            }
-            updateSignupButtonStatus(); 
-        });
-
-        // 파일을 선택하지 않고 취소를 누른 경우 이미지 사라짐
-        uploadProfileImage.addEventListener('click', function () {
-            console.log("클릭!");
-            setTimeout(() => {
-                if (uploadProfileImage.files.length === 0) {
-                    if(helpProfileImage){
-                        helpProfileImage.classList.remove('hide');
-                        helpProfileImage.textContent = "* 프로필 사진을 추가해주세요.";
-                        helpProfileImage.style.color = "red";
-                    }
-                    profileImagePreview.style.backgroundImage = 'none'; 
-                    uploadProfileImageValid = false;
-                    updateSignupButtonStatus();
-                }
-            }, 100);
-        });*/
     } 
  
     // signup
@@ -318,8 +273,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
 
         // 닉네임 검증
-        // TODO 닉네임 중복 검증 : 이메일과 같이 만들기
-        inputNickname.onkeyup = function () {
+        inputNickname.onkeyup = async function () {
             helpNickname.classList.remove('hide');
             if (inputNickname.value.length === 0) {
                 helpNickname.textContent = "* 닉네임을 입력해 주세요.";
@@ -334,14 +288,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 helpNickname.style.color = "red";
                 inputNicknameValid = false;
             } else {
-                if (existingNicknames.includes(inputNickname.value)) {
-                    helpNickname.textContent = "* 중복된 닉네임입니다.";
+                // 닉네임 중복 검증
+                const url = `http://127.0.0.1:8000/api/users/check-nickname?nickname=${encodeURIComponent(inputNickname.value)}`;
+                try {
+                    const response = await fetch(url, {
+                        method: 'GET',  
+                        cache: 'no-cache', 
+                        headers: {
+                            'Content-Type': 'application/json' 
+                        }
+                    });
+                    if (!response.ok) {
+                        throw new Error(`Server responded with status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    if (data.nicknameExists) {
+                        helpNickname.textContent = "* 중복된 닉네임입니다.";
+                        helpNickname.style.color = "red";
+                        inputNicknameValid = false;
+                    } else {
+                        helpNickname.textContent = "* 사용할 수 있는 닉네임입니다.";
+                        helpNickname.style.color = "green";
+                        inputNicknameValid = true;
+                    }
+                } catch (error) {
+                    console.error('Error fetching:', error);
+                    helpNickname.textContent = "* 닉네임 검사 중 오류가 발생했습니다. 서버 응답 확인 필요.";
                     helpNickname.style.color = "red";
                     inputNicknameValid = false;
-                } else {
-                    helpNickname.textContent = "* 사용할 수 있는 닉네임입니다.";
-                    helpNickname.style.color = "green";
-                    inputNicknameValid = true;
                 }
             }
 

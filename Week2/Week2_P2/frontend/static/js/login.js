@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('사용자 정보가 올바르지 않습니다.');
                 }
                 return response.json(); // 응답에서 쿠키 추출
             })

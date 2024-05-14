@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const formData = new FormData(form);
         const postId = window.location.pathname.split('/').pop(); 
-        console.log("Extracted postId:", postId);
-        console.log("Current URL:", window.location.pathname);
+        const commentTextarea = document.getElementById('comment');
 
         console.log(formData.get('content'));
         
@@ -27,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log("Comment posted successfully:", data);
+            commentTextarea.value = '';
             window.loadComments(postId);
         })
         .catch(error => {
