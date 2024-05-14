@@ -67,7 +67,6 @@ export class User {
     }
 
     static async deleteById(userId) {
-        console.log(userId);
         const users = await this.readUsers();
         const filteredUsers = users.filter(user => user.id !== parseInt(userId));
         try {
@@ -93,6 +92,32 @@ export class User {
         } catch (err) {
             throw new Error('Failed to save user: ' + err.message);
         }
+    }
+
+    static async updateById(userId, updates) {
+        if (!req.session.userId) {
+            try {
+                const data = await fs.promises.readFile(filePath, 'utf8');
+                let users = JSON.parse(data);
+                let userFound = false;
+    
+                users = users.map(user => {
+                    if (user.id === userId) {
+                        userFound = true;
+                        return { ...user, ...updates };
+                    }
+                    return user;
+                });
+                if (!userFound) {
+                    throw new Error('User not found');
+                }
+    
+                await fs.promises.writeFile(filePath, JSON.stringify(users, null, 2));
+                return users.find(user => user.id === userId);
+            } catch (error) {
+                throw new Error(error);
+            }
+        }        
     }
 }
 

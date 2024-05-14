@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 // 회원 가입을 위한 라우트 
-import { postSignup, getUsers, getUserInfo, loginUser, logoutUser, deleteUser, checkEmailExists } from '../controllers/userController.js';
+import { postSignup, getUsers, getUserInfo, loginUser, logoutUser, deleteUser, checkEmailExists, updateUser } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -32,6 +32,7 @@ router.delete('/', deleteUser);
 router.get('/check-email', checkEmailExists);
 router.get('/userinfo', getUserInfo);
 router.get('/', getUsers);
+router.post('/update', updateUser);
 
 // 이메일 인증을 위한 라우트 ------------------------------
 

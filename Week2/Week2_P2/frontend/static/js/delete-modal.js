@@ -6,13 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var deleteBtn = document.getElementById("edit-delete");
     
     // functions
-    function toggleModal() {
+    function toggleModal(event) {
+        event.preventDefault();
         modal.classList.toggle("show");
     }
 
     function deleteUser() {
         fetch(`http://127.0.0.1:8000/api/users`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            credentials: 'include'
         })
         .then(response => {
             if (!response.ok) {
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(() => {
             console.log('유저가 삭제되었습니다.');
-            // logoutUser(); // 로그아웃 함수 호출
+            logoutUser(); // 로그아웃 함수 호출
         })
         .catch(error => {
             console.error('오류 발생:', error);
@@ -31,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function logoutUser() {
         fetch('http://127.0.0.1:8000/api/users/logout', {
-            method: 'POST'
+            method: 'POST',
+            credentials: 'include',
         })
         .then(response => {
             if (!response.ok) {
@@ -53,17 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     cancelBtn.addEventListener("click", toggleModal);
     deleteBtn.addEventListener("click", toggleModal);
 
-    
     deleteBtn.addEventListener("click", function(event) {
         event.preventDefault();
         toggleModal();
         deleteUser(); // 회원 탈퇴 후 로그아웃
     });
-
-    window.addEventListener("click", function (event) {
-        event.preventDefault();
-        if (event.target === modal) {
-            toggleModal();
-        }
-    });
+    
 });

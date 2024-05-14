@@ -8,18 +8,7 @@
     "imagePath": "/images/profileImage-1715159582066.png",
     "authorIsPoster": true,
     "createdAt": "2024-05-13T04:37:17.002Z",
-    "updatedAt": "2024-05-13T04:58:58.422Z"
-  },
-  {
-    "id": 2,
-    "postId": 2,
-    "content": "안녕~",
-    "author": "testUser",
-    "authorId": 1,
-    "imagePath": "/images/profileImage-1715159582066.png",
-    "authorIsPoster": true,
-    "createdAt": "2024-05-13T04:39:14.956Z",
-    "updatedAt": "2024-05-13T04:39:14.956Z"
+    "updatedAt": "2024-05-14T01:25:49.869Z"
   },
   {
     "id": 3,
@@ -30,6 +19,61 @@
     "imagePath": "/images/profileImage-1715159582066.png",
     "authorIsPoster": true,
     "createdAt": "2024-05-13T04:51:41.964Z",
-    "updatedAt": "2024-05-13T04:58:58.422Z"
+    "updatedAt": "2024-05-14T01:25:49.869Z"
+  },
+  {
+    "id": 4,
+    "postId": 3,
+    "content": "안녕",
+    "author": "testUser2",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715592134777.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-13T09:22:44.702Z",
+    "updatedAt": "2024-05-13T09:22:44.702Z"
+  },
+  {
+    "id": 7,
+    "postId": 1,
+    "content": "안녕",
+    "author": "testUser",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715159582066.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T01:14:45.046Z",
+    "updatedAt": "2024-05-14T01:14:45.047Z"
+  },
+  {
+    "id": 8,
+    "postId": 1,
+    "content": "오호",
+    "author": "testUser",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715159582066.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T01:18:08.633Z",
+    "updatedAt": "2024-05-14T01:18:08.633Z"
+  },
+  {
+    "id": 9,
+    "postId": 5,
+    "content": "아아\r\n",
+    "author": "testUser",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715159582066.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-14T01:26:07.130Z",
+    "updatedAt": "2024-05-14T01:26:07.130Z"
+  },
+  {
+    "id": 7,
+    "postId": 4,
+    "content": "안녕\r\n",
+    "author": "testUser",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715159582066.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-14T01:59:55.612Z",
+    "updatedAt": "2024-05-14T01:59:55.612Z"
   }
 ]

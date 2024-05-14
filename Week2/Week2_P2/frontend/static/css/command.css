@@ -61,7 +61,9 @@
 .card .profile .user-image {
     width: 40px;
     height: 40px;
+    background-size: cover; 
     background-color: #8c8c8c;
+    background-position: center;
     border-radius: 50%;
 }
 

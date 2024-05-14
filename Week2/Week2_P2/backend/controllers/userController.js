@@ -58,8 +58,7 @@ export const logoutUser = (req, res) => {
 // 회원 탈퇴
 export const deleteUser = async (req, res) => {
     try {
-        console.log(req.session.username);
-        console.log(req.session.userId);
+        console.log(req.session.username, req.session.userId);
         await User.deleteById(req.session.userId);
         res.send({ message: '유저가 성공적으로 삭제되었습니다.' });
     } catch (err) {
@@ -84,21 +83,17 @@ export const checkEmailExists = async (req, res) => {
     }
 };
 
-// TODO 로그인 후 프로필 이미지 넣기
-// TODO 로그인 후 이메일 검증, 회원 정보 수정 정보
-
 export const getUserInfo = async (req, res) => {
     if (!req.session || !req.session.userId) {
         return res.status(401).json({ message: "Unauthorized access." });
     }
-
     try {
         const user = await User.findById(req.session.userId);
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
-
         res.json({
+            id: user.id,
             email: user.email,
             nickname: user.nickname,
             profileImage: user.profileImage
@@ -106,5 +101,21 @@ export const getUserInfo = async (req, res) => {
     } catch (err) {
         console.error('Error fetching user info:', err);
         res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+// 업데이트
+export const updateUser = async (req, res) => {
+    const { userId } = req.params;
+    const updates = req.body;
+
+    try {
+        const updatedUser = await User.updateById(userId, updates);
+        res.json({
+            message: 'User updated successfully',
+            user: updatedUser
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 };

@@ -57,13 +57,11 @@
     z-index: 0;
     width: 140px;
     height: 140px;
+    background-size: cover; 
+    background-position: center;
     background-color: #D9D9D9;
     border: none;
     border-radius: 50%;   
-
-    background-image: url('../image/profile.png');
-    background-size: cover;
-    background-position: center; 
 }
 
 .button-edit-image {
@@ -76,11 +74,6 @@
     color: white;
     padding: 3px 10px;
     font-size: 14px;
-}
-
-.button-edit-image i {
-    margin: 18px;
-    font-size: 20px;
 }
 
 input {

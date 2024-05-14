@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname === '/posts') {
         fetch('http://127.0.0.1:8000/api/posts')
         .then(response => {
-            // if (!response.ok) {
-            //     throw new Error('서버에서 문제가 발생했습니다: ' + response.status);
-            // }
             return response.json();
         })
         .then(data => {
@@ -16,15 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // 각 게시물 데이터에 대한 HTML 생성
             data.forEach(post => {
                 const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
-                const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-                
-                // TODO 자신이 작성한 게시글만 수정/삭제할 수 있도록 고치기
-
+                const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }); 
                 postsHTML += `
-                    <a href="/posts/${post.id}" class="post-link">
-                    <article class="post-card">
-                        <div class="title"><h3>${post.title}</h3></div>
-                        <div class="subtitle">
+                <a href="/posts/${post.id}" class="post-link">
+                <article class="post-card">
+                    <div class="title"><h3>${post.title}</h3></div>
+                    <div class="subtitle">
                         <div class="subtitle-numbers">
                             <p>좋아요 ${post.likes}</p>
                             <p>댓글 ${post.comments}</p>
@@ -34,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p>${postDate}</p>
                             <p>${postTime}</p>
                         </div>
-                        </div>
-                        <hr class="card-line">
-                        <div class="profile">
-                            <div class="user-image" style="background-image:url('${post.userImagePath}');" alt="Profile Image"></div>
-                            <div class="user-name">
-                            <h4>${post.author}</h4>
-                        </div>
-                    </article>
-                    </a>`;
+                    </div>
+                    <hr class="card-line">
+                    <div class="profile">
+                        <div class="user-image" style="background-image:url('${post.userImagePath}');" alt="Profile Image"></div>
+                        <div class="user-name">
+                        <h4>${post.author}</h4>
+                    </div>
+                </article>
+                </a>`;
             });
             if (!postsContainer) {
                 console.error('Cannot find the posts-container element');
@@ -53,19 +47,61 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error:', error);
         });
     }
-    
-    
+        
     if (window.location.href.includes('/posts')  && !isNaN(parseInt(window.location.pathname.split('/').pop()))) {
         const postId = window.location.pathname.split('/').pop(); // post id 가져오기
         console.log("Extracted postId:", postId);
         console.log("Current URL:", window.location.pathname);
-
+        
         fetch(`http://127.0.0.1:8000/api/posts/${postId}`)
         .then(response => response.json())
-        .then(post => {
+        .then(post => { 
+            
+            // 조회수 업데이트
+            // getPostById
+
+            // 자신이 작성한 게시물만 수정/삭제할 수 있음
+            fetch(`http://127.0.0.1:8000/api/users/userinfo`, {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.id);
+                if (data.id === post.authorId) {
+                    /*
+                    const EditButtonElement = document.getElementById('edit-button-parent');
+                    if (EditButtonElement) {
+                        // 동적으로 버튼 추가
+                        const editButton = document.createElement('a');
+                        editButton.id = 'button-edit';
+                        editButton.className = 'button-edit';
+                        editButton.textContent = '수정';
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.id = 'edit-button-delete';
+                        deleteButton.className = 'button-delete edit-button-delete';
+                        deleteButton.textContent = '삭제';
+
+                        EditButtonElement.appendChild(editButton);
+                        EditButtonElement.appendChild(deleteButton);
+                        // 모달 관련 코드는 별도로 추가
+                    }
+                    */
+                    const EditButtonElement = document.getElementById('edit-button-parent');
+                    //EditButtonElement.innerHTML = ``;
+                    if (EditButtonElement) {
+                        EditButtonElement.style.display = "";
+
+                    }
+                } else {
+                    console.log("작성자가 아니어서 게시글을 수정할 수 없습니다.");
+                }
+            })
+            .catch(error => console.error('Error loading the post:', error));
+
             const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
             const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-    
+            
             // post title
             const titleElement = document.getElementById('title');
             if (titleElement) {
@@ -138,14 +174,18 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     */
 
-    // TODO 자신이 작성한 댓글만 수정/삭제할 수 있도록 고치기
-
-    // TODO 댓글 수 업데이트하기
-    
     window.loadComments = function(postId) {
         fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`)
         .then(response => response.json())
         .then(comments => {
+
+            // 댓글 수 업데이트
+            const commentsElement = document.getElementById('comments');
+            if (commentsElement) {
+                commentsElement.innerHTML = comments.length;
+            }
+
+            console.log(comments);
             const commentsContainer = document.getElementById('comments-container');
             commentsContainer.innerHTML = ''; // Clear previous comments
             comments.forEach((comment) => {
@@ -173,34 +213,55 @@ document.addEventListener('DOMContentLoaded', () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="command-button-parent">
-                                    <!-- 댓글 수정 컨텐츠 -->
-                                    <button class="button-edit" data-comment-id="${comment.id}">수정</button>
-                                    <!-- 댓글 삭제 컨텐츠, 모달 -->
-                                    <div id="command-button-modal-${comment.id}" class="delete-modal command-delete-modal">
-                                        <div class="modal-content">
-                                            <p class="text1">댓글을 삭제하시겠습니까?</p>
-                                            <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
-                                            <div class="space"></div>
-                                            <div class="modal-actions">
-                                                <button id="command-cancel" class="modal-button command-cancel">취소</button>
-                                                <button id="command-delete" class="modal-button command-delete">확인</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 모달 열기 버튼 -->
-                                    <button id="command-button-delete-${comment.id}" class="button-delete command-button-delete" data-modal-id="${comment.id}">삭제</button>
-                                </div>
+                                <div id="command-button-parent-${comment.id}" class="command-button-parent"></div>                                
                             </div>
-                            <div class="edit-form" style="display: none;">
-                                <textarea class="edit-input">${comment.content}</textarea>
-                                <button class="button-save" data-comment-id="${comment.id}">저장</button>
-                            </div>
+                            <div id="edit-form-${comment.id}" class="edit-form" style="display: none;"></div>                       
                             <div class="comment-content command-text"><p>${comment.content}</p></div>
                         </div>
                     </article>
                 `;
                 commentsContainer.innerHTML += commentHTML;
+
+                // 자신일 경우에만 수정 및 삭제 버튼 표시                
+                
+                fetch(`http://127.0.0.1:8000/api/users/userinfo`, {
+                    credentials: 'include'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.id);
+                    if (data.id === comment.authorId) {
+                        const editDeleteButtonsHTML = `
+                            <!-- 댓글 수정 컨텐츠 -->
+                            <button class="button-edit" data-comment-id="${comment.id}">수정</button>
+                            <!-- 댓글 삭제 컨텐츠, 모달 -->
+                            <div id="command-button-modal-${comment.id}" class="delete-modal command-delete-modal">
+                                <div class="modal-content">
+                                    <p class="text1">댓글을 삭제하시겠습니까?</p>
+                                    <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                                    <div class="space"></div>
+                                    <div class="modal-actions">
+                                        <button id="command-cancel" class="modal-button command-cancel">취소</button>
+                                        <button id="command-delete" class="modal-button command-delete">확인</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모달 열기 버튼 -->
+                            <button id="command-button-delete-${comment.id}" class="button-delete command-button-delete" data-modal-id="${comment.id}">삭제</button>                   
+                        `;
+                        document.getElementById(`command-button-parent-${comment.id}`).innerHTML = editDeleteButtonsHTML;
+                        
+                        const editFormHTML = `
+                            <textarea class="edit-input">${comment.content}</textarea>
+                            <button class="button-save" data-comment-id="${comment.id}">저장</button>
+                        `;
+                        document.getElementById(`edit-form-${comment.id}`).innerHTML = editFormHTML;
+                    } else {
+                        console.log("작성자가 아니어서 댓글을 수정할 수 없습니다.");
+                    }
+                })
+                .catch(error => console.error('Error loading the post:', error));
+
             });
 
             attachEditContentsEventListeners();
