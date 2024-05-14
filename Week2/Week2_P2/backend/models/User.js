@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dataPath = path.join(__dirname, '..', '..', 'data', 'users.json');
+const indexPath = path.join(__dirname, '..', '..', 'data', 'usersIndex.json');
 
 export class User {
     constructor({ email, password, nickname, profileImage }) {
@@ -46,12 +47,29 @@ export class User {
 
     static async readUsers() {
         try {
+            
             const data = await fs.promises.readFile(dataPath, 'utf8');
             const users = JSON.parse(data);
             // console.log("Loaded emails:", users.map(user => user.email));
             return users;
         } catch (err) {
             throw new Error('Failed to read user data');
+        }
+    }
+
+    static async nextId() {
+        try {
+            const data = await fs.promises.readFile(indexPath, 'utf8');
+            const indexData = JSON.parse(data);
+            const nextIndex = indexData.currentIndex + 1;
+
+            indexData.currentIndex = nextIndex;
+            await fs.promises.writeFile(indexPath, JSON.stringify(indexData, null, 2));
+
+            return nextIndex;
+        } catch (err) {
+            console.error('Error reading or updating index data:', err);
+            throw new Error('Failed to get next ID: ' + err.message);
         }
     }
     
@@ -85,7 +103,7 @@ export class User {
             }
             const hashedPassword = await bcrypt.hash(newUser.password, 10);
             newUser.password = hashedPassword; // 비밀번호를 해시하여 저장
-            newUser.id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+            newUser.id = await this.nextId();
             users.push(newUser);
             await fs.promises.writeFile(dataPath, JSON.stringify(users, null, 2));
             return true;
@@ -95,29 +113,56 @@ export class User {
     }
 
     static async updateById(userId, updates) {
-        if (!req.session.userId) {
-            try {
-                const data = await fs.promises.readFile(filePath, 'utf8');
-                let users = JSON.parse(data);
-                let userFound = false;
-    
-                users = users.map(user => {
-                    if (user.id === userId) {
-                        userFound = true;
-                        return { ...user, ...updates };
-                    }
-                    return user;
-                });
-                if (!userFound) {
-                    throw new Error('User not found');
+        try {
+            const data = await fs.promises.readFile(dataPath, 'utf8');
+            let users = JSON.parse(data);
+            let userFound = false;
+
+            users = users.map(user => {
+                if (user.id === userId) {
+                    userFound = true;
+                    return { ...user, ...updates };
                 }
-    
-                await fs.promises.writeFile(filePath, JSON.stringify(users, null, 2));
-                return users.find(user => user.id === userId);
-            } catch (error) {
-                throw new Error(error);
+                return user;
+            });
+
+            if (!userFound) {
+                throw new Error('User not found');
             }
-        }        
+
+            await fs.promises.writeFile(dataPath, JSON.stringify(users, null, 2));
+            return users.find(user => user.id === userId);
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    static async updatePasswordById(userId, newPassword) {
+        try {
+            const data = await fs.promises.readFile(dataPath, { encoding: 'utf8' });
+            let users = JSON.parse(data);
+            let userFound = false;
+    
+            users = users.map(user => {
+                if (user.id === userId) {
+                    userFound = true;
+                    const hashedPassword = bcrypt.hashSync(newPassword, 10); // 비밀번호 해싱
+                    return { ...user, password: hashedPassword };
+                }
+                return user;
+            });
+    
+            if (!userFound) {
+                console.error('User not found'); // 로그 추가
+                throw new Error('User not found');
+            }
+    
+            await fs.promises.writeFile(dataPath, JSON.stringify(users, null, 2)); // 업데이트된 사용자 데이터 저장
+            return { message: "Password updated successfully!" };
+        } catch (error) {
+            console.error('Error updating password:', error); // 오류 상세 로그
+            throw new Error('Failed to update password');
+        }
     }
 }
 

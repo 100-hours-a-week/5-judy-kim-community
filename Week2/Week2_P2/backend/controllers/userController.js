@@ -1,6 +1,8 @@
 // /backend/controllers/userController.js
 
-import { User } from '../models/User.js';
+import User from '../models/User.js';
+import Post from '../models/Post.js';
+import Comment from '../models/Comment.js';
 
 export const postSignup = async (req, res) => {
     try {
@@ -83,6 +85,22 @@ export const checkEmailExists = async (req, res) => {
     }
 };
 
+export const checkNicknameExists = async (req, res) => {
+    const nicknameToCheck = req.query.nickname;
+    if (!nicknameToCheck) {
+        console.error('No nickname provided in query');
+        return res.status(400).json({ error: 'nickname parameter is missing' });
+    }
+    try {
+        const users = await User.readUsers();
+        const nicknameExists = users.some(user => user.nickname === nicknameToCheck);
+        res.json({ nicknameExists });
+    } catch (err) {
+        console.error('Error checking nickname:', err);
+        res.status(500).json({ error: 'Internal server error: ' + err.message });
+    }
+};
+
 export const getUserInfo = async (req, res) => {
     if (!req.session || !req.session.userId) {
         return res.status(401).json({ message: "Unauthorized access." });
@@ -104,18 +122,53 @@ export const getUserInfo = async (req, res) => {
     }
 };
 
-// 업데이트
+// 유저 정보 업데이트
 export const updateUser = async (req, res) => {
-    const { userId } = req.params;
+    if (!req.session.userId) {
+        return res.status(401).json({ message: "Unauthorized access. Please login." });
+    }
+    const userId = req.session.userId; // 현재 세션의 사용자 ID
     const updates = req.body;
+    if (req.file) {
+        const newImagePath = req.file ? `/images/${req.file.filename}` : null;
+        updates.profileImage = newImagePath;  // 이미지 경로 업데이트
+    }
+
+    console.log(updates);
 
     try {
         const updatedUser = await User.updateById(userId, updates);
+        if (req.file || updates.nickname) {
+            await Post.updateUserInPosts(userId, updates.profileImage, updates.nickname);  // 게시글 유저 정보 업데이트
+            await Comment.updateUserInComments(userId, updates.profileImage, updates.nickname);  // 댓글 유저 정보 업데이트
+        }
         res.json({
             message: 'User updated successfully',
             user: updatedUser
         });
+        
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+};
+
+// 유저 비밀번호 업데이트
+export const updatePassword = async (req, res) => { 
+    if (!req.session.userId) {
+        return res.status(401).json({ message: "Unauthorized access. Please login." });
+    } 
+    const userId = req.session.userId;
+    const { password } = req.body; 
+    console.log(req.body);
+
+    if (!password) {
+        return res.status(400).json({ message: "비밀번호가 제공되지 않았습니다." });
+    }
+    try {
+        const updatedUser = await User.updatePasswordById(userId, password);
+        res.status(200).json({ message: "비밀번호가 성공적으로 업데이트되었습니다.", user: updatedUser });
+    } catch (error) {
+        console.error('비밀번호 업데이트 실패:', error);
+        res.status(500).json({ message: "서버 오류로 인해 비밀번호를 업데이트할 수 없습니다." });
     }
 };

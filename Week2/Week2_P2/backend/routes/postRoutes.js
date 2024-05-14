@@ -17,8 +17,6 @@ const storage = multer.diskStorage({
     filename: function(req, file, cb) {
         const timestamp = Date.now();
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-        // const fileName = `postImage-${timestamp}-${file.originalname}`;
-        // cb(null, fileName);
     }
 });
 const upload = multer({ storage: storage });

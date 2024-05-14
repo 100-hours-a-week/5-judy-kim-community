@@ -9,6 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const commentsPath = path.join(__dirname, '..', '..', 'data', 'comments.json');
+const indexPath = path.join(__dirname, '..', '..', 'data', 'commentsIndex.json');
 
 export default class Comment {
     static findAll() {
@@ -95,11 +96,27 @@ export default class Comment {
         });
     }
 
+    static async nextId() {
+        try {
+            const data = await fs.promises.readFile(indexPath, 'utf8');
+            const indexData = JSON.parse(data);
+            const nextIndex = indexData.currentIndex + 1;
+
+            indexData.currentIndex = nextIndex;
+            await fs.promises.writeFile(indexPath, JSON.stringify(indexData, null, 2));
+
+            return nextIndex;
+        } catch (err) {
+            console.error('Error reading or updating index data:', err);
+            throw new Error('Failed to get next ID: ' + err.message);
+        }
+    }
+
     // TODO 댓글 id 생성 로직 바꾸기 (length +1이 아니라 index++로)
     static async create(newCommentData) {
         try {
             const comments = await this.findAll();
-            const newId = comments.length + 1;
+            const newId = await this.nextId();
             const post = await Post.findById(newCommentData.postId);
             if (!post) {
                 throw new Error('Post not found');
@@ -117,6 +134,30 @@ export default class Comment {
             return newComment;
         } catch (err) {
             throw new Error('Failed to save Comment: ' + err.message);
+        }
+    }
+
+    static async updateUserInComments(authorId, newImagePath, newNickname) {
+        try {
+            const data = await fs.promises.readFile(commentsPath, 'utf8');
+            let comments = JSON.parse(data);
+            
+            // 변경이 필요한 댓글만 업데이트
+            comments = comments.map(comment => {
+                if (comment.authorId === authorId) {
+                    return { 
+                        ...comment, 
+                        imagePath: newImagePath || comment.imagePath,    // 새 이미지 경로가 제공되면 업데이트
+                        author: newNickname || comment.author            // 새 닉네임이 제공되면 업데이트
+                    };
+                }
+                return comment;  // 변경이 필요 없는 댓글은 그대로 반환
+            });
+    
+            // 모든 댓글을 파일에 다시 저장
+            await fs.promises.writeFile(commentsPath, JSON.stringify(comments, null, 2), 'utf8');
+        } catch (error) {
+            throw new Error('Failed to update comments details: ' + error.message);
         }
     }
     
