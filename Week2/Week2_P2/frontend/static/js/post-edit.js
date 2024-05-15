@@ -36,9 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         const editForm = document.getElementById('editForm');
+        const submitButton = document.getElementById('postButton');
+
         editForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const formData = new FormData(this);
+
+            // 버튼 비활성화
+            submitButton.disabled = true;
+
             for (let [key, value] of formData.entries()) {
                 console.log(key, value);
             }
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 if (data.success) {
-                    alert('게시글이 수정되었습니다.');
+                    showToast('게시글이 수정되었습니다.');
                     window.location.href = `/posts/${postId}`;
                 } else {
                     throw new Error(data.message);
@@ -62,7 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => {
                 console.error('Error updating post:', error);
-                alert('게시글 수정에 실패하였습니다: ' + error.message);
+                showToast('게시글 수정에 실패하였습니다: ' + error.message);
+            })
+            .finally(() => {
+                // 요청이 완료되면 버튼을 다시 활성화
+                // submitButton.disabled = false;
             });
 
         });

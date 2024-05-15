@@ -1,24 +1,14 @@
-/*function submitForm(event) {
-    event.preventDefault();  // 이 부분이 폼의 기본 제출 동작을 중단합니다.
-
-    const form = document.getElementById('signupForm');
-    const formData = new FormData(form);
-
-    // 폼 데이터 로깅
-    formData.forEach((value, key) => {
-        console.log(`${key}: ${value}`);
-    });
-
-    window.alert('알림알림!');  // 서버 응답 메시지를 alert로 보여줍니다.
-}*/
-
-
 document.addEventListener('DOMContentLoaded', (event) => {    
     const form = document.getElementById('signupForm');
+    const submitButton = document.getElementById('signupButton');
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();  // 폼 제출 막깅..
 
         const formData = new FormData(form);
+
+        // 버튼 비활성화
+        submitButton.disabled = true;
 
         formData.forEach((value, key) => {
             console.log(`${key}: ${value}`);
@@ -38,12 +28,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         })
         .then(data => {
             console.log(data.message);
-            alert(data.message);  
-            window.location.href = '/login';     // front
+            showToast('회원가입이 완료되었습니다!');
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 1000);
         })
         .catch(error => {
             console.error('Error fetching:', error);
-            alert(`Signup failed: ${error.message || 'Server error'}`);
+            showToast(`Signup failed: ${error.message || 'Server error'}`);
+        })
+        .finally(() => {
+            // 요청이 완료되면 버튼을 다시 활성화
+            // submitButton.disabled = false;
         });
     });
 });

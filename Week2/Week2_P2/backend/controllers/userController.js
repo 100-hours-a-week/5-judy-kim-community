@@ -105,22 +105,26 @@ export const getUserInfo = async (req, res) => {
     if (!req.session || !req.session.userId) {
         return res.status(401).json({ message: "Unauthorized access." });
     }
-    User.findById(req.session.userId)
-    .then(user => {
+    try {
+        const userId = req.session.userId;
+        console.log(`Fetching user info for userId: ${userId}`);
+            
+        const user = await User.findById(userId);
         if (!user) {
+            console.error(`User not found for userId: ${userId}`);
             return res.status(404).json({ message: "User not found." });
         }
+        
         res.json({
             id: user.id,
             email: user.email,
             nickname: user.nickname,
             profileImage: user.profileImage
         });
-    })
-    .catch(err => {
+    } catch (err) {
         console.error('Error fetching user info:', err);
         res.status(500).json({ message: 'Internal server error' });
-    });
+    }
 };
 
 // 유저 정보 업데이트
@@ -139,6 +143,15 @@ export const updateUser = async (req, res) => {
 
     try {
         const updatedUser = await User.updateById(userId, updates);
+
+        // 세션 데이터 갱신
+        if (updates.nickname) {
+            req.session.username = updates.nickname;
+        }
+        if (updates.profileImage) {
+            req.session.profileImage = updates.profileImage;
+        }
+
         if (req.file || updates.nickname) {
             await Post.updateUserInPosts(userId, updates.profileImage, updates.nickname);  // 게시글 유저 정보 업데이트
             await Comment.updateUserInComments(userId, updates.profileImage, updates.nickname);  // 댓글 유저 정보 업데이트

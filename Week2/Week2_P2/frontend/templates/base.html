@@ -6,6 +6,7 @@
     <title>judy W1P2</title>
     <link rel="stylesheet" type="text/css" href="/css/base.css">
     <link rel="stylesheet" type="text/css" href="/css/overheader.css">
+    <link rel="stylesheet" type="text/css" href="/css/toast-message.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     {% block css %}{% endblock %}
 
@@ -13,12 +14,15 @@
     <script src="/js/base.js"></script>
     <script src="/js/headerIslogin.js"></script>
     <script src="/js/getuserinfo.js"></script>
+    <script src="/js/toast-message.js"></script>
     
     {% block js %}{% endblock %}
  
 </head>
 <body>
     <header>
+        <div id="toast"></div>
+
         <div class="lowheader">
             <h2 class="header-text">
                 아무 말 대잔치

@@ -8,8 +8,13 @@ import Post from '../models/Post.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const commentsPath = path.join(__dirname, '..', '..', 'data', 'comments.json');
-const indexPath = path.join(__dirname, '..', '..', 'data', 'commentsIndex.json');
+// json-path command+/
+
+// const commentsPath = path.join(__dirname, '..', '..', 'data', 'comments.json');
+// const indexPath = path.join(__dirname, '..', '..', 'data', 'commentsIndex.json');
+
+const commentsPath = path.join(__dirname, '..', '..', 'data', '-test-comments.json');
+const indexPath = path.join(__dirname, '..', '..', 'data', '-test-commentsIndex.json');
 
 export default class Comment {
     static findAll() {

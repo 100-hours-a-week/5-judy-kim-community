@@ -7,8 +7,14 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const dataPath = path.join(__dirname, '..', '..', 'data', 'users.json');
-const indexPath = path.join(__dirname, '..', '..', 'data', 'usersIndex.json');
+
+// json-path command+/
+
+// const dataPath = path.join(__dirname, '..', '..', 'data', 'users.json');
+// const indexPath = path.join(__dirname, '..', '..', 'data', 'usersIndex.json');
+
+const dataPath = path.join(__dirname, '..', '..', 'data', '-test-users.json');
+const indexPath = path.join(__dirname, '..', '..', 'data', '-test-usersIndex.json');
 
 export class User {
     constructor({ email, password, nickname, profileImage }) {

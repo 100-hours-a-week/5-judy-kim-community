@@ -44,6 +44,25 @@
         <hr class="contents-title-line">
         <article class="contents-middle">
             <div id="post-image" class="image" style="display: none;"></div>
+            <script>
+                // 이미지 종회비 맞추기
+                document.addEventListener("DOMContentLoaded", function() {
+                    const images = document.querySelectorAll('.contents-middle .image img');
+        
+                    images.forEach(img => {
+                        img.addEventListener('load', function() {
+                            const aspectRatio = img.naturalHeight / img.naturalWidth;
+                            const parentWidth = img.parentElement.offsetWidth;
+                            const newHeight = parentWidth * aspectRatio;
+                            img.parentElement.style.height = `${newHeight}px`;
+                        });
+        
+                        if (img.complete) {
+                            img.dispatchEvent(new Event('load'));
+                        }
+                    });
+                });
+            </script>
             <div id="post-image-space1" class="space" style="display: none;"></div>
             <div id="post-image-space2" class="space" style="display: none;"></div>
             <div id="content" class="text"></div>
@@ -67,9 +86,10 @@
                 <form id="commentForm">
                     <div class="command-input-parent">
                         <textarea class="command-write" name="content" placeholder="댓글을 남겨주세요!" id="comment"></textarea>
+                        <p class="helptext writeHelpText hide">* helptext</p>
                     </div>
                     <hr class="contents-middle-input-line">
-                    <div class="button-command-parent"><button class="button-command" type='submit'>댓글 등록</button></div>
+                    <div class="button-command-parent"><button id="commentWriteButton" class="button-command" type='submit'>댓글 등록</button></div>
                 </form> 
             </div>
         </article>

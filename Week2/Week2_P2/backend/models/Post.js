@@ -6,8 +6,14 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const postsPath = path.join(__dirname, '..', '..', 'data', 'posts.json');
-const indexPath = path.join(__dirname, '..', '..', 'data', 'postsIndex.json');
+
+// json-path command+/
+
+// const postsPath = path.join(__dirname, '..', '..', 'data', 'posts.json');
+// const indexPath = path.join(__dirname, '..', '..', 'data', 'postsIndex.json');
+
+const postsPath = path.join(__dirname, '..', '..', 'data', '-test-posts.json');
+const indexPath = path.join(__dirname, '..', '..', 'data', '-test-postsIndex.json');
 
 class Post {
     constructor({ id, title, content, author, authorId, userImagePath, postImagePath, likes, comments, views }) {
@@ -31,7 +37,7 @@ class Post {
             const posts = await this.findAll();
             posts.push(newPost);
             await fs.promises.writeFile(postsPath, JSON.stringify(posts, null, 2), 'utf8');
-            return newPost;
+            return { savedPost: newPost, postId: newPost.id };
         } catch (err) {
             throw new Error('Failed to save Post: ' + err.message);
         }

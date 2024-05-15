@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('commentForm');
+    const submitButton = document.getElementById('commentWriteButton');
+
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         const formData = new FormData(form);
@@ -7,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const commentTextarea = document.getElementById('comment');
 
         console.log(formData.get('content'));
+
+        // 버튼 비활성화
+        submitButton.disabled = true;
         
         /* console.log("Form Data:", formData);
         for(let key of formData.keys()) {
@@ -31,8 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error("Error posting comment:", error);
+        })
+        .finally(() => {
+            // 요청이 완료되면 버튼을 다시 활성화
+            // submitButton.disabled = false;
         });
-
-
     });
 });

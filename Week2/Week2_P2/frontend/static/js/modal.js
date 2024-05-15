@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             console.log('게시글이 삭제되었습니다.');
-            alert('게시글이 삭제되었습니다.');  
-            window.location.href = '/posts';     // front
+            showToast('게시글이 삭제되었습니다.');  
+            setTimeout(() => {
+                window.location.href = '/posts';
+            }, 1000);
         })
         .catch(error => {
             console.error('게시글 삭제 실패:', error);

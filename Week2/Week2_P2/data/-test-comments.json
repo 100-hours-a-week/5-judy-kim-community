@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "postId": 1,
+    "content": "저는 개발자 주디입니당",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-15T06:16:35.917Z",
+    "updatedAt": "2024-05-15T13:47:38.933Z"
+  },
+  {
+    "id": 4,
+    "postId": 1,
+    "content": "주디 복제!!",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T06:29:52.841Z",
+    "updatedAt": "2024-05-15T06:31:59.367Z"
+  },
+  {
+    "id": 8,
+    "postId": 2,
+    "content": "글쓴이는 글쓴이라고 표시돼요",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-15T14:04:10.393Z",
+    "updatedAt": "2024-05-15T14:04:10.393Z"
+  },
+  {
+    "id": 9,
+    "postId": 2,
+    "content": "개발자는 개발자라고 표시돼요\n나는 나라고 표시돼요",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T14:04:27.062Z",
+    "updatedAt": "2024-05-15T14:18:27.758Z"
+  },
+  {
+    "id": 10,
+    "postId": 2,
+    "content": "로그인하지 않으면 댓글을 쓸 수 없어요\n자신의 댓글만 수정할 수 있어요",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T14:04:39.750Z",
+    "updatedAt": "2024-05-15T14:18:26.755Z"
+  }
+]

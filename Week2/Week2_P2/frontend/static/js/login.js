@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('/login')) {
         const form = document.getElementById('loginForm');
+        const submitButton = document.getElementById('button-login');
         let helpLogin = document.querySelector('.helptext.login'); // 로그인 실패 메시지를 표시할 요소
 
         form.addEventListener('submit', function(e) {
@@ -9,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(form);
             const formObject = Object.fromEntries(formData);
             
+            // 버튼 비활성화
+            submitButton.disabled = true;
+
             // FormData 내용 로깅
             formData.forEach((value, key) => {
                 console.log(`${key}: ${value}`);
@@ -34,8 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 helpLogin.classList.add('hide');
 
                 // 다음 유저 인포 가져오기
-
-                window.location.href = '/posts';   // front
+                showToast('로그인 되었습니다.');
+                setTimeout(() => {
+                    window.location.href = '/posts';
+                }, 1000);
             })
             .catch(error => {
                 console.error('Error fetching:', error);
@@ -43,6 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 helpLogin.classList.remove('hide');
                 helpLogin.textContent = `* ${error.message || "입력하신 계정 정보가 정확하지 않습니다"}`;
                 helpLogin.style.color = "red";
+            })
+            .finally(() => {
+                // 요청이 완료되면 버튼을 다시 활성화
+                // submitButton.disabled = false;
             });
         });
     }
