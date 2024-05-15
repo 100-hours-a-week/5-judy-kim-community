@@ -1,6 +1,7 @@
 // frontend/static/js/post-load.js
 
 document.addEventListener('DOMContentLoaded', () => {
+
     if (window.location.pathname === '/posts') {
         fetch('http://127.0.0.1:8000/api/posts')
         .then(response => {
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // getPostById
 
             // 자신이 작성한 게시물만 수정/삭제할 수 있음
-            fetch(`http://127.0.0.1:8000/api/users/userinfo`, {
+            fetch('http://127.0.0.1:8000/api/users/userinfo', {
                 credentials: 'include'
             })
             .then(response => response.json())
@@ -127,7 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // post content
             const contentElement = document.getElementById('content');
             if (contentElement) {
-                contentElement.innerHTML = `<p>${post.content}</p>`;
+                const formattedContent = post.content.replace(/\n/g, '<br>');
+                contentElement.innerHTML = `<p>${formattedContent}</p>`;
+                // contentElement.innerHTML = `<p>${post.content}</p>`;
             }
     
             // Update likes and comments count
@@ -142,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     
             // Load comments for the post
+            // setupModalEventListeners();
             window.loadComments(postId);
         })
         .catch(error => {
@@ -216,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // 자신일 경우에만 수정 및 삭제 버튼 표시                
                 
-                fetch(`http://127.0.0.1:8000/api/users/userinfo`, {
+                fetch('http://127.0.0.1:8000/api/users/userinfo', {
                     credentials: 'include'
                 })
                 .then(response => response.json())
@@ -248,14 +252,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button class="button-save" data-comment-id="${comment.id}">저장</button>
                         `;
                         document.getElementById(`edit-form-${comment.id}`).innerHTML = editFormHTML;
+                        // setupModalEventListeners();
                     } else {
                         console.log("작성자가 아니어서 댓글을 수정할 수 없습니다.");
                     }
                 })
                 .catch(error => console.error('Error loading the post:', error));
-
             });
-
+            
             attachEditContentsEventListeners();
             attachModalEventListeners();
         })
@@ -263,70 +267,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }     
 
     // 댓글 수정 기능
-    function attachEditContentsEventListeners() {
-        document.querySelectorAll('.button-edit').forEach(button => {
-            button.addEventListener('click', function() {
-                const commentId = button.dataset.commentId;
-                const commentElement = document.getElementById(`comment-${commentId}`);
-                commentElement.querySelector('.edit-form').style.display = 'flex';
-                commentElement.querySelector('.button-edit').style.display = 'none';
-                commentElement.querySelector('.comment-content').style.display = 'none';
-            });
-        });
-    
-        document.querySelectorAll('.button-save').forEach(button => {
-            button.addEventListener('click', function() {
-                const commentId = button.dataset.commentId;
-                const commentElement = document.getElementById(`comment-${commentId}`);
-                const newText = commentElement.querySelector('.edit-input').value;
+     function attachEditContentsEventListeners() {
+        const commentsContainer = document.getElementById('comments-container');
+        if (commentsContainer) {
+            commentsContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('button-edit')) {
+                    console.log("button-edit clicked");
+                    const commentId = event.target.dataset.commentId;
+                    console.log("commentId show clicked", commentId);
+                    const commentElement = document.getElementById(`comment-${commentId}`);
+                    commentElement.querySelector('.edit-form').style.display = 'flex';
+                    commentElement.querySelector('.button-edit').style.display = 'none';
+                    commentElement.querySelector('.comment-content').style.display = 'none';
+                }
 
-                fetch(`http://127.0.0.1:8000/api/comments/${commentId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ content: newText })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    commentElement.querySelector('.comment-content p').innerText = newText;
-                    commentElement.querySelector('.edit-form').style.display = 'none';
-                    commentElement.querySelector('.button-edit').style.display = 'block';
-                    commentElement.querySelector('.comment-content').style.display = 'flex';
-                })
-                .catch(error => console.error('Error updating comment:', error));
+                if (event.target.classList.contains('button-save')) {
+                    console.log("button-save clicked");
+                    const commentId = event.target.dataset.commentId;
+                    const commentElement = document.getElementById(`comment-${commentId}`);
+                    const newText = commentElement.querySelector('.edit-input').value;
+
+                    fetch(`http://127.0.0.1:8000/api/comments/${commentId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ content: newText })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        commentElement.querySelector('.comment-content p').innerText = newText;
+                        commentElement.querySelector('.edit-form').style.display = 'none';
+                        commentElement.querySelector('.button-edit').style.display = 'block';
+                        commentElement.querySelector('.comment-content').style.display = 'flex';
+                    })
+                    .catch(error => console.error('Error updating comment:', error));
+                }
             });
-        });
+        }
     }
 
-    
     // 모달 동작 리스너 추가
     function attachModalEventListeners() {
-        let commentId;
-        document.querySelectorAll('.button-delete').forEach(button => {
-            button.addEventListener('click', function() {
-                commentId = button.dataset.modalId;
-                console.log(commentId);
-                const modal = document.getElementById(`command-button-modal-${commentId}`);
-                modal.classList.add('show');
+        const commentsContainer = document.getElementById('comments-container');
+        if (commentsContainer) {
+            commentsContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('button-delete')) {
+                    console.log("button-delete clicked");
+                    const commentId = event.target.dataset.modalId;
+                    const modal = document.getElementById(`command-button-modal-${commentId}`);
+                    console.log("Modal show clicked", modal);  // Debug log
+                    if (modal) {
+                        modal.classList.add('show');
+                    }
+                }
+
+                if (event.target.classList.contains('command-cancel')) {
+                    console.log("command-cancel clicked");
+                    const modal = event.target.closest('.delete-modal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                    }
+                }
+
+                if (event.target.classList.contains('command-delete')) {
+                    console.log("command-delete clicked");
+                    const commentId = event.target.closest('.delete-modal').id.split('-')[3];
+                    deleteComments(commentId);
+                    const modal = event.target.closest('.delete-modal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                    }
+                }
             });
-        });
-    
-        document.querySelectorAll('.command-cancel').forEach(button => {
-            button.addEventListener('click', function() {
-                const modal = button.closest('.delete-modal');
-                modal.classList.remove('show');
-            });
-        });
-    
-        document.querySelectorAll('.command-delete').forEach(button => {
-            button.addEventListener('click', function() {
-                console.log(commentId);
-                deleteComments(commentId);
-                const modal = button.closest('.delete-modal');
-                modal.classList.remove('show');
-            });
-        });
+        }
     }
     
     function deleteComments(commentId) {

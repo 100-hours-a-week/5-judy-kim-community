@@ -47,9 +47,11 @@ header {
 .lowheader {
     z-index: 0;
     width: 100%;
+    justify-content: center;
 }
 
 .header-text {
+    cursor: pointer;
     font-family: "sagak-sagak", sans-serif; 
     font-size: 32px;
     padding: 30px 0 20px 0;

@@ -58,8 +58,8 @@ export const createPost = async (req, res) => {
             views: 0
         });
         const savedPost = await Post.create(newPost);
-        console.log("Post saved successfully:", savedPost);
-        res.status(201).json({ message: 'Post registered successfully', post: savedPost });
+        console.log("게시글이 성공적으로 작성되었습니다.:", savedPost);
+        res.status(201).json({ message: '게시글이 성공적으로 작성되었습니다.', post: savedPost });
 
     } catch (err) {
         console.error('Error creating post:', err.message, err.stack);
@@ -72,7 +72,7 @@ export const deletePost = async (req, res) => {
     const postId = parseInt(req.params.postId);
     try {
         await Post.deleteById(postId);
-        res.status(200).json({ message: 'Post deleted successfully.' });
+        res.status(200).json({ message: '게시글이 삭제되었습니다..' });
     } catch (error) {
         res.status(500).json({ message: 'Failed to delete post', error: error.toString() });
     }

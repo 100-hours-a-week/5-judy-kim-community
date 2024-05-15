@@ -410,6 +410,7 @@
 .edit-form textarea {
     width: 443px;
     height: 60px;
+    resize: none;
 }
 
 .edit-form .button-save {

@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+// function setupModalEventListeners() {
+document.addEventListener('DOMContentLoaded', () => {
     // elements
     var modalBtn = document.getElementById("edit-button-delete");
     var modal = document.getElementById("edit-button-modal");
@@ -74,4 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// 댓글 모달은 posts-load.js에 있음
+// Call the function when DOM is fully loaded
+/*
+document.addEventListener("DOMContentLoaded", function () {
+    setupModalEventListeners();
+});*/
