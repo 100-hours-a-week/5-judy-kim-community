@@ -271,7 +271,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // signup, profile-edit1
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
+        let currentUserNickname = '';
 
+        fetch('http://127.0.0.1:8000/api/users/userinfo', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => {
+            currentUserNickname = data.nickname;
+        })
+        .catch(error => {
+            console.error('Error fetching current user nickname:', error);
+        });
+
+        console.log(currentUserNickname);
+        
         // 닉네임 검증
         inputNickname.onkeyup = async function () {
             helpNickname.classList.remove('hide');
@@ -303,9 +317,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     }
                     const data = await response.json();
                     if (data.nicknameExists) {
-                        helpNickname.textContent = "* 중복된 닉네임입니다.";
-                        helpNickname.style.color = "red";
-                        inputNicknameValid = false;
+                        
+                        if(window.location.href.includes('/profile-edit1') && currentUserNickname == inputNickname.value){
+                            helpNickname.textContent = "* 현재 닉네임입니다.";
+                            helpNickname.style.color = "green";
+                            inputNicknameValid = true;
+                        } else {
+                            
+                            helpNickname.textContent = "* 중복된 닉네임입니다.";
+                            helpNickname.style.color = "red";
+                            inputNicknameValid = false;
+                        }
                     } else {
                         helpNickname.textContent = "* 사용할 수 있는 닉네임입니다.";
                         helpNickname.style.color = "green";

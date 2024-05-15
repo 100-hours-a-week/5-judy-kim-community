@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log('Success:', data);
             alert('비밀번호가 성공적으로 업데이트되었습니다.');
-            // window.location.href = '/posts';
+            window.location.href = '/posts';
         })
         .catch((error) => {
             console.error('Error:', error);

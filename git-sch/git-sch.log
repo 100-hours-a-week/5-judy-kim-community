@@ -902,3 +902,42 @@ remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/d
 remote: 
 To github.com:100-hours-a-week/5-judy-kim-community.git
    b94c816..0c0aeea  main -> main
+[main fb199aa] backup Tue May 14 18:00:00 KST 2024
+ 47 files changed, 470 insertions(+), 143 deletions(-)
+ create mode 100644 Week2/Week2_P2/data/commentsIndex.json
+ create mode 100644 Week2/Week2_P2/data/postsIndex.json
+ create mode 100644 Week2/Week2_P2/data/usersIndex.json
+ create mode 100644 Week2/Week2_P2/frontend/static/js/profile-edit2.js
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715665978560.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715659833329.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715659904606.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715659983569.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715660624002.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715660645399.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715660666102.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715660708310.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715660848917.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715660997254.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715661078710.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715661139998.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715661207457.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715661471202.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715661528938.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715661866947.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715662067683.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715662188275.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715662240919.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715662253960.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715668784571.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715675470985.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715676436124.png
+ delete mode 100644 Week2/Week2_P2/sessions/12Qao5GZxJpM5H-72J_q-ocpqygLF-tJ.json
+ create mode 100644 Week2/Week2_P2/sessions/pcoIucDv0dAMuIiZEZWykNjG_eIQwRrB.json
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   0c0aeea..fb199aa  main -> main
+remote: 
+remote: GitHub found 5 vulnerabilities on 100-hours-a-week/5-judy-kim-community's default branch (2 high, 3 moderate). To find out more, visit:        
+remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/dependabot        
+remote: 
+To github.com:100-hours-a-week/5-judy-kim-community.git
+   0c0aeea..fb199aa  main -> main

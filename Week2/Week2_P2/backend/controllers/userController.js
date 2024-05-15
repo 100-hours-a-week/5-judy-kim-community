@@ -11,7 +11,7 @@ export const postSignup = async (req, res) => {
         
         const savedUser = await User.save(newUser);
         console.log("User saved successfully:", savedUser);
-        res.status(201).json({ message: 'User registered successfully', user: savedUser });
+        res.status(201).json({ message: '회원 가입이 완료되었습니다.', user: savedUser });
     } catch (err) {
         console.error('Error during user registration:', err);
         res.status(500).json({ message: err.message });
@@ -105,8 +105,8 @@ export const getUserInfo = async (req, res) => {
     if (!req.session || !req.session.userId) {
         return res.status(401).json({ message: "Unauthorized access." });
     }
-    try {
-        const user = await User.findById(req.session.userId);
+    User.findById(req.session.userId)
+    .then(user => {
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
@@ -116,10 +116,11 @@ export const getUserInfo = async (req, res) => {
             nickname: user.nickname,
             profileImage: user.profileImage
         });
-    } catch (err) {
+    })
+    .catch(err => {
         console.error('Error fetching user info:', err);
         res.status(500).json({ message: 'Internal server error' });
-    }
+    });
 };
 
 // 유저 정보 업데이트
