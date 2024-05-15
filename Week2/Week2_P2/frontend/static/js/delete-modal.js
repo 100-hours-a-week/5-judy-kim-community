@@ -44,7 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(() => {
             console.log('로그아웃 되었습니다.');
-            window.location.href = '/login'; // 로그인 페이지로 리다이렉트
+            showToast('회원 탈퇴가 완료되었습니다.');
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 1000);
         })
         .catch(error => {
             console.error('로그아웃 처리 중 오류:', error);
@@ -58,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     deleteBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        toggleModal();
+        toggleModal(event);
         deleteUser(); // 회원 탈퇴 후 로그아웃
     });
     

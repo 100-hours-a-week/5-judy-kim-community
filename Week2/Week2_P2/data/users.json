@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "email": "test@example.com",
-    "password": "$2b$10$71E3nZqFeKVzSDE53DhVBe1VKL0P7Xk2YjBWec6OZCTT26i9crlEW",
-    "nickname": "주디",
-    "profileImage": "/images/profileImage-1715684750390.png"
+    "email": "Judy@example.com",
+    "password": "$2b$10$0cc4/ZBHLU/OkOALKEcjKO9FmwmP3Dq7KFAGp.gFyPZsx/FVDnOpe",
+    "nickname": "Judy",
+    "profileImage": "/images/profileImage-1715751831880.png"
   },
   {
     "id": 2,
     "email": "test2@example.com",
     "password": "$2b$10$yfnVsR/5Fo7dmVJeV7Nvvu101334x1ef7o5OBqeAVqOHV5l1Gb68G",
-    "nickname": "주디친구",
+    "nickname": "주디친구!",
     "profileImage": "/images/profileImage-1715681992135.png"
   },
   {
@@ -82,5 +82,19 @@
     "password": "$2b$10$wxhE6DCBZV2d4APpD3nyBO3xmf2GxTgXbJDh5E9XgVvH4G5SrK7CS",
     "nickname": "steven",
     "profileImage": "/images/profileImage-1715691631770.jpeg"
+  },
+  {
+    "id": 14,
+    "email": "test@example.com",
+    "password": "$2b$10$ZkqclDvUW3Ut5/4jSGZ/be4vGOSKEhTxjvRcpLAOQtMmXBmyx8mme",
+    "nickname": "주디",
+    "profileImage": "/images/profileImage-1715744385872.png"
+  },
+  {
+    "id": 15,
+    "email": "test@example.com",
+    "password": "$2b$10$z8xwdoCGH6zgiTMsR9ShIOmfETXD2XJ1bPzqLdrxsNsn4WikpgIcS",
+    "nickname": "주디",
+    "profileImage": "/images/profileImage-1715749216000.png"
   }
 ]

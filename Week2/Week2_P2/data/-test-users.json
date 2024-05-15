@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "email": "Judy@example.com",
+    "password": "$2b$10$p4WdRd4SGB/aPllK.Co6EOvCdwSHBvEGgc7ttaPMODiehYR5sjHZ6",
+    "nickname": "주디",
+    "profileImage": "/images/profileImage-1715753398399.png"
+  },
+  {
+    "id": 2,
+    "email": "Judy2@example.com",
+    "password": "$2b$10$p.IfnV3VUvgYAV4tI1/hBehyMIT0mKY4kkxYVthUU2UyBqD1mMcZ6",
+    "nickname": "주디친구",
+    "profileImage": "/images/profileImage-1715753821790.png"
+  }
+]

@@ -32,10 +32,12 @@
     align-content: center;
 }
 
-.button-write:hover {
-    background-color: #7FA6EE;
+.button-write.disabled{
+    pointer-events: none;
+    opacity: 0; /* 투명도 */
+    color: rgba(0, 0, 0, 0); /* 텍스트 투명도 */
 }
 
-.button-write:active {
-    background-color: #7FA6EE;
+.button-command.disabled {
+    pointer-events: none;
 }

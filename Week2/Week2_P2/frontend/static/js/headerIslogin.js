@@ -8,6 +8,10 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    const buttonWrite = document.querySelector('.button-write-parent .button-write');
+    const commentWrite = document.getElementById('commentWriteButton');
+    const commentInput = document.getElementById('comment');
+
     // 서버에서 로그인 상태를 확인하는 함수
     fetch('http://127.0.0.1:8000/api/users/userinfo', {
         method: 'GET',
@@ -25,6 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => {
         updateDropdownMenu(false);
+        if(buttonWrite)
+            buttonWrite.classList.add('disabled');
+        if(commentWrite){
+            commentWrite.classList.add('disabled');
+            commentInput.placeholder = "로그인 후 댓글 등록이 가능합니다."
+            commentInput.disabled = true;
+        }
     });
 });
 
@@ -51,7 +62,10 @@ function updateDropdownMenu(isLoggedIn) {
             }).then(data => {
                 console.log(data);
                 if (data.message === '로그아웃 성공') {
-                    window.location.href = '/login';
+                    showToast('로그아웃 되었습니다.');
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 1000);
                 }
             }).catch(error => {
                 console.error('로그아웃 중 에러 발생:', error);

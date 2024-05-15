@@ -15,6 +15,13 @@ a {
     display: none;
 }
 
+/*
+.active {
+    background-color: #7FA6EE;
+} 
+이건 해당 css에서 적용 안하면 적용 안됨 ㅠ
+*/
+
 
 @font-face {
     font-family: 'Sagak-Sagak';

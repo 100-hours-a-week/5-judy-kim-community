@@ -14,13 +14,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let inputNickname = document.querySelector('#inputNickname'); 
     let helpNickname = document.querySelector('.helptext.nickname');
 
+    
     const signupButton = document.querySelector('#signupButton');
     const nicknameButton = document.querySelector('#nicknameButton');
     const retypePasswordButton = document.querySelector('#retypePasswordButton');
-    
-    // 중복 이메일 예시 데이터
-    // const existingEmails = ['example@example.com', 'test@test.com'];
-    const existingNicknames = ['nickname1', 'nickname2'];
 
     let uploadProfileImageValid = false; 
     let inputEmailValid = false;
@@ -73,17 +70,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     window.fillSignupDevData = function() {
-        inputEmail.value = 'test@example.com';
+        
+        // 테스트 유저
+        // inputEmail.value = 'test@example.com';
+        // inputPassword.value = 'Password123!';
+        // inputRetypePassword.value = 'Password123!';
+        // inputNickname.value = 'testUser';
+
+        // 개발자 유저
+        inputEmail.value = 'Judy@example.com';
         inputPassword.value = 'Password123!';
         inputRetypePassword.value = 'Password123!';
-        inputNickname.value = 'testUser';
-        /*
-        const profileImage = document.getElementById('profileImagePreview');
-        if (profileImage) {
-            profileImagePreview.style.backgroundImage = 'url(/image/profile.png)';
-            const event = new Event('change', { bubbles: true, cancelable: true });
-            profileImage.dispatchEvent(event); // 이벤트 발생
-        }*/
+        inputNickname.value = 'Judy';
+        
         ['inputEmail', 'inputPassword', 'inputRetypePassword', 'inputNickname'].forEach(id => {
             const event = new Event('keyup', { bubbles: true, cancelable: true });
             document.getElementById(id).dispatchEvent(event);
@@ -93,8 +92,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     window.fillLoginDevData = function() {
         let inputEmailLogin = document.querySelector('#inputEmailLogin');
         let inputPasswordLogin = document.querySelector('#inputPasswordLogin')
-        inputEmailLogin.value = 'test@example.com';
+        
+        // 테스트 유저
+        // inputEmailLogin.value = 'test@example.com';
+        // inputPasswordLogin.value = 'Password123!';
+
+        // 개발자 유저
+        inputEmailLogin.value = 'Judy@example.com';
         inputPasswordLogin.value = 'Password123!';
+
         ['inputEmailLogin', 'inputPasswordLogin'].forEach(id => {
             const event = new Event('keyup', { bubbles: true, cancelable: true });
             document.getElementById(id).dispatchEvent(event);
@@ -157,10 +163,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // 이메일 검증
         inputEmail.onkeyup = async function() {
             helpEmail.classList.remove('hide');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 기본 이메일 형식 검증
             const emailValue = inputEmail.value;
+            // const invalidCharRegex = /[^\w.!#$%&'*+/=?^_`{|}~-]/;  // 허용된 특수문자 외의 문자 검증
+
+            // if (!emailRegex.test(emailValue) || invalidCharRegex.test(emailValue)) {
             if (!emailRegex.test(emailValue)) {
                 helpEmail.textContent = "* 올바른 이메일 형식을 입력해주세요.";
+                // helpEmail.textContent = "* 올바른 이메일 형식을 입력해주세요.(특수문자 확인)";
                 helpEmail.style.color = "red";
                 inputEmailValid = false;
             } else {
@@ -204,9 +214,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         inputPassword.onkeyup = function () {
             helpPassword.classList.remove('hide');
             if (inputPassword.value.length > 0) {
-                const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
 
-                if (regex.test(inputPassword.value)) {
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/;  // 허용된 특수문자: @$!%*?&
+                const invalidCharRegex = /[^a-zA-Z\d@$!%*?&]/;  // 허용된 특수문자 외의 문자 검증
+
+                if (invalidCharRegex.test(inputPassword.value)) {
+                    helpPassword.textContent = "* 허용된 특수문자(@$!%*?&) 외의 문자를 사용할 수 없습니다.";
+                    helpPassword.style.color = "red";
+                    inputPasswordValid = false;
+                } else if (passwordRegex.test(inputPassword.value)) {
                     helpPassword.textContent = "* 사용할 수 있는 비밀번호 입니다.";
                     helpPassword.style.color = "green";
                     inputPasswordValid = true;
@@ -289,11 +305,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // 닉네임 검증
         inputNickname.onkeyup = async function () {
             helpNickname.classList.remove('hide');
+            // const forbiddenWhitespace = /[\u200B-\u200D\uFEFF\u3164]/g; // 공백 문자
+            const forbiddenWhitespace = '\u3164';
+            const invalidCharRegex = /[^a-zA-Z0-9._\uAC00-\uD7A3-]/;  // 허용된 문자: 영문자, 숫자, . _ - , 한글
+            
             if (inputNickname.value.length === 0) {
                 helpNickname.textContent = "* 닉네임을 입력해 주세요.";
                 helpNickname.style.color = "red";
                 inputNicknameValid = false;
-            } else if (inputNickname.value.includes(' ')) {
+            } else if (invalidCharRegex.test(inputNickname.value)) {
+                helpNickname.textContent = "* 허용된 특수문자(._- ) 외의 문자를 사용할 수 없습니다.";
+                helpNickname.style.color = "red";
+                inputNicknameValid = false;
+            } else if (inputNickname.value.includes(' ') || inputNickname.value.includes(forbiddenWhitespace)) {
                 helpNickname.textContent = "* 띄어쓰기를 없애주세요.";
                 helpNickname.style.color = "red";
                 inputNicknameValid = false;
@@ -362,23 +386,25 @@ document.addEventListener('DOMContentLoaded', function() {
         // 모든 검증을 통합하여 게시 버튼 활성화
         function updatePostButtonStatus() {
             if (inputWriteValid) {
-                postButton.classList.add("active");
-                postButton.disabled = false;
+                activeButton(postButton);
             } else {
-                postButton.classList.remove("active");
-                postButton.disabled = true;
+                disableButton(postButton);
             }
         }
 
         function validatePost() {
             helpPost.classList.remove('hide');
+            // const forbiddenWhitespace = /[\u200B-\u200D\uFEFF\u3164]/g; // 공백 문자
+            const forbiddenWhitespace = '\u3164';
+
+
             // 제목 길이 검증
             if (inputTitle.value.trim().length > 26) {
                 helpPost.textContent = "* 제목은 26자 이하로 작성해주세요.";
                 helpPost.style.color = "red";
                 inputWriteValid = false;
-            } else if (inputTitle.value.trim() === '' || inputContent.value.trim() === '') {
-                helpPost.textContent = "* 제목과 내용을 모두 작성해주세요.";
+            } else if (inputTitle.value.trim() === '' || inputContent.value.trim() === '' || inputTitle.value.includes(forbiddenWhitespace)) {
+                helpPost.textContent = "* 제목과 내용을 모두 작성해주세요. (공백 특수문자는 제외됩니다.)";
                 helpPost.style.color = "red";
                 inputWriteValid = false;
             } else {
@@ -398,5 +424,56 @@ document.addEventListener('DOMContentLoaded', function() {
             inputTitle.onkeyup = validatePost;
             inputContent.onkeyup = validatePost;
         }
+    }
+});
+
+// posts-contents 
+// 댓글 입력 검증
+
+// TODO : 여기 댓글 유효성 해결..
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.href.includes('/posts/')) {
+
+        const forbiddenWhitespace = '\u3164'; // 공백 문자
+
+        function validateComment(content) {
+            const strippedContent = content.replace(forbiddenWhitespace, '').trim();
+            return strippedContent.length !== 0;
+        }
+
+        function updateButtonStatus(textarea, button) {
+            if (validateComment(textarea.value)) {
+                button.classList.add("active");
+                button.disabled = false;
+            } else {
+                button.classList.remove("active");
+                button.disabled = true;
+            }
+        }
+
+        // 댓글 작성
+        let inputCommentWrite = document.getElementById('comment');
+        const commentWriteButton = document.getElementById('commentWriteButton');
+        inputCommentWrite.addEventListener('input', function() {
+            updateButtonStatus(inputCommentWrite, commentWriteButton);
+        });
+
+        // 댓글 수정
+        let inputCommentEdit = document.getElementById('commentEdit');
+        const commentEditButton = document.getElementById('commentEditButton');
+        if (inputCommentEdit && commentEditButton) {
+            inputCommentEdit.addEventListener('input', function() {
+                updateButtonStatus(inputCommentEdit, commentEditButton);
+            });
+        }
+        
+        // 댓글 수정 폼이 동적으로 추가될 경우를 대비한 이벤트 위임
+        document.body.addEventListener('input', function(event) {
+            if (event.target.classList.contains('edit-input')) {
+                const inputCommentEdit = event.target;
+                const commentEditButton = inputCommentEdit.nextElementSibling.nextElementSibling;
+                updateButtonStatus(inputCommentEdit, commentEditButton);
+            }
+        });
     }
 });

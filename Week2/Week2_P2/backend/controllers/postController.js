@@ -57,9 +57,9 @@ export const createPost = async (req, res) => {
             comments: 0,
             views: 0
         });
-        const savedPost = await Post.create(newPost);
+        const { savedPost, postId } = await Post.create(newPost);
         console.log("게시글이 성공적으로 작성되었습니다.:", savedPost);
-        res.status(201).json({ message: '게시글이 성공적으로 작성되었습니다.', post: savedPost });
+        res.status(201).json({ message: '게시글이 성공적으로 작성되었습니다.', savedPost, postId });
 
     } catch (err) {
         console.error('Error creating post:', err.message, err.stack);

@@ -65,7 +65,7 @@ export const addCommentToPost = async (req, res) => {
     const { content } = req.body;
     const author = req.session.username;
     const authorId = req.session.userId;
-    const imagePath = user.profileImage;
+    const imagePath = req.session.profileImage || user.profileImage;
     console.log(req.body, "Author:", req.session.username, "Author ID:", req.session.userId, imagePath);
     const newCommentData = {
         postId:parseInt(postId),

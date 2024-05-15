@@ -941,3 +941,114 @@ remote:      https://github.com/100-hours-a-week/5-judy-kim-community/security/d
 remote: 
 To github.com:100-hours-a-week/5-judy-kim-community.git
    0c0aeea..fb199aa  main -> main
+[main d9c2df6] backup Wed May 15 12:00:01 KST 2024
+ 118 files changed, 1503 insertions(+), 306 deletions(-)
+ create mode 100644 Week2/Week2_P2/frontend/static/js/headerIslogin.js
+ delete mode 100644 Week2/Week2_P2/frontend/static/js/logout.js
+ delete mode 100644 Week2/Week2_P2/images/picture3.png
+ delete mode 100644 Week2/Week2_P2/images/picture5.png
+ delete mode 100644 "Week2/Week2_P2/images/postImage-1715568272528-\303\241\302\204\302\211\303\241\302\205\302\263\303\241\302\204\302\217\303\241\302\205\302\263\303\241\302\204\302\205\303\241\302\205\302\265\303\241\302\206\302\253\303\241\302\204\302\211\303\241\302\205\302\243\303\241\302\206\302\272 2024-05-02 \303\241\302\204\302\213\303\241\302\205\302\251\303\241\302\204\302\214\303\241\302\205\302\245\303\241\302\206\302\253 10.34.34.png"
+ delete mode 100644 "Week2/Week2_P2/images/postImage-1715568496337-\303\241\302\204\302\211\303\241\302\205\302\263\303\241\302\204\302\217\303\241\302\205\302\263\303\241\302\204\302\205\303\241\302\205\302\265\303\241\302\206\302\253\303\241\302\204\302\211\303\241\302\205\302\243\303\241\302\206\302\272 2024-05-02 \303\241\302\204\302\213\303\241\302\205\302\251\303\241\302\204\302\214\303\241\302\205\302\245\303\241\302\206\302\253 11.14.47.png"
+ delete mode 100644 Week2/Week2_P2/images/postImagePath-1715617914737.jpeg
+ delete mode 100644 Week2/Week2_P2/images/postImagePath-1715618138378.jpeg
+ delete mode 100644 Week2/Week2_P2/images/postImagePath-1715618157156.png
+ delete mode 100644 Week2/Week2_P2/images/postImagePath-1715665978560.jpeg
+ rename Week2/Week2_P2/images/{postImage-1715159641724-picture1.png => postImagePath-1715681224617.png} (100%)
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715689510279.jpeg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715689615990.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715689782048.jpeg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715689833251.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715689869841.jpeg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715690037741.gif
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715690236941.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715690341325.jpg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715690482274.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715690485165.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691085166.jpg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691096880.jpg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691219674.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691221458.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691222040.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691222490.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691222841.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691223831.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691224306.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691224481.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691224778.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691226693.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691483296.jpg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691705910.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691712093.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715691714432.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692296849.jpg
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692408347.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692442192.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692455943.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692458687.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692518765.gif
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692525461.gif
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692533366.gif
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715692534160.gif
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715592134777.png
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715659833329.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715659904606.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715659983569.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715660624002.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715660645399.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715660666102.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715660708310.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715660848917.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715660997254.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715661078710.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715661139998.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715661207457.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715661471202.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715661528938.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715661866947.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715662067683.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715662188275.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715662240919.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715662253960.png
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715668784571.jpeg
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715675470985.png
+ delete mode 100644 Week2/Week2_P2/images/profileImage-1715676436124.png
+ rename Week2/Week2_P2/images/{profile.png => profileImage-1715681038446.png} (100%)
+ rename Week2/Week2_P2/images/{picture2.png => profileImage-1715681992135.png} (100%)
+ rename Week2/Week2_P2/images/{picture4.png => profileImage-1715683638989.png} (100%)
+ rename Week2/Week2_P2/images/{profileImage-1715159582066.png => profileImage-1715684750390.png} (100%)
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715689509499.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715689549126.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715689771180.jpg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715689887521.jpeg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715689945750.jpg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715690062270.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715690220705.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715690643885.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715690923616.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715691196092.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715691442500.jpg
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715691631770.jpeg
+ create mode 100644 Week2/Week2_P2/sessions/0IWPA_r7oOt5l9S0mb44oYOJVOfQ0cWR.json
+ create mode 100644 Week2/Week2_P2/sessions/57P30FUNz4vLGMGBAG-1l3WHVmS3-eYM.json
+ create mode 100644 Week2/Week2_P2/sessions/8Ti0lWA1Hdo1WwKiIRTpOgDDL0SFHBxN.json
+ create mode 100644 Week2/Week2_P2/sessions/9vUg8PlseGTZ0BvVCsW6zefFLSIwgDmH.json
+ create mode 100644 Week2/Week2_P2/sessions/BsjRq_CSAd83a_gPRQXAP_4WxYKH9TA2.json
+ create mode 100644 Week2/Week2_P2/sessions/JtrnoR-sjgAYgHotBLS_KIZyyYzNmSzX.json
+ create mode 100644 Week2/Week2_P2/sessions/N20BEkOBTjyjJNJ79lrP9D0Q4Pnp5IGK.json
+ create mode 100644 Week2/Week2_P2/sessions/Ram8L9vstESVImLVxt2DQc5TmK8WfXRZ.json
+ create mode 100644 Week2/Week2_P2/sessions/WOFxzCZJgOqBFDEc8nVaEC0TB1M2m0ib.json
+ create mode 100644 Week2/Week2_P2/sessions/nycHmeiLZOOd_jLWva6Om3H03NAb4t40.json
+ delete mode 100644 Week2/Week2_P2/sessions/pcoIucDv0dAMuIiZEZWykNjG_eIQwRrB.json
+ create mode 100644 Week2/Week2_P2/sessions/qm4_TfwxDRJrPBFFhSOvn7TDl0cdGnCC.json
+ create mode 100644 Week2/Week2_P2/sessions/rZ2unJUEcAa_5fj7NmIP_2cjKPO4fftz.json
+ create mode 100644 Week2/Week2_P2/sessions/t4llEG1LZkf3--iQbCU53q9hZuK7_6tB.json
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   fb199aa..d9c2df6  main -> main
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.

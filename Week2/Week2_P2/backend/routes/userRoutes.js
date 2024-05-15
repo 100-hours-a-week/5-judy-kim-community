@@ -35,7 +35,6 @@ router.get('/check-email', checkEmailExists);
 router.get('/check-nickname', checkNicknameExists);
 router.get('/userinfo', getUserInfo);
 router.get('/', getUsers);
-// router.patch('/update', updateUser);
 router.patch('/update1', upload.single('profileImage'), updateUser);
 router.patch('/update2', updatePassword);
 

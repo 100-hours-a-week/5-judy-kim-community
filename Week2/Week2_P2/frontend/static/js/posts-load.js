@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
             data.forEach(post => {
                 const postDate = new Date(post.createdAt).toLocaleDateString('ko-KR');
                 const postTime = new Date(post.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }); 
+
+                let authorNameHTML = `<h4>${post.author}</h4>`;
+                if (post.authorId === 1) {
+                    authorNameHTML = `<h4 style="color: #95bfff;">${post.author} (개발자)</h4>`;
+                }
                 postsHTML += `
                 <a href="/posts/${post.id}" class="post-link">
                 <article class="post-card">
@@ -33,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <hr class="card-line">
                     <div class="profile">
                         <div class="user-image" style="background-image:url('${post.userImagePath}');" alt="Profile Image"></div>
-                        <div class="user-name">
-                        <h4>${post.author}</h4>
+                        <div class="user-name">${authorNameHTML}</div>
                     </div>
                 </article>
                 </a>`;
@@ -100,7 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const userNameElement = document.getElementById('user-name');
             if (userNameElement) {
                 userNameElement.innerHTML = `<h4>${post.author}</h4>`;
-            }
+                if (post.authorId === 1) {
+                    userNameElement.innerHTML = `<h4 style="color: #95bfff;">${post.author} (개발자)</h4>`;
+                }                
+            }            
     
             // date and time
             const dateElement = document.getElementById('date');
@@ -146,7 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
             // Load comments for the post
             // setupModalEventListeners();
-            window.loadComments(postId);
+            loadCurrentUser().then(() => {
+                loadComments(postId);
+            });
+            // window.loadComments(postId);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -170,6 +180,29 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
     */
 
+
+    // 현재 사용자 정보 가져오기 (댓글이 내가 쓴건지 확인하기 위해서)
+    let currentUser = {};
+    function loadCurrentUser() {
+        return fetch('http://127.0.0.1:8000/api/users/userinfo', {
+            method: 'GET',
+            credentials: 'include' // 세션 쿠키를 포함하여 요청
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch current user info: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(user => {
+            currentUser = user;
+            console.log('Current user:', currentUser);
+        })
+        .catch(error => {
+            console.error('Error fetching current user info:', error);
+        });
+    }
+
     window.loadComments = function(postId) {
         fetch(`http://127.0.0.1:8000/api/comments/${postId}/comments`)
         .then(response => response.json())
@@ -189,10 +222,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 const commentTime = new Date(comment.createdAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
                 
                 // 색상 변경 및 표시 조건 추가
-                const authorClass = comment.authorIsPoster ? 'author-comment' : '';
-                const colorStyle = comment.authorIsPoster ? 'style="color: #ff9595;"' : '';
-                const authorText = comment.authorIsPoster ? `${comment.author} (글쓴이)` : comment.author;
+                const isJudy = comment.authorId === 1; // 개발자 Judy
+                const isCurrentUser = comment.authorId === currentUser.id; // 현재 사용자
+                const authorClass = comment.authorIsPoster ? 'author-comment' : ''; // 글쓴이 또는 일반 사용자
                 
+                let colorStyle = '';
+                if (isJudy) {
+                    colorStyle = 'style="color: #95bfff;"'; // 주디!
+                } else if (isCurrentUser) {
+                    colorStyle = 'style="color: #cc99ff;"'; // 현재 사용자일 경우
+                } else if (comment.authorIsPoster) {
+                    colorStyle = 'style="color: #ff9595;"'; // 글쓴이일 경우
+                } 
+
+                const authorText = isJudy ? `${comment.author} (개발자)`
+                    : isCurrentUser ? `${comment.author} (나)`
+                    : comment.authorIsPoster ? `${comment.author} (글쓴이)` 
+                    : comment.author;
+                
+                fetch('http://127.0.0.1:8000/api/users/userinfo', {
+                    credentials: 'include'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.id);
+                    if (data.id === comment.authorId) {
+                        // 나에게만 이름이 닉네임 (나) 로 보이도록 설정
+                    }
+                })
+                .catch(error => console.error('Error loading the post:', error));
+            
+                const formattedContent = comment.content.replace(/\n/g, '<br>');
                 const commentHTML = `
                     <article id="comment-${comment.id}" class="command-parent ${authorClass}">
                         <div class="command-set">
@@ -212,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div id="command-button-parent-${comment.id}" class="command-button-parent"></div>                                
                             </div>
                             <div id="edit-form-${comment.id}" class="edit-form" style="display: none;"></div>                       
-                            <div class="comment-content command-text"><p>${comment.content}</p></div>
+                            <div class="comment-content command-text"><p>${formattedContent}</p></div>
                         </div>
                     </article>
                 `;
@@ -247,12 +307,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         `;
                         document.getElementById(`command-button-parent-${comment.id}`).innerHTML = editDeleteButtonsHTML;
                         
+                        const formattedContent = comment.content.replace('<br>', '');
                         const editFormHTML = `
-                            <textarea class="edit-input">${comment.content}</textarea>
-                            <button class="button-save" data-comment-id="${comment.id}">저장</button>
+                            <textarea class="edit-input" id="commentEdit">${formattedContent}</textarea>
+                            <p class="helptext editHelpText hide">* helptext</p>
+                            <button id="commentEditButton" class="button-save" data-comment-id="${comment.id}">저장</button>
                         `;
                         document.getElementById(`edit-form-${comment.id}`).innerHTML = editFormHTML;
-                        // setupModalEventListeners();
+                        
                     } else {
                         console.log("작성자가 아니어서 댓글을 수정할 수 없습니다.");
                     }
@@ -275,6 +337,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log("button-edit clicked");
                     const commentId = event.target.dataset.commentId;
                     console.log("commentId show clicked", commentId);
+
+                    // 댓글 수정 : 강제로 입력 이벤트를 트리거
+                    const inputCommentEdits = document.querySelectorAll('.edit-input');
+                    inputCommentEdits.forEach(input => {
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    });
+                    
                     const commentElement = document.getElementById(`comment-${commentId}`);
                     commentElement.querySelector('.edit-form').style.display = 'flex';
                     commentElement.querySelector('.button-edit').style.display = 'none';
@@ -362,6 +431,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (deletedComment) {
                 deletedComment.remove();
                 console.log('댓글이 삭제되었습니다.');
+
+                // 댓글 수 업데이트
+                const postId = window.location.pathname.split('/').pop(); // post id 가져오기
+                loadCurrentUser().then(() => {
+                    loadComments(postId);
+                });
+                // window.loadComments(postId);
             } else {
                 console.log('댓글이 없습니다.');
             }
