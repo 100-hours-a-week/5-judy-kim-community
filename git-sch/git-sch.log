@@ -1052,3 +1052,42 @@ hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 0b45406] backup Thu May 16 00:00:00 KST 2024
+ 61 files changed, 1004 insertions(+), 551 deletions(-)
+ create mode 100644 Week2/Week2_P2/data/-test-comments.json
+ create mode 100644 Week2/Week2_P2/data/-test-commentsIndex.json
+ create mode 100644 Week2/Week2_P2/data/-test-posts.json
+ create mode 100644 Week2/Week2_P2/data/-test-postsIndex.json
+ create mode 100644 Week2/Week2_P2/data/-test-users.json
+ create mode 100644 Week2/Week2_P2/data/-test-usersIndex.json
+ create mode 100644 Week2/Week2_P2/data/>reset-comments.json
+ create mode 100644 Week2/Week2_P2/data/>reset-commentsIndex.json
+ create mode 100644 Week2/Week2_P2/data/>reset-posts.json
+ create mode 100644 Week2/Week2_P2/data/>reset-postsIndex.json
+ create mode 100644 Week2/Week2_P2/data/>reset-users.json
+ create mode 100644 Week2/Week2_P2/data/>reset-usersIndex.json
+ create mode 100644 Week2/Week2_P2/frontend/static/css/toast-message.css
+ create mode 100644 Week2/Week2_P2/frontend/static/js/toast-message.js
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715753418873.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715782785887.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715744139528.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715744385872.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715749216000.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715749521045.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715751831880.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715753348410.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715753398399.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715753821790.png
+ delete mode 100644 Week2/Week2_P2/sessions/rZ2unJUEcAa_5fj7NmIP_2cjKPO4fftz.json
+ delete mode 100644 Week2/Week2_P2/sessions/t4llEG1LZkf3--iQbCU53q9hZuK7_6tB.json
+ create mode 100644 "Week2/Week2_P2/\353\260\260\355\217\254.txt"
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+   d9c2df6..0b45406  main -> main
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
