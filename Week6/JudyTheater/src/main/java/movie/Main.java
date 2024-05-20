@@ -52,6 +52,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("\n입력방식이 잘못되었습니다. 다시 입력해주십시오.");
+                    System.out.print(">> ");
                     choice = scanner.nextLine();
                     break;
             }
@@ -134,7 +135,8 @@ public class Main {
         System.out.println("=======================================================");
         System.out.println("\n[ " + selectedMovie + " ]를 상영하는 극장입니다. \n| 상영 0 :■/ 상영 X :□ |\n");
 
-        String theaterChoice = chooseTheater(selectedMovie);
+        chooseTheater(selectedMovie);
+//         String theaterChoice =
 
         System.out.println("\n극장을 선택하여 주십시오. [번호 입력]");
         System.out.print(">> ");
@@ -223,7 +225,7 @@ public class Main {
         }
     }
 
-    static String chooseTheater(String movie) {
+    static void chooseTheater(String movie) {
         int count = 1;
         String[] theaters = {C_A, C_B, C_C};
         for (String theater : theaters) {
@@ -235,7 +237,7 @@ public class Main {
             }
             count++;
         }
-        return scanner.nextLine();
+        return;
     }
 
     static boolean isMovieAvailableInTheater(String theater, String movie) {
