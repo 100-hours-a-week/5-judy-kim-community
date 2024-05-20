@@ -53,6 +53,7 @@
     "authorIsPoster": false,
     "createdAt": "2024-05-15T14:04:39.750Z",
     "updatedAt": "2024-05-15T14:18:26.755Z"
+<<<<<<< HEAD
   },
   {
     "id": 11,
@@ -108,5 +109,7 @@
     "authorIsPoster": true,
     "createdAt": "2024-05-16T12:57:14.888Z",
     "updatedAt": "2024-05-16T12:57:14.888Z"
+=======
+>>>>>>> origin/main
   }
 ]

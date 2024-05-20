@@ -1052,6 +1052,7 @@ hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+<<<<<<< HEAD
 [main 0b45406] backup Thu May 16 00:00:00 KST 2024
  61 files changed, 1004 insertions(+), 551 deletions(-)
  create mode 100644 Week2/Week2_P2/data/-test-comments.json
@@ -1329,3 +1330,5 @@ hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+=======
+>>>>>>> origin/main

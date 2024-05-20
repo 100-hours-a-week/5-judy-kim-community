@@ -8,10 +8,17 @@
     "userImagePath": "/images/profileImage-1715753398399.png",
     "postImagePath": null,
     "createdAt": "2024-05-15T06:16:26.103Z",
+<<<<<<< HEAD
     "updatedAt": "2024-05-16T13:04:24.899Z",
     "likes": 0,
     "comments": 3,
     "views": 29
+=======
+    "updatedAt": "2024-05-15T14:07:16.772Z",
+    "likes": 0,
+    "comments": 2,
+    "views": 23
+>>>>>>> origin/main
   },
   {
     "id": 2,
@@ -22,6 +29,7 @@
     "userImagePath": "/images/profileImage-1715753821790.png",
     "postImagePath": null,
     "createdAt": "2024-05-15T06:17:27.095Z",
+<<<<<<< HEAD
     "updatedAt": "2024-05-16T13:02:32.790Z",
     "likes": 0,
     "comments": 3,
@@ -82,5 +90,11 @@
     "likes": 0,
     "comments": 1,
     "views": 5
+=======
+    "updatedAt": "2024-05-15T14:33:52.957Z",
+    "likes": 0,
+    "comments": 3,
+    "views": 44
+>>>>>>> origin/main
   }
 ]

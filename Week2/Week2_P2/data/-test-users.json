@@ -12,6 +12,7 @@
     "password": "$2b$10$p.IfnV3VUvgYAV4tI1/hBehyMIT0mKY4kkxYVthUU2UyBqD1mMcZ6",
     "nickname": "주디친구",
     "profileImage": "/images/profileImage-1715753821790.png"
+<<<<<<< HEAD
   },
   {
     "id": 4,
@@ -19,5 +20,7 @@
     "password": "$2b$10$in29HgMn5YK06pyCxrZmNumDqFs0s4AwBZ5j5hk0k0nLOJLPTlMqG",
     "nickname": "주디2",
     "profileImage": "/images/profileImage-1715864114477.png"
+=======
+>>>>>>> origin/main
   }
 ]
