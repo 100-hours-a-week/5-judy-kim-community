@@ -1,1 +1,2 @@
 *.mov filter=lfs diff=lfs merge=lfs -text
+Week3/3주차[[:space:]]주디[[:space:]]QA.mov filter=lfs diff=lfs merge=lfs -text
