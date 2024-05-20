@@ -2,10 +2,12 @@ package movie;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+    static Random random = new Random();
 
     // 영화 목록
     static String[] movies = {"영화A", "영화B", "영화C", "영화D"};
@@ -20,13 +22,13 @@ public class Main {
     static Schedule[][] C = new Schedule[4][4];
 
     static {
-        // Schedule 객체 생성 및 초기화
+        // Schedule 객체 생성 및 초기화 (상영 여부 랜덤으로 설정)
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                A[i][j] = new Schedule("Schedule", "date", "time", new Movie(movies[j % movies.length], null, 0, "admin", "admin"), new Seat[10], "admin", "admin");
-                B[i][j] = new Schedule("Schedule", "date", "time", new Movie(movies[j % movies.length], null, 0, "admin", "admin"), new Seat[10], "admin", "admin");
-                C[i][j] = new Schedule("Schedule", "date", "time", new Movie(movies[j % movies.length], null, 0, "admin", "admin"), new Seat[10], "admin", "admin");
-           }
+                A[i][j] = new Schedule("Schedule", "date", "time", new Movie(movies[j % movies.length], null, 0, "admin", "admin"), new Seat[80], "admin", "admin");
+                B[i][j] = new Schedule("Schedule", "date", "time", new Movie(movies[j % movies.length], null, 0, "admin", "admin"), new Seat[80], "admin", "admin");
+                C[i][j] = new Schedule("Schedule", "date", "time", new Movie(movies[j % movies.length], null, 0, "admin", "admin"), new Seat[80], "admin", "admin");
+            }
         }
     }
 
@@ -52,8 +54,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("\n입력방식이 잘못되었습니다. 다시 입력해주십시오.");
-                    System.out.print(">> ");
-                    choice = scanner.nextLine();
+                    choice = chooseCategory();
                     break;
             }
         }
@@ -136,7 +137,6 @@ public class Main {
         System.out.println("\n[ " + selectedMovie + " ]를 상영하는 극장입니다. \n| 상영 0 :■/ 상영 X :□ |\n");
 
         chooseTheater(selectedMovie);
-//         String theaterChoice =
 
         System.out.println("\n극장을 선택하여 주십시오. [번호 입력]");
         System.out.print(">> ");
@@ -151,66 +151,59 @@ public class Main {
         int theaterIndex = Integer.parseInt(theaterInput) - 1;
         String selectedTheater = new String[]{C_A, C_B, C_C}[theaterIndex];
 
-        System.out.println("=======================================================");
-        System.out.println("\n[CGV " + selectedTheater + "] 상영 시간표\n\n | 상영시간 / 상영관 1 2 3 4 | \n | 상영 0 :■/ 상영 X :□ |\n");
+        String day = getValidInput("날짜 [ex) 월   ] >> ", Main::isValidDay);
+        List<String> availableTimes = getAvailableTimes(theaterIndex, day, selectedMovie);
 
-        displayTimetable(theaterIndex);
-
-        System.out.println("\n날짜,시간,상영관을 선택하여 주십시오.");
-        System.out.print("   날짜 [ex) 월   ] >> ");
-        String day = scanner.nextLine();
-        System.out.print("   시간 [ex) 13:00] >> ");
-        String time = scanner.nextLine();
-        System.out.print(" 상영관 [ex) 1    ] >> ");
-        String hall = scanner.nextLine();
-
-        while (!isTimeValid(theaterIndex, day, time, hall, selectedMovie)) {
-            System.out.println("\n\n입력방식이 잘못되었습니다. 다시 입력해 주십시오.\n");
-            System.out.print("   날짜 [ex) 월   ] >> ");
-            day = scanner.nextLine();
-            System.out.print("   시간 [ex) 13:00] >> ");
-            time = scanner.nextLine();
-            System.out.print(" 상영관 [ex) 1    ] >> ");
-            hall = scanner.nextLine();
+        if (availableTimes.isEmpty()) {
+            System.out.println("\n해당 날짜에 상영 가능한 시간이 없습니다. 다른 날짜를 선택해주십시오.");
+            bookTicket();
+            return;
         }
 
+        System.out.println("\n선택 가능한 시간:");
+        for (String time : availableTimes) {
+            System.out.print(time + " ");
+        }
+        System.out.println();
+
+        String time = getValidInput("시간 [ex) 13:00] >> ", input -> availableTimes.contains(input));
+
+        List<String> availableHalls = getAvailableHalls(theaterIndex, day, time, selectedMovie);
+
+        System.out.println("\n선택 가능한 상영관:");
+        for (String hall : availableHalls) {
+            System.out.print(hall + " ");
+        }
+        System.out.println();
+
+        String hall = getValidInput("상영관 [ex) 1    ] >> ", input -> availableHalls.contains(input));
+
         System.out.println("\n\n=======================================================");
-        System.out.println(day + "요일" + time + hall + "상영관의 좌석 배치도입니다.");
+        System.out.println(day + "요일 " + time + " " + hall + " 상영관의 좌석 배치도입니다.");
 
         // 좌석 만들기!
-        displaySeats();
+        displaySeats(theaterIndex, day, time, hall);
 
         // 관람 인원수 입력
         System.out.println("\n\n=======================================================");
         System.out.println("[요금]\n\n |성인(만 19세 이상)   10000\n |청소년(만 19세 미만) 7000\n |아동(36개월 이하)    3000\n\n관람 인원수를 입력해 주십시오.\n|성인/ 청소년/ 아동|\n");
 
-        System.out.print("성인   :");
-        int adults = getValidNumber(scanner.nextLine());
-
-        System.out.print("청소년 :");
-        int teens = getValidNumber(scanner.nextLine());
-
-        System.out.print("아동   :");
-        int children = getValidNumber(scanner.nextLine());
+        int adults = getValidNumber("성인   :");
+        int teens = getValidNumber("청소년 :");
+        int children = getValidNumber("아동   :");
 
         int totalPeople = adults + teens + children;
 
         while (totalPeople == 0) {
             System.out.println("관람 인원수는 1 이상이어야 합니다. 다시 관람 인원수를 입력해 주십시오.\n");
-            System.out.print("성인   :");
-            adults = getValidNumber(scanner.nextLine());
-
-            System.out.print("청소년 :");
-            teens = getValidNumber(scanner.nextLine());
-
-            System.out.print("아동   :");
-            children = getValidNumber(scanner.nextLine());
-
+            adults = getValidNumber("성인   :");
+            teens = getValidNumber("청소년 :");
+            children = getValidNumber("아동   :");
             totalPeople = adults + teens + children;
         }
 
         // 좌석 선택
-        List<String> chosenSeats = chooseSeats(totalPeople);
+        List<String> chosenSeats = chooseSeats(theaterIndex, day, time, hall, totalPeople);
 
         // 결제
         processPayment(selectedTheater, selectedMovie, day, time, hall, adults, teens, children, chosenSeats);
@@ -237,14 +230,13 @@ public class Main {
             }
             count++;
         }
-        return;
     }
 
     static boolean isMovieAvailableInTheater(String theater, String movie) {
         Schedule[][] schedules = theater.equals(C_A) ? A : (theater.equals(C_B) ? B : C);
         for (Schedule[] scheduleDay : schedules) {
             for (Schedule schedule : scheduleDay) {
-                if (schedule.getMovie().getTitle().equals(movie)) {
+                if (schedule.getMovie().getTitle().equals(movie) && schedule.isAvailable()) {
                     return true;
                 }
             }
@@ -262,7 +254,7 @@ public class Main {
             for (int j = 0; j < 4; j++) {
                 System.out.print(times[j] + " ");
                 for (int k = 0; k < 4; k++) {
-                    if (theater[i][j].getMovie().getTitle().equals(movies[k])) {
+                    if (theater[i][j].getMovie().getTitle().equals(movies[k]) && theater[i][j].isAvailable()) {
                         System.out.print("■ ");
                     } else {
                         System.out.print("□ ");
@@ -274,7 +266,54 @@ public class Main {
         }
     }
 
-    static boolean isTimeValid(int theaterIndex, String day, String time, String hall, String movie) {
+    static boolean isValidDay(String day) {
+        return "월화수목".contains(day) && day.length() == 1;
+    }
+
+    static boolean isValidTime(String time) {
+        return "13:0015:0017:0019:00".contains(time) && time.length() == 5;
+    }
+
+    static boolean isValidHall(String hall) {
+        try {
+            int hallNumber = Integer.parseInt(hall);
+            return hallNumber >= 1 && hallNumber <= 4;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    static List<String> getAvailableTimes(int theaterIndex, String day, String movie) {
+        int dayIndex = "월화수목".indexOf(day);
+        Schedule[][] theater = theaterIndex == 0 ? A : (theaterIndex == 1 ? B : C);
+        List<String> availableTimes = new ArrayList<>();
+        String[] times = {"13:00", "15:00", "17:00", "19:00"};
+
+        for (int i = 0; i < 4; i++) {
+            if (theater[dayIndex][i].getMovie().getTitle().equals(movie) && theater[dayIndex][i].isAvailable()) {
+                availableTimes.add(times[i]);
+            }
+        }
+
+        return availableTimes;
+    }
+
+    static List<String> getAvailableHalls(int theaterIndex, String day, String time, String movie) {
+        int dayIndex = "월화수목".indexOf(day);
+        int timeIndex = "13:0015:0017:0019:00".indexOf(time) / 5;
+        Schedule[][] theater = theaterIndex == 0 ? A : (theaterIndex == 1 ? B : C);
+        List<String> availableHalls = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++) {
+            if (theater[dayIndex][timeIndex].getMovie().getTitle().equals(movie) && theater[dayIndex][timeIndex].isAvailable()) {
+                availableHalls.add(String.valueOf(i + 1));
+            }
+        }
+
+        return availableHalls;
+    }
+
+    static boolean isMovieScheduled(int theaterIndex, String day, String time, String hall, String movie) {
         int dayIndex = "월화수목".indexOf(day);
         int timeIndex = "13:0015:0017:0019:00".indexOf(time) / 5;
         int hallIndex = Integer.parseInt(hall) - 1;
@@ -284,49 +323,72 @@ public class Main {
         }
 
         Schedule[][] theater = theaterIndex == 0 ? A : (theaterIndex == 1 ? B : C);
-        return theater[dayIndex][timeIndex].getMovie().getTitle().equals(movie);
+        return theater[dayIndex][timeIndex].getMovie().getTitle().equals(movie) && theater[dayIndex][timeIndex].isAvailable();
     }
 
-    static void displaySeats() {
-        System.out.println(">> ⬜️: 예매 완료 좌석\n>> 🟨: 예매 가능 좌석");
+    static String getValidInput(String prompt, java.util.function.Predicate<String> validator) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("B")) {
+                return "B";
+            }
+            if (validator.test(input)) {
+                return input;
+            }
+            System.out.println("\n입력방식이 잘못되었습니다. 다시 입력해 주십시오.\n");
+        }
+    }
+
+    static void displaySeats(int theaterIndex, String day, String time, String hall) {
+        Schedule[][] theater = theaterIndex == 0 ? A : (theaterIndex == 1 ? B : C);
+        int dayIndex = "월화수목".indexOf(day);
+        int timeIndex = "13:0015:0017:0019:00".indexOf(time) / 5;
+        int hallIndex = Integer.parseInt(hall) - 1;
+
+        Schedule schedule = theater[dayIndex][timeIndex];
+
+        System.out.println(">> ■: 예약 완료 좌석\n>> □: 예약 가능 좌석");
         System.out.println("=================================");
         System.out.println("|           < screen >          |");
         System.out.println("=================================");
         System.out.println("|입                            출|");
         System.out.println("|구                            구|");
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print((char) ('A' + i) + String.valueOf(j + 1) + " ");
+        Seat[] seats = schedule.getSeats();
+        for (int i = 0; i < seats.length; i++) {
+            if (i % 10 == 0) {
+                System.out.println();
             }
-            System.out.println();
-
-            for (int j = 0; j < 10; j++) {
-                if (Math.random() < 0.5) {
-                    System.out.print("🟨 ");
-                } else {
-                    System.out.print("⬜️ ");
-                }
+            if (seats[i].isBooked()) {
+                System.out.print("■ ");
+            } else {
+                System.out.print("□ ");
             }
-            System.out.println();
         }
         System.out.println();
     }
 
-    static int getValidNumber(String input) {
+    static int getValidNumber(String prompt) {
+        System.out.print(prompt);
         while (true) {
+            String input = scanner.nextLine();
             try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("\n입력방식이 잘못되었습니다. 다시 입력해 주십시오.\n");
-                input = scanner.nextLine();
+                System.out.print(prompt);
             }
         }
     }
 
-    static List<String> chooseSeats(int totalPeople) {
+    static List<String> chooseSeats(int theaterIndex, String day, String time, String hall, int totalPeople) {
+        Schedule[][] theater = theaterIndex == 0 ? A : (theaterIndex == 1 ? B : C);
+        int dayIndex = "월화수목".indexOf(day);
+        int timeIndex = "13:0015:0017:0019:00".indexOf(time) / 5;
+        Schedule schedule = theater[dayIndex][timeIndex];
+
         System.out.println("\n=======================================================");
-        System.out.println("> 성인   : " + totalPeople + "\n> 청소년 : " + totalPeople + "\n> 아동   : " + totalPeople);
         System.out.println("총 " + totalPeople + "개의 좌석 선택을 진행합니다.");
         System.out.println("선택할 좌석을 하나씩 입력해 주십시오.");
         System.out.println("하나의 좌석 입력 후 [Enter]를 눌러주십시오. [ex) A1 + [Enter] ]\n");
@@ -335,23 +397,33 @@ public class Main {
         for (int i = 1; i <= totalPeople; i++) {
             System.out.print("[" + i + "] >> ");
             String seatChoice = scanner.nextLine();
-            while (!isValidSeatChoice(seatChoice) || isSeatAlreadyChosen(seatChoice, chosenSeats)) {
+            while (!isValidSeatChoice(seatChoice, schedule) || isSeatAlreadyChosen(seatChoice, chosenSeats)) {
                 System.out.println("\n입력방식이 잘못되었습니다. 다시 입력해주십시오.\n");
                 System.out.print("[" + i + "] >> ");
                 seatChoice = scanner.nextLine();
             }
             chosenSeats.add(seatChoice);
+            bookSeat(schedule, seatChoice); // 좌석 예약
         }
 
-        displayChosenSeats(chosenSeats);
+        displayChosenSeats(schedule, chosenSeats);
         return chosenSeats;
     }
 
-    static boolean isValidSeatChoice(String seatChoice) {
-        if (seatChoice.length() == 2) {
-            return "ABCDEFGH".indexOf(seatChoice.charAt(0)) != -1 && "123456789".indexOf(seatChoice.charAt(1)) != -1;
-        } else if (seatChoice.length() == 3) {
-            return "ABCDEFGH".indexOf(seatChoice.charAt(0)) != -1 && "10".equals(seatChoice.substring(1));
+    static boolean isValidSeatChoice(String seatChoice, Schedule schedule) {
+        if (seatChoice.length() == 2 || seatChoice.length() == 3) {
+            char row = seatChoice.charAt(0);
+            int number;
+            try {
+                number = Integer.parseInt(seatChoice.substring(1));
+            } catch (NumberFormatException e) {
+                return false;
+            }
+            for (Seat seat : schedule.getSeats()) {
+                if (seat.getSeatNumber().equals(seatChoice) && !seat.isBooked()) {
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -360,31 +432,35 @@ public class Main {
         return chosenSeats.contains(seatChoice);
     }
 
-    static void displayChosenSeats(List<String> chosenSeats) {
-        System.out.println("\n\n>> ■ : 예매 완료 좌석\n>> □ : 예매 가능 좌석\n>> ▣ : 선택한 좌석");
+    static void bookSeat(Schedule schedule, String seatChoice) {
+        for (Seat seat : schedule.getSeats()) {
+            if (seat.getSeatNumber().equals(seatChoice)) {
+                seat.book();
+                break;
+            }
+        }
+    }
+
+    static void displayChosenSeats(Schedule schedule, List<String> chosenSeats) {
+        System.out.println("\n\n>> ■ : 예약 완료 좌석\n>> □ : 예약 가능 좌석\n>> ▣ : 선택한 좌석");
         System.out.println("=======================================");
         System.out.println("|             < screen >              |");
         System.out.println("=======================================");
         System.out.println("|입                                 출|");
         System.out.println("|구                                 구|");
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print((char) ('A' + i) + String.valueOf(j + 1) + "  ");
+        Seat[] seats = schedule.getSeats();
+        for (int i = 0; i < seats.length; i++) {
+            if (i % 10 == 0) {
+                System.out.println();
             }
-            System.out.println();
-
-            for (int j = 0; j < 10; j++) {
-                String seat = (char) ('A' + i) + String.valueOf(j + 1);
-                if (chosenSeats.contains(seat)) {
-                    System.out.print("▣ ");
-                } else if (Math.random() < 0.5) {
-                    System.out.print("□ ");
-                } else {
-                    System.out.print("■ ");
-                }
+            if (chosenSeats.contains(seats[i].getSeatNumber())) {
+                System.out.print("▣ ");
+            } else if (seats[i].isBooked()) {
+                System.out.print("■ ");
+            } else {
+                System.out.print("□ ");
             }
-            System.out.println();
         }
         System.out.println();
     }
