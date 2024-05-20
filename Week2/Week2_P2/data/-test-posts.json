@@ -8,10 +8,10 @@
     "userImagePath": "/images/profileImage-1715753398399.png",
     "postImagePath": null,
     "createdAt": "2024-05-15T06:16:26.103Z",
-    "updatedAt": "2024-05-15T17:42:47.481Z",
+    "updatedAt": "2024-05-16T13:04:24.899Z",
     "likes": 0,
     "comments": 3,
-    "views": 25
+    "views": 29
   },
   {
     "id": 2,
@@ -22,10 +22,10 @@
     "userImagePath": "/images/profileImage-1715753821790.png",
     "postImagePath": null,
     "createdAt": "2024-05-15T06:17:27.095Z",
-    "updatedAt": "2024-05-16T01:02:24.976Z",
+    "updatedAt": "2024-05-16T13:02:32.790Z",
     "likes": 0,
     "comments": 3,
-    "views": 49
+    "views": 50
   },
   {
     "id": 14,
@@ -36,10 +36,10 @@
     "userImagePath": "/images/profileImage-1715794745535.png",
     "postImagePath": null,
     "createdAt": "2024-05-15T17:39:50.593Z",
-    "updatedAt": "2024-05-16T01:02:22.091Z",
+    "updatedAt": "2024-05-16T13:01:57.326Z",
     "likes": 0,
     "comments": 0,
-    "views": 4
+    "views": 6
   },
   {
     "id": 15,
@@ -50,10 +50,10 @@
     "userImagePath": "/images/profileImage-1715753398399.png",
     "postImagePath": "/images/postImagePath-1715794885572.png",
     "createdAt": "2024-05-15T17:41:01.325Z",
-    "updatedAt": "2024-05-16T01:02:29.497Z",
+    "updatedAt": "2024-05-16T13:02:50.549Z",
     "likes": 0,
     "comments": 2,
-    "views": 7
+    "views": 8
   },
   {
     "id": 17,
@@ -64,7 +64,21 @@
     "userImagePath": "/images/profileImage-1715753821790.png",
     "postImagePath": null,
     "createdAt": "2024-05-15T17:43:35.620Z",
-    "updatedAt": "2024-05-16T01:02:35.502Z",
+    "updatedAt": "2024-05-16T13:02:25.820Z",
+    "likes": 0,
+    "comments": 1,
+    "views": 7
+  },
+  {
+    "id": 18,
+    "title": "title",
+    "content": "qwer1234",
+    "author": "주디2",
+    "authorId": 4,
+    "userImagePath": "/images/profileImage-1715864114477.png",
+    "postImagePath": "/images/postImagePath-1715864197225.png",
+    "createdAt": "2024-05-16T12:56:37.247Z",
+    "updatedAt": "2024-05-16T13:03:04.329Z",
     "likes": 0,
     "comments": 1,
     "views": 5

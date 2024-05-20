@@ -1091,3 +1091,241 @@ hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[main 381523a] backup Thu May 16 12:00:21 KST 2024
+ 26 files changed, 369 insertions(+), 21 deletions(-)
+ create mode 100644 "3\354\243\274\354\260\250 \354\243\274\353\224\224 QA.mov"
+ create mode 100644 Week2/Week2_P2/TC.txt
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715794861307.png
+ create mode 100644 Week2/Week2_P2/images/postImagePath-1715794885572.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715794717787.png
+ create mode 100644 Week2/Week2_P2/images/profileImage-1715794745535.png
+ delete mode 100644 Week2/Week2_P2/sessions/0IWPA_r7oOt5l9S0mb44oYOJVOfQ0cWR.json
+ delete mode 100644 Week2/Week2_P2/sessions/57P30FUNz4vLGMGBAG-1l3WHVmS3-eYM.json
+ delete mode 100644 Week2/Week2_P2/sessions/8Ti0lWA1Hdo1WwKiIRTpOgDDL0SFHBxN.json
+ delete mode 100644 Week2/Week2_P2/sessions/9vUg8PlseGTZ0BvVCsW6zefFLSIwgDmH.json
+ create mode 100644 Week2/Week2_P2/sessions/Bc0tfbaw8F0QzbaQodQjY5sy8G_3U8cN.json
+ delete mode 100644 Week2/Week2_P2/sessions/BsjRq_CSAd83a_gPRQXAP_4WxYKH9TA2.json
+ delete mode 100644 Week2/Week2_P2/sessions/JtrnoR-sjgAYgHotBLS_KIZyyYzNmSzX.json
+ delete mode 100644 Week2/Week2_P2/sessions/N20BEkOBTjyjJNJ79lrP9D0Q4Pnp5IGK.json
+ delete mode 100644 Week2/Week2_P2/sessions/Ram8L9vstESVImLVxt2DQc5TmK8WfXRZ.json
+ delete mode 100644 Week2/Week2_P2/sessions/WOFxzCZJgOqBFDEc8nVaEC0TB1M2m0ib.json
+ delete mode 100644 Week2/Week2_P2/sessions/nycHmeiLZOOd_jLWva6Om3H03NAb4t40.json
+ delete mode 100644 Week2/Week2_P2/sessions/qm4_TfwxDRJrPBFFhSOvn7TDl0cdGnCC.json
+client_loop: send disconnect: Broken pipe
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+error: 'Week6/JavaTest/' does not have a commit checked out
+fatal: adding files failed
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Week2/Week2_P2/TC.txt
+	modified:   Week2/Week2_P2/data/-test-comments.json
+	modified:   Week2/Week2_P2/data/-test-commentsIndex.json
+	modified:   Week2/Week2_P2/data/-test-posts.json
+	modified:   Week2/Week2_P2/data/-test-postsIndex.json
+	modified:   Week2/Week2_P2/data/-test-users.json
+	modified:   Week2/Week2_P2/data/-test-usersIndex.json
+	deleted:    Week2/Week2_P2/sessions/Bc0tfbaw8F0QzbaQodQjY5sy8G_3U8cN.json
+	modified:   git-sch/git-sch.log
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Week2/Week2_P2/images/postImagePath-1715864197225.png
+	Week2/Week2_P2/images/profileImage-1715864114477.png
+	Week2/Week2_P2/sessions/_rLehmEucL1yr49PW0cfFJg0pfDwOseu.json
+	Week6/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+client_loop: send disconnect: Broken pipe
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+error: 'Week6/JavaTest/' does not have a commit checked out
+fatal: adding files failed
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Week2/Week2_P2/TC.txt
+	modified:   Week2/Week2_P2/data/-test-comments.json
+	modified:   Week2/Week2_P2/data/-test-commentsIndex.json
+	modified:   Week2/Week2_P2/data/-test-posts.json
+	modified:   Week2/Week2_P2/data/-test-postsIndex.json
+	modified:   Week2/Week2_P2/data/-test-users.json
+	modified:   Week2/Week2_P2/data/-test-usersIndex.json
+	deleted:    Week2/Week2_P2/sessions/Bc0tfbaw8F0QzbaQodQjY5sy8G_3U8cN.json
+	modified:   git-sch/git-sch.log
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Week2/Week2_P2/images/postImagePath-1715864197225.png
+	Week2/Week2_P2/images/profileImage-1715864114477.png
+	Week2/Week2_P2/sessions/_rLehmEucL1yr49PW0cfFJg0pfDwOseu.json
+	Week6/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+remote: error: Trace: cb11e1c153c4ac68d3258fd86ab08d764ef60ed5a5dbf3225d5135248a10dac8        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File 3주차 주디 QA.mov is 619.65 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'github.com:judy-kimsohui/Kakao-Cloud-School.git'
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+error: 'Week6/JavaTest/' does not have a commit checked out
+fatal: adding files failed
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Week2/Week2_P2/TC.txt
+	modified:   Week2/Week2_P2/data/-test-comments.json
+	modified:   Week2/Week2_P2/data/-test-commentsIndex.json
+	modified:   Week2/Week2_P2/data/-test-posts.json
+	modified:   Week2/Week2_P2/data/-test-postsIndex.json
+	modified:   Week2/Week2_P2/data/-test-users.json
+	modified:   Week2/Week2_P2/data/-test-usersIndex.json
+	deleted:    Week2/Week2_P2/sessions/Bc0tfbaw8F0QzbaQodQjY5sy8G_3U8cN.json
+	modified:   git-sch/git-sch.log
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Week2/Week2_P2/images/postImagePath-1715864197225.png
+	Week2/Week2_P2/images/profileImage-1715864114477.png
+	Week6/
+	"\354\230\201\355\231\224\354\230\210\353\247\244 \355\201\264\353\236\230\354\212\244.drawio"
+
+no changes added to commit (use "git add" and/or "git commit -a")
+remote: error: Trace: d9e00ffa60d5b0a60ad19b5223673d79a1ae6963b3307bbbffa2868e9d10e242        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File 3주차 주디 QA.mov is 619.65 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'github.com:judy-kimsohui/Kakao-Cloud-School.git'
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+error: 'Week6/JavaTest/' does not have a commit checked out
+fatal: adding files failed
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Week2/Week2_P2/TC.txt
+	modified:   Week2/Week2_P2/data/-test-comments.json
+	modified:   Week2/Week2_P2/data/-test-commentsIndex.json
+	modified:   Week2/Week2_P2/data/-test-posts.json
+	modified:   Week2/Week2_P2/data/-test-postsIndex.json
+	modified:   Week2/Week2_P2/data/-test-users.json
+	modified:   Week2/Week2_P2/data/-test-usersIndex.json
+	deleted:    Week2/Week2_P2/sessions/Bc0tfbaw8F0QzbaQodQjY5sy8G_3U8cN.json
+	modified:   git-sch/git-sch.log
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Week2/Week2_P2/images/postImagePath-1715864197225.png
+	Week2/Week2_P2/images/profileImage-1715864114477.png
+	Week6/
+	"\354\230\201\355\231\224\354\230\210\353\247\244 \355\201\264\353\236\230\354\212\244.drawio"
+
+no changes added to commit (use "git add" and/or "git commit -a")
+remote: error: Trace: 4c82b3337c7fd99b9e954124bd3eae207a1ef77d5b1b087d70c7936e772001b8        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File 3주차 주디 QA.mov is 619.65 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'github.com:judy-kimsohui/Kakao-Cloud-School.git'
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+error: 'Week6/JavaTest/' does not have a commit checked out
+fatal: adding files failed
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    "3\354\243\274\354\260\250 \354\243\274\353\224\224 QA.mov"
+	modified:   Week2/Week2_P2/TC.txt
+	modified:   Week2/Week2_P2/data/-test-comments.json
+	modified:   Week2/Week2_P2/data/-test-commentsIndex.json
+	modified:   Week2/Week2_P2/data/-test-posts.json
+	modified:   Week2/Week2_P2/data/-test-postsIndex.json
+	modified:   Week2/Week2_P2/data/-test-users.json
+	modified:   Week2/Week2_P2/data/-test-usersIndex.json
+	deleted:    Week2/Week2_P2/sessions/Bc0tfbaw8F0QzbaQodQjY5sy8G_3U8cN.json
+	modified:   git-sch/git-sch.log
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Week2/Week2_P2/images/postImagePath-1715864197225.png
+	Week2/Week2_P2/images/profileImage-1715864114477.png
+	Week3/
+	Week6/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+remote: error: Trace: 491079fa0928f44afc4885aebf4149be868d6c483d55a899e65a3da1793f1f5c        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File 3주차 주디 QA.mov is 619.65 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To github.com:judy-kimsohui/Kakao-Cloud-School.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'github.com:judy-kimsohui/Kakao-Cloud-School.git'
+To github.com:100-hours-a-week/5-judy-kim-community.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.

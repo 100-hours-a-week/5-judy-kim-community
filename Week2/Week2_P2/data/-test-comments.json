@@ -97,5 +97,16 @@
     "authorIsPoster": true,
     "createdAt": "2024-05-15T17:43:46.489Z",
     "updatedAt": "2024-05-15T17:44:15.746Z"
+  },
+  {
+    "id": 17,
+    "postId": 18,
+    "content": "kkkkk",
+    "author": "주디2",
+    "authorId": 4,
+    "imagePath": "/images/profileImage-1715864114477.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-16T12:57:14.888Z",
+    "updatedAt": "2024-05-16T12:57:14.888Z"
   }
 ]
