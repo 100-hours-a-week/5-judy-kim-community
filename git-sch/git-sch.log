@@ -1369,3 +1369,15 @@ error: failed to push some refs to 'https://github.com/judy-kimsohui/Kakao-Cloud
 This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
 
 error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+error: failed to push some refs to 'https://github.com/judy-kimsohui/Kakao-Cloud-School.git'
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
