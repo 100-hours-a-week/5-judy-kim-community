@@ -17,6 +17,22 @@ public class Ticket {
         this.discount = discount;
     }
 
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public Theater getTheater() {
+        return theater;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
     public int getPrice() {
         return price;
     }

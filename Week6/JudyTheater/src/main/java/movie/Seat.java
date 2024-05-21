@@ -1,6 +1,6 @@
 package movie;
 
-public class Seat implements Bookable {
+public class Seat {
     private char row;
     private int number;
     private boolean isBooked;
@@ -25,5 +25,10 @@ public class Seat implements Bookable {
 
     public int getNumber() {
         return number;
+    }
+
+    @Override
+    public String toString() {
+        return "" + row + number;
     }
 }

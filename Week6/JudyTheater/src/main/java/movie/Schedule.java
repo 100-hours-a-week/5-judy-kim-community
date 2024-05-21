@@ -1,6 +1,6 @@
 package movie;
 
-import java.util.Random;
+import java.util.Date;
 
 public class Schedule extends ShowEntity {
     private String date;
@@ -9,22 +9,13 @@ public class Schedule extends ShowEntity {
     private Seat[] seats;
     private boolean available;
 
-    public Schedule(String name, String date, String time, Movie movie, Seat[] seats, String createdBy, String updatedBy) {
+    public Schedule(String name, Date date, String time, Movie movie, Seat[] seats, String createdBy, String updatedBy) {
         super(name, createdBy, updatedBy);
-        this.date = date;
+        this.date = String.format("%1$tY-%1$tm-%1$td", date);
         this.time = time;
         this.movie = movie;
         this.seats = seats;
         this.available = true;
-
-        // Initialize seats with random booking status (50% 이상 예약된 상태로 설정)
-        Random random = new Random();
-        for (int i = 0; i < seats.length; i++) {
-            seats[i] = new Seat((char) ('A' + i / 10), (i % 10) + 1);
-            if (random.nextDouble() < 0.5) { // 50% 이상 예약
-                seats[i].book();
-            }
-        }
     }
 
     public String getDate() {
