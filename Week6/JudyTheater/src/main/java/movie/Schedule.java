@@ -15,13 +15,13 @@ public class Schedule extends ShowEntity {
         this.time = time;
         this.movie = movie;
         this.seats = seats;
-        this.available = new Random().nextBoolean();
+        this.available = true;
 
-        // Initialize seats with random booking status
+        // Initialize seats with random booking status (50% 이상 예약된 상태로 설정)
         Random random = new Random();
         for (int i = 0; i < seats.length; i++) {
             seats[i] = new Seat((char) ('A' + i / 10), (i % 10) + 1);
-            if (random.nextBoolean()) {
+            if (random.nextDouble() < 0.5) { // 50% 이상 예약
                 seats[i].book();
             }
         }

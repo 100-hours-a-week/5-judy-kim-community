@@ -1332,3 +1332,27 @@ hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 =======
 >>>>>>> origin/main
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'post-commit' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+[main 501bb8e] backup Mon May 20 18:00:00 KST 2024
+ 13 files changed, 189 insertions(+), 107 deletions(-)
+ delete mode 100644 Week2/Week2_P2/sessions/0IWPA_r7oOt5l9S0mb44oYOJVOfQ0cWR.json
+ delete mode 100644 Week2/Week2_P2/sessions/57P30FUNz4vLGMGBAG-1l3WHVmS3-eYM.json
+ delete mode 100644 Week2/Week2_P2/sessions/8Ti0lWA1Hdo1WwKiIRTpOgDDL0SFHBxN.json
+ delete mode 100644 Week2/Week2_P2/sessions/9vUg8PlseGTZ0BvVCsW6zefFLSIwgDmH.json
+ delete mode 100644 Week2/Week2_P2/sessions/BsjRq_CSAd83a_gPRQXAP_4WxYKH9TA2.json
+ delete mode 100644 Week2/Week2_P2/sessions/JtrnoR-sjgAYgHotBLS_KIZyyYzNmSzX.json
+ delete mode 100644 Week2/Week2_P2/sessions/N20BEkOBTjyjJNJ79lrP9D0Q4Pnp5IGK.json
+ delete mode 100644 Week2/Week2_P2/sessions/Ram8L9vstESVImLVxt2DQc5TmK8WfXRZ.json
+ delete mode 100644 Week2/Week2_P2/sessions/WOFxzCZJgOqBFDEc8nVaEC0TB1M2m0ib.json
+ delete mode 100644 Week2/Week2_P2/sessions/nycHmeiLZOOd_jLWva6Om3H03NAb4t40.json
+ delete mode 100644 Week2/Week2_P2/sessions/qm4_TfwxDRJrPBFFhSOvn7TDl0cdGnCC.json
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+error: failed to push some refs to 'https://github.com/judy-kimsohui/Kakao-Cloud-School.git'
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'

@@ -18,4 +18,12 @@ public class Seat implements Bookable {
     public boolean isBooked() {
         return isBooked;
     }
+
+    public char getRow() {
+        return row;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 }
