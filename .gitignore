@@ -4,4 +4,4 @@
 **/._.DS_Store
 .git-sch
 echo "git-sch/" >> .gitignore
-.idea/
+.idea/git-sch/
