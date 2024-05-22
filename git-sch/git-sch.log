@@ -1,1 +1,14 @@
 우우
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'post-commit' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+[main bfd23f8] backup Wed May 22 15:27:00 KST 2024
+ 2 files changed, 46 insertions(+)
+ create mode 100644 Week3/TC.txt
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+error: failed to push some refs to 'https://github.com/judy-kimsohui/Kakao-Cloud-School.git'
+
+This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting the 'pre-push' file in the hooks directory (set by 'core.hookspath'; usually '.git/hooks').
+
+error: failed to push some refs to 'github.com:100-hours-a-week/5-judy-kim-community.git'
