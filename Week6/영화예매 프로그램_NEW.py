@@ -1,3 +1,4 @@
+#공부 열심히 하기 싫당  
 #굴림체
 
 import sys,random,time
