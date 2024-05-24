@@ -7,7 +7,6 @@ public class Schedule extends ShowEntity {
     private String time;
     private Movie movie;
     private Seat[] seats;
-    private boolean available;
 
     public Schedule(String name, Date date, String time, Movie movie, Seat[] seats, String createdBy, String updatedBy) {
         super(name, createdBy, updatedBy);
@@ -15,7 +14,6 @@ public class Schedule extends ShowEntity {
         this.time = time;
         this.movie = movie;
         this.seats = seats;
-        this.available = true;
     }
 
     public String getDate() {
@@ -32,9 +30,5 @@ public class Schedule extends ShowEntity {
 
     public Seat[] getSeats() {
         return seats;
-    }
-
-    public boolean isAvailable() {
-        return available;
     }
 }

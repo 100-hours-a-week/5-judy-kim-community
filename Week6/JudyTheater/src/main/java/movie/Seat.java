@@ -1,6 +1,6 @@
 package movie;
 
-public class Seat {
+public class Seat implements Bookable {
     private char row;
     private int number;
     private boolean isBooked;
@@ -11,10 +11,12 @@ public class Seat {
         this.isBooked = false;
     }
 
+    @Override
     public void book() {
         isBooked = true;
     }
 
+    @Override
     public boolean isBooked() {
         return isBooked;
     }
