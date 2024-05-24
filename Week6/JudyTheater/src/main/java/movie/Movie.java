@@ -3,11 +3,13 @@ package movie;
 import java.util.Date;
 
 public class Movie extends ShowEntity {
+    private String title;
     private Date releaseDate;
     private int popularity;
 
     public Movie(String title, Date releaseDate, int popularity, String createdBy, String updatedBy) {
         super(title, createdBy, updatedBy);
+        this.title = title;
         this.releaseDate = releaseDate;
         this.popularity = popularity;
     }
