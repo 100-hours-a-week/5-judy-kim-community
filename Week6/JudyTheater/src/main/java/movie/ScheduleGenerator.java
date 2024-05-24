@@ -3,13 +3,10 @@ package movie;
 import java.util.*;
 
 public class ScheduleGenerator {
+
+    MovieManager movieManager = new MovieManager();
+
     private static final Random RANDOM = new Random();
-    private static final List<Movie> MOVIES = Arrays.asList(
-        new Movie("영화A", new Date(), 80, "admin", "admin"),
-        new Movie("영화B", new Date(), 70, "admin", "admin"),
-        new Movie("영화C", new Date(), 90, "admin", "admin"),
-        new Movie("영화D", new Date(), 85, "admin", "admin")
-    );
     private static final int MAX_DAYS = 7;
     private static final int MAX_TIME_SLOTS = 4;
     private static final int MAX_HALLS = 4;
@@ -23,9 +20,9 @@ public class ScheduleGenerator {
         List<Schedule> schedules = new ArrayList<>();
         for (int day = 0; day < MAX_DAYS; day++) {
             for (int timeSlot = 0; timeSlot < MAX_TIME_SLOTS; timeSlot++) {
-                for (int hall = 0; hall < MAX_HALLS; hall++) {
+                for (int hall = 1; hall <= MAX_HALLS; hall++) {
                     Movie movie = MOVIES.get(RANDOM.nextInt(MOVIES.size()));
-                    schedules.add(new Schedule("상영일정", new Date(2024 - 1900, 4, day + 1), TIMES[timeSlot], movie, generateSeats(), "admin", "admin"));
+                    schedules.add(new Schedule("상영일정", new Date(2024 - 1900, 4, day + 1), TIMES[timeSlot], movie, generateSeats(), String.valueOf(hall), "2024-05-" + (day + 1)));
                 }
             }
         }

@@ -27,10 +27,15 @@ public class TheaterManager {
         Map<String, Map<String, Set<Integer>>> timetable = new TreeMap<>();
         for (Schedule schedule : theater.getSchedules()) {
             if (schedule.getMovie().getTitle().equals(movie.getTitle())) {
-                timetable
-                    .computeIfAbsent(schedule.getDate(), k -> new TreeMap<>())
-                    .computeIfAbsent(schedule.getTime(), k -> new TreeSet<>())
-                    .add(schedule.getHall());
+                try {
+                    int hall = schedule.getHall();
+                    timetable
+                        .computeIfAbsent(schedule.getDate(), k -> new TreeMap<>())
+                        .computeIfAbsent(schedule.getTime(), k -> new TreeSet<>())
+                        .add(hall);
+                } catch (NumberFormatException e) {
+                    System.err.println("잘못된 홀 정보: " + schedule.getHall() + " - " + e.getMessage());
+                }
             }
         }
         timetable.forEach((date, times) -> {
@@ -60,7 +65,11 @@ public class TheaterManager {
             if (schedule.getMovie().getTitle().equals(movie.getTitle()) &&
                 schedule.getDate().equals(day) &&
                 schedule.getTime().equals(time)) {
-                halls.add(schedule.getHall());
+                try {
+                    halls.add(schedule.getHall());
+                } catch (NumberFormatException e) {
+                    System.err.println("잘못된 홀 정보: " + schedule.getHall() + " - " + e.getMessage());
+                }
             }
         }
         return new ArrayList<>(halls);
@@ -69,10 +78,10 @@ public class TheaterManager {
     public boolean isMovieScheduled(Theater theater, String day, String time, int hall, Movie movie) {
         return theater.getSchedules().stream().anyMatch(schedule -> {
             try {
-                schedule.getDate().equals(day) &&
-                schedule.getTime().equals(time) &&
-                schedule.getMovie().getTitle().equals(movie.getTitle()) &&
-                schedule.getHall() == hall
+                return schedule.getDate().equals(day) &&
+                       schedule.getTime().equals(time) &&
+                       schedule.getMovie().getTitle().equals(movie.getTitle()) &&
+                       schedule.getHall() == hall;
             } catch (NumberFormatException e) {
                 System.err.println("잘못된 홀 정보: " + schedule.getHall() + " - " + e.getMessage());
                 return false;
