@@ -53,7 +53,6 @@
     "authorIsPoster": false,
     "createdAt": "2024-05-15T14:04:39.750Z",
     "updatedAt": "2024-05-15T14:18:26.755Z"
-<<<<<<< HEAD
   },
   {
     "id": 11,
@@ -109,7 +108,16 @@
     "authorIsPoster": true,
     "createdAt": "2024-05-16T12:57:14.888Z",
     "updatedAt": "2024-05-16T12:57:14.888Z"
-=======
->>>>>>> origin/main
+  },
+  {
+    "id": 19,
+    "postId": 14,
+    "content": "안녕",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-06-02T03:36:42.007Z",
+    "updatedAt": "2024-06-02T03:36:42.007Z"
   }
 ]
