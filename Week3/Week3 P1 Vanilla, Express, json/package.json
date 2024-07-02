@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "dev:backend": "nodemon backend/backend.js",
+    "dev:frontend": "nodemon frontend/frontend.js",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "nunjucks": "^3.2.4",
+    "session-file-store": "^1.5.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "/data/**",
+      "/sessions/**"
+    ]
+  }
+}

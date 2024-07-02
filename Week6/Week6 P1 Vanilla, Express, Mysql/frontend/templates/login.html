@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block css %}    
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+{% endblock %}
+
+{% block js %}
+    <script src="/js/login.js"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="login-section">
+        <div class="login-title"><h2>로그인</h2></div>
+        <!--<div><h4 style="font-weight: 100;">개발자 데이터 눌러서 로그인<br>or 직접 회원가입 후 진행하기<br>속도가 많이 느립니다..</h4></div>-->
+        <div class="formbox">
+            <form id="loginForm">
+                <p class="formtext">이메일</p>
+                <input id="inputEmailLogin" type='email' name='email' placeholder='이메일을 입력하세요'>
+                <div class="space"></div>
+                <p class="formtext">비밀번호</p>
+                <input id="inputPasswordLogin" type='password' name='password' placeholder='비밀번호를 입력하세요'>
+                
+                <p class="helptext login hide">* helper text</p>
+
+                <div class="space"></div>
+                <div class="buttonss">
+                    <button id="devFillButton" type="button" onclick="fillLoginDevData()">개발자 데이터 입력</button>
+                </div>     
+
+                <div class="space"></div>
+                <div><button id="button-login" class="button-login" type='submit'>로그인</button></div>
+                <div class="space"></div>
+                <div><a class="login-signup" href="/signup">회원가입</a></div>
+            </form>
+        </div>
+        <!-- <div id="error-message"></div>-->
+    </section>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>judy Week2 Express</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/overheader.css">
+    <link rel="stylesheet" type="text/css" href="/css/toast-message.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    {% block css %}{% endblock %}
+
+    <script src="/js/availability.js">console.log('Add JS File');</script>
+    <script src="/js/base.js"></script>
+    <script src="/js/headerIslogin.js"></script>
+    <script src="/js/getuserinfo.js"></script>
+    <script src="/js/toast-message.js"></script>
+    
+    {% block js %}{% endblock %}
+ 
+</head>
+<body>
+    <header>
+        <div id="toast"></div>
+
+        <div class="lowheader">
+            <h2 class="header-text">
+                아무 말 대잔치
+            </h2>
+            <hr class="header-line">
+        </div>    
+        
+        <div class="overheader">
+            <div class="button-back">
+                <a href="{{ href }}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></a>
+            </div>
+            <a href="/posts"><div style="width:200px; height:50px;"></div></a>
+            <div class="profile">
+                <div class="dropdown">
+                    <button class="dropbtn"></button>
+                    <div class="dropdown-content" id="dropdownMenu">    
+                    </div>
+                </div>
+            </div>
+        </div>              
+    </header>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

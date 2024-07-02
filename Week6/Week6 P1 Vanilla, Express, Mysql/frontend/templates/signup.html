@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
+{% endblock %}
+
+{% block js %}
+    <script src="/js/signup.js"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="login-section">
+        <div class="login-title"><h2>회원가입</h2></div>
+        <div class="formbox">
+            <form id="signupForm" enctype="multipart/form-data">
+                <p class="formtext">프로필 사진*</p>
+                <p class="helptext profileImage hide">* helptext</p>
+                
+                <input id="uploadProfileImage" type="file" name="profileImage" accept="image/*" style="display:none"/>
+                <div class="profile-image-parent" onclick="document.getElementById('uploadProfileImage').click()">
+                    <div id="profileImagePreview" class="profile-image"></div>               
+                    <div class="button-edit-image"><i class="fa-solid fa-plus"></i></div>  
+                </div>
+                
+                <p class="formtext">이메일*</p>
+                <input id="inputEmail" type="email" name="email" placeholder="이메일을 입력하세요">
+                <p class="helptext email hide">* helptext</p> 
+                
+                <p class="formtext">비밀번호*</p>
+                <input id="inputPassword" type="password" name="password" placeholder="비밀번호를 입력하세요">
+                <p class="helptext password hide">* helptext</p> 
+
+                <p class="formtext">비밀번호 확인*</p>
+                <input id="inputRetypePassword" type="password" name="password-retype" placeholder="비밀번호를 입력하세요">
+                <p class="helptext retypePassword hide">* helptext</p> 
+                
+                <p class="formtext">닉네임*</p>
+                <input id="inputNickname" type="text" name="nickname" placeholder="닉네임을 입력하세요">
+                <p class="helptext nickname hide">* helptext</p> 
+                
+                <div class="space"></div>
+                <div class="buttonss">
+                    <button id="devFillButton" type="button" onclick="fillSignupDevData()">개발자 데이터 입력</button>
+                    이미지 파일은 직접 입력하세옹
+                </div>         
+                
+                <div class="space"></div>
+                <div><button id="signupButton" class="button-signup" type="submit">회원가입</button></div> <!-- 버튼 활성화 - 색깔 바뀌기 -->
+                <div class="space"></div>
+                
+                <div><a class="login-signup" href="/login">로그인하러 가기</a></div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+ 

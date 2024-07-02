@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/css/post-contents.css">
+{% endblock %}
+
+{% block js %}
+    <script src="/js/modal.js"></script>
+    <script src="/js/posts-load.js"></script>
+    <script src="/js/post-edit.js"></script>
+    <script src="/js/comment-write.js"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="posts-section">
+        <article class="contents-title">
+            <div id="title" class="title"></div>
+            <div class="subtitle">
+                <div class="profile">
+                    <div id="user-image" class="user-image"></div>
+                    <div id="user-name" class="user-name"></div>
+                    <div id="date" class="date"></div>
+                </div>
+                <div id="edit-button-parent" class="edit-button-parent" style="display:none;">
+                    <a id="button-edit" class="button-edit">수정</a>
+                    <!-- 모달 컨텐츠 -->
+                    <div id="edit-button-modal" class="delete-modal edit-delete-modal">
+                        <div class="modal-content">
+                            <p class="text1">게시글을 삭제하시겠습니까?</p>
+                            <p class="text2">삭제한 내용은 복구 할 수 없습니다.</p>
+                            <div class="space"></div>
+                            <div class="modal-actions">
+                                <button id="edit-cancel" class="modal-button edit-cancel">취소</button>
+                                <button id="edit-delete" class="modal-button edit-delete">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 모달 열기 버튼 -->
+                    <button id="edit-button-delete" class="button-delete edit-button-delete">삭제</button>
+                </div>
+            </div>            
+        </article>
+        <div class="space"></div>
+        <hr class="contents-title-line">
+        <article class="contents-middle">
+            <div id="post-image" class="image" style="display: none;"></div>
+            <script>
+                // 이미지 종회비 맞추기
+                document.addEventListener("DOMContentLoaded", function() {
+                    const images = document.querySelectorAll('.contents-middle .image img');
+        
+                    images.forEach(img => {
+                        img.addEventListener('load', function() {
+                            const aspectRatio = img.naturalHeight / img.naturalWidth;
+                            const parentWidth = img.parentElement.offsetWidth;
+                            const newHeight = parentWidth * aspectRatio;
+                            img.parentElement.style.height = `${newHeight}px`;
+                        });
+        
+                        if (img.complete) {
+                            img.dispatchEvent(new Event('load'));
+                        }
+                    });
+                });
+            </script>
+            <div id="post-image-space1" class="space" style="display: none;"></div>
+            <div id="post-image-space2" class="space" style="display: none;"></div>
+            <div id="content" class="text"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="box-parent">
+                <div class="box1">
+                    <p id="views" class="number"></p>
+                    <p>조회수</p>
+                </div>
+                <div class="box2">
+                    <p id="comments" class="number"></p>
+                    <p>댓글</p>
+                </div>
+            </div>
+        </article>
+        <hr class="contents-middle-line">
+        <div class="space"></div>
+        <article class="contents-command">
+            <div class="command-box">
+                <form id="commentForm">
+                    <div class="command-input-parent">
+                        <textarea class="command-write" name="content" placeholder="댓글을 남겨주세요!" id="comment"></textarea>
+                        <p class="helptext writeHelpText hide">* helptext</p>
+                    </div>
+                    <hr class="contents-middle-input-line">
+                    <div class="button-command-parent"><button id="commentWriteButton" class="button-command" type='submit'>댓글 등록</button></div>
+                </form> 
+            </div>
+        </article>
+
+        <!--댓글 동적 생성-->
+        <div id="comments-container"></div>
+  
+    </section>
+{% endblock %}

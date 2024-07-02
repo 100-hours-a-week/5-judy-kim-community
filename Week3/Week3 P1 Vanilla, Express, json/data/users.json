@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "email": "Judy@example.com",
+    "password": "$2b$10$0cc4/ZBHLU/OkOALKEcjKO9FmwmP3Dq7KFAGp.gFyPZsx/FVDnOpe",
+    "nickname": "Judy",
+    "profileImage": "/images/profileImage-1715751831880.png"
+  },
+  {
+    "id": 2,
+    "email": "test2@example.com",
+    "password": "$2b$10$yfnVsR/5Fo7dmVJeV7Nvvu101334x1ef7o5OBqeAVqOHV5l1Gb68G",
+    "nickname": "주디친구!",
+    "profileImage": "/images/profileImage-1715681992135.png"
+  },
+  {
+    "id": 3,
+    "email": "test5@example.com",
+    "password": "$2b$10$52nj.BjOvNUIhJxOpsh03u6mUDU8fg.o6mdvH45BvIDRlE4hZhjfi",
+    "nickname": "testUser",
+    "profileImage": "/images/profileImage-1715683638989.png"
+  },
+  {
+    "id": 4,
+    "email": "juntwo@naver.com",
+    "password": "$2b$10$xZyYJONleRD5zYT5eur3EOl9ztaQb9/AVbIoIF18eh8KXFfHcrnve",
+    "nickname": "무적준투",
+    "profileImage": "/images/profileImage-1715689549126.jpeg"
+  },
+  {
+    "id": 5,
+    "email": "kinjihong@naver.com",
+    "password": "$2b$10$nikN3dbYI4TjFNV.TgK8L.9jsQZjN5c98Mx3.rIa8a51q.VPJgg6G",
+    "nickname": "홍홍홍",
+    "profileImage": "/images/profileImage-1715689887521.jpeg"
+  },
+  {
+    "id": 6,
+    "email": "pizzaboy@naver.com",
+    "password": "$2b$10$f6eP.fALuvOTCybkTRNKg.Njl5icc2MoE4Vt791819ewd7Ou5KldC",
+    "nickname": "피자보이yoyoyo",
+    "profileImage": "/images/profileImage-1715689945750.jpg"
+  },
+  {
+    "id": 7,
+    "email": "wow@hello.com",
+    "password": "$2b$10$TQ0WO0ZrkSWEiF/lyEiJ4Ol1nDmav5t73xE3M9i2vNiOhz1jb8DqO",
+    "nickname": "멋진나!",
+    "profileImage": "/images/profileImage-1715690062270.png"
+  },
+  {
+    "id": 8,
+    "email": "jms0538@naver.com",
+    "password": "$2b$10$DzTC7VVyfdjXlCg9AmUT/OEKLK6YZidyCEDT306PPmexHtrqa2uEC",
+    "nickname": "참기름두릅찌개",
+    "profileImage": "/images/profileImage-1715690923616.png"
+  },
+  {
+    "id": 9,
+    "email": "lucy@email.com",
+    "password": "$2b$10$0dJc/NHstj62TOADq1vywenp8TuYV54gAw2XjWT213tJaZgYcoalq",
+    "nickname": "루시입니다",
+    "profileImage": "/images/profileImage-1715690643885.png"
+  },
+  {
+    "id": 10,
+    "email": "lucy@email.com2",
+    "password": "$2b$10$55ahDD8bF93qbi9a8LYJj.SffAwaggUArPi11TUJ9pSqzxBwHcGK6",
+    "nickname": "루시복제",
+    "profileImage": "/images/profileImage-1715691196092.png"
+  },
+  {
+    "id": 11,
+    "email": "kinjihong9598@gmail.com",
+    "password": "$2b$10$BdKf02SHKjPR.u7q7lTFG.4vA.MTDapC1NF/T.odVrw3GUpu8M5SW",
+    "nickname": "ㅤ",
+    "profileImage": "/images/profileImage-1715691442500.jpg"
+  },
+  {
+    "id": 12,
+    "email": "steven@HiJudy.com",
+    "password": "$2b$10$wxhE6DCBZV2d4APpD3nyBO3xmf2GxTgXbJDh5E9XgVvH4G5SrK7CS",
+    "nickname": "steven",
+    "profileImage": "/images/profileImage-1715691631770.jpeg"
+  },
+  {
+    "id": 14,
+    "email": "test@example.com",
+    "password": "$2b$10$ZkqclDvUW3Ut5/4jSGZ/be4vGOSKEhTxjvRcpLAOQtMmXBmyx8mme",
+    "nickname": "주디",
+    "profileImage": "/images/profileImage-1715744385872.png"
+  },
+  {
+    "id": 15,
+    "email": "test@example.com",
+    "password": "$2b$10$z8xwdoCGH6zgiTMsR9ShIOmfETXD2XJ1bPzqLdrxsNsn4WikpgIcS",
+    "nickname": "주디",
+    "profileImage": "/images/profileImage-1715749216000.png"
+  }
+]

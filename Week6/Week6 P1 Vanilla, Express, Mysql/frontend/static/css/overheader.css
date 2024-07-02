@@ -1,0 +1,94 @@
+
+.overheader {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overheader .button-back {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    align-content: center;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overheader .button-back a {
+  width: 100%; /* 부모와 동일한 너비 */
+  height: 100%; /* 부모와 동일한 높이 */
+  display: flex; /* Flex 컨테이너로 만듭니다 */
+  justify-content: center; /* 가로축 기준으로 중앙 정렬 */
+  align-items: center; /* 세로축 기준으로 중앙 정렬 */
+}
+
+.overheader .profile {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-size: cover; 
+    background-position: center;
+    background-color: #8c8c8c;
+    
+    border: 1px solid transparent;
+    border-radius: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Drop Down */
+/* 드롭다운 버튼 스타일 */
+.dropbtn {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    padding: 17px;
+    border: none;
+  }
+  
+  /* 드롭다운 메뉴 전체 컨테이너 */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* 드롭다운 내용 */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    right: 0;
+    min-width: 140px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    font-size: 14px;    
+  }
+  
+  /* 드롭다운 링크 */
+  .dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* 드롭다운 아이템 호버 */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* 드롭다운 버튼 호버 */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  

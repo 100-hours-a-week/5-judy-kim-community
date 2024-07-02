@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "postId": 1,
+    "content": "저는 개발자 주디입니당",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-15T06:16:35.917Z",
+    "updatedAt": "2024-05-15T13:47:38.933Z"
+  },
+  {
+    "id": 4,
+    "postId": 1,
+    "content": "주디 복제!!",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T06:29:52.841Z",
+    "updatedAt": "2024-05-15T06:31:59.367Z"
+  },
+  {
+    "id": 8,
+    "postId": 2,
+    "content": "글쓴이는 글쓴이라고 표시돼요",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-15T14:04:10.393Z",
+    "updatedAt": "2024-05-15T14:04:10.393Z"
+  },
+  {
+    "id": 9,
+    "postId": 2,
+    "content": "개발자는 개발자라고 표시돼요\n나는 나라고 표시돼요",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T14:04:27.062Z",
+    "updatedAt": "2024-05-15T14:18:27.758Z"
+  },
+  {
+    "id": 10,
+    "postId": 2,
+    "content": "로그인하지 않으면 댓글을 쓸 수 없어요\n자신의 댓글만 수정할 수 있어요",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T14:04:39.750Z",
+    "updatedAt": "2024-05-15T14:18:26.755Z"
+  },
+  {
+    "id": 11,
+    "postId": 15,
+    "content": "주디!",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-15T17:41:08.567Z",
+    "updatedAt": "2024-05-15T17:41:08.567Z"
+  },
+  {
+    "id": 12,
+    "postId": 15,
+    "content": "주디 친구!",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T17:42:29.213Z",
+    "updatedAt": "2024-05-15T17:42:29.213Z"
+  },
+  {
+    "id": 13,
+    "postId": 1,
+    "content": "아까는 (나)라고 표시 안됐지?",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-05-15T17:42:47.461Z",
+    "updatedAt": "2024-05-15T17:42:47.461Z"
+  },
+  {
+    "id": 15,
+    "postId": 17,
+    "content": "댓글 수정~\n엔터\n\n엔터",
+    "author": "주디친구",
+    "authorId": 2,
+    "imagePath": "/images/profileImage-1715753821790.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-15T17:43:46.489Z",
+    "updatedAt": "2024-05-15T17:44:15.746Z"
+  },
+  {
+    "id": 17,
+    "postId": 18,
+    "content": "kkkkk",
+    "author": "주디2",
+    "authorId": 4,
+    "imagePath": "/images/profileImage-1715864114477.png",
+    "authorIsPoster": true,
+    "createdAt": "2024-05-16T12:57:14.888Z",
+    "updatedAt": "2024-05-16T12:57:14.888Z"
+  },
+  {
+    "id": 19,
+    "postId": 14,
+    "content": "안녕",
+    "author": "주디",
+    "authorId": 1,
+    "imagePath": "/images/profileImage-1715753398399.png",
+    "authorIsPoster": false,
+    "createdAt": "2024-06-02T03:36:42.007Z",
+    "updatedAt": "2024-06-02T03:36:42.007Z"
+  }
+]

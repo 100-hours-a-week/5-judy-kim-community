@@ -1,0 +1,30 @@
+/* styles.css */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    position: fixed;
+    z-index: 20;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px; /* 상단에 위치 */
+    font-size: 17px;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    opacity: 0;
+    border: 1px solid #ddd;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toast-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+}

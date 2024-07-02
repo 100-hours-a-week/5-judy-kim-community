@@ -1,0 +1,30 @@
+1. 테스트 개발 데이터 - 배포 데이터로 바꾸기
+// json-path command+/
+posts.json, users.json, comments.json
+
+2. 이슈 링크
+https://github.com/100-hours-a-week/5-judy-kim-community/issues
+
+3. 배포 환경 (로컬)
+zsh
+
+npm install -g localtunnel
+lt --port 3600      
+lt --port 8600      
+
+4. 서버 켜기
+Frontend, Backend
+
+5. fetch 링크
+http://127.0.0.1:3600
+http://127.0.0.1:8600 
+
+6. 비밀번호 셋팅
+
+7. 테스트 유저, 개발자 유저 바꾸기 (회원가입, 로그인)
+
+8. 개발자 유저 정보 (로그인)
+"id": 1
+
+9. 로그인 
+/login

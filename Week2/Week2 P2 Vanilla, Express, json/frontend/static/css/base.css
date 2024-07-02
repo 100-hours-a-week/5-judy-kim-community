@@ -1,0 +1,73 @@
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;   
+    color: black;
+}
+
+.space {
+    height: 15px;
+}
+
+.hide {
+    display: none;
+}
+
+/*
+.active {
+    background-color: #7FA6EE;
+} 
+이건 해당 css에서 적용 안하면 적용 안됨 ㅠ
+*/
+
+
+@font-face {
+    font-family: 'Sagak-Sagak';
+    src: url('http://127.0.0.1:3200/css/sagak-sagak.ttf') format('truetype');
+    font-display: swap; /* 폰트 로드 중에 대체 폰트 사용 */
+}
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #F4F5F7;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+header {
+    position: relative;
+}
+
+.lowheader {
+    z-index: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.header-text {
+    cursor: pointer;
+    font-family: "sagak-sagak", sans-serif; 
+    font-size: 32px;
+    padding: 30px 0 20px 0;
+}
+
+.header-line {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #8c8c8c;
+}
+

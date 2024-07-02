@@ -1,0 +1,40 @@
+{    
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "All Components",
+            "configurations": ["Backend", "Frontend", "js"]
+        }
+    ],
+    "configurations": [
+        {
+            "name": "Backend",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/backend/backend.js",
+            "restart": true,
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**" ]
+        },
+        {
+            "name": "Frontend",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/frontend/frontend.js",
+            "restart": true,
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**" ]
+        },
+        {
+            "name": "js",
+            "type": "node",
+            "request": "launch",
+            "program": "${file}",
+            "skipFiles": [
+                "<node_internals>/**"
+              ],
+        }
+    ]
+}
