@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClassName = 'org.judy.Main'
+}
+
+group = 'org.judy'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://maven.pkg.github.com/judy-kimsohui/ghcr-library-pjt")
+        credentials {
+            username = System.getenv('USERNAME')
+            password = System.getenv('TOKEN')
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.judy:ghcr-library-pjt:1.0-SNAPSHOT'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
