@@ -20,7 +20,7 @@ export const getPostById = async (req, res) => {
             res.status(404).json({ message: '게시글을 찾을 수 없습니다.' });
         } else {
             // 조회수 업데이트
-            await Post.updateById(postId, {views: post.views + 1});
+            await Post.updateById(postId, { views: post.views + 1 });
             res.json(post);
         }
     } catch (err) {
@@ -43,8 +43,8 @@ export const createPost = async (req, res) => {
         const newPost = new Post({
             title: req.body.title,
             content: req.body.content,
-            author: req.session.username,  
-            authorId: req.session.userId,  
+            author: req.session.username,
+            authorId: req.session.userId,
             userImagePath: user.profileImage,
             postImagePath,
             likes: 0,
@@ -59,7 +59,7 @@ export const createPost = async (req, res) => {
         console.error('게시글 작성 중 오류 발생:', err.message, err.stack);
         res.status(500).json({ success: false, message: '게시글 작성 중 오류 발생', error: err.message });
     }
-}
+};
 
 // 게시글 삭제
 export const deletePost = async (req, res) => {
@@ -99,10 +99,10 @@ export const updatePost = async (req, res) => {
             return res.status(404).send({ success: false, message: '게시글을 찾을 수 없습니다.' });
         }
         await Post.updateById(postId, {
-            title, 
-            content, 
+            title,
+            content,
             postImagePath: imagePath || post.postImagePath  // 새 이미지가 없다면 기존 경로 유지
-        });        
+        });
         res.json({ success: true, message: '게시글이 성공적으로 업데이트되었습니다.' });
     } catch (error) {
         console.error('게시글 업데이트 중 오류 발생:', error);

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {    
-
     // 요소 참조
     let uploadProfileImage1 = document.querySelector('#uploadProfileImage');
     let uploadProfileImage2 = document.querySelector('#uploadProfileImage2');  
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let inputNickname = document.querySelector('#inputNickname'); 
     let helpNickname = document.querySelector('.helptext.nickname');
 
-    
     const signupButton = document.querySelector('#signupButton');
     const nicknameButton = document.querySelector('#nicknameButton');
     const retypePasswordButton = document.querySelector('#retypePasswordButton');
@@ -27,15 +25,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // 모든 검증을 통합하여 회원 가입 버튼 활성화
     function updateSignupButtonStatus() {
-
         // signup : 회원가입 제출 조건
         if (window.location.href.includes('/signup')){
             if (signupButton) {
                 if (inputEmailValid && inputPasswordValid && inputRetypePasswordValid && inputNicknameValid && uploadProfileImageValid){
                     console.log(inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid, uploadProfileImageValid);
                     activeButton(signupButton);
-                }
-                else{
+                } else {
                     console.log(uploadProfileImageValid, inputEmailValid, inputPasswordValid, inputRetypePasswordValid, inputNicknameValid);
                     disableButton(signupButton);
                 }
@@ -70,13 +66,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     window.fillSignupDevData = function() {
-        
-        // 테스트 유저
-        // inputEmail.value = 'test@example.com';
-        // inputPassword.value = 'Password123!';
-        // inputRetypePassword.value = 'Password123!';
-        // inputNickname.value = 'testUser';
-
         // 개발자 유저
         inputEmail.value = 'Judy@example.com';
         inputPassword.value = 'Password123!';
@@ -91,11 +80,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     window.fillLoginDevData = function() {
         let inputEmailLogin = document.querySelector('#inputEmailLogin');
-        let inputPasswordLogin = document.querySelector('#inputPasswordLogin')
-        
-        // 테스트 유저
-        // inputEmailLogin.value = 'test@example.com';
-        // inputPasswordLogin.value = 'Password123!';
+        let inputPasswordLogin = document.querySelector('#inputPasswordLogin');
 
         // 개발자 유저
         inputEmailLogin.value = 'Judy@example.com';
@@ -207,14 +192,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         };        
     }
 
-
     // signup, profile-edit2
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit2')) {
         // 비밀번호 검증
         inputPassword.onkeyup = function () {
             helpPassword.classList.remove('hide');
             if (inputPassword.value.length > 0) {
-
                 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/;  // 허용된 특수문자: @$!%*?&
                 const invalidCharRegex = /[^a-zA-Z\d@$!%*?&]/;  // 허용된 특수문자 외의 문자 검증
 
@@ -284,7 +267,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         };
     }
 
-
     // signup, profile-edit1
     if (window.location.href.includes('/signup') || window.location.href.includes('/profile-edit1')) {
         let currentUserNickname = '';
@@ -305,7 +287,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // 닉네임 검증
         inputNickname.onkeyup = async function () {
             helpNickname.classList.remove('hide');
-            // const forbiddenWhitespace = /[\u200B-\u200D\uFEFF\u3164]/g; // 공백 문자
             const forbiddenWhitespace = '\u3164';
             const invalidCharRegex = /[^a-zA-Z0-9._\uAC00-\uD7A3-]/;  // 허용된 문자: 영문자, 숫자, . _ - , 한글
             
@@ -394,9 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function validatePost() {
             helpPost.classList.remove('hide');
-            // const forbiddenWhitespace = /[\u200B-\u200D\uFEFF\u3164]/g; // 공백 문자
             const forbiddenWhitespace = '\u3164';
-
 
             // 제목 길이 검증
             if (inputTitle.value.trim().length > 26) {
@@ -429,11 +408,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // posts-contents 
 // 댓글 입력 검증
-
-// TODO : 여기 댓글 유효성 해결..
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.href.includes('/posts/')) {
-
         const forbiddenWhitespace = '\u3164'; // 공백 문자
 
         function validateComment(content) {

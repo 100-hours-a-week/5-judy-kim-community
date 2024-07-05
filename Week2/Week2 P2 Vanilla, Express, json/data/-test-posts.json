@@ -78,9 +78,23 @@
     "userImagePath": "/images/profileImage-1715864114477.png",
     "postImagePath": "/images/postImagePath-1715864197225.png",
     "createdAt": "2024-05-16T12:56:37.247Z",
-    "updatedAt": "2024-05-16T13:03:04.329Z",
+    "updatedAt": "2024-07-05T01:26:04.541Z",
     "likes": 0,
     "comments": 1,
-    "views": 5
+    "views": 6
+  },
+  {
+    "id": 19,
+    "title": "ㅁ",
+    "content": "ㅁ",
+    "author": "주디",
+    "authorId": 1,
+    "userImagePath": "/images/profileImage-1715753398399.png",
+    "postImagePath": null,
+    "createdAt": "2024-07-05T01:25:56.468Z",
+    "updatedAt": "2024-07-05T01:25:57.838Z",
+    "likes": 0,
+    "comments": 0,
+    "views": 1
   }
 ]

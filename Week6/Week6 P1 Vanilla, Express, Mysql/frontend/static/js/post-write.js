@@ -43,3 +43,77 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// 모든 검증을 통합하여 게시 버튼 활성화
+function updatePostButtonStatus() {
+    if (inputWriteValid) {
+        activeButton(postButton);
+    } else {
+        disableButton(postButton);
+    }
+}
+
+// 버튼 활성화 함수
+function activeButton(buttonName){
+    buttonName.classList.add("active");
+    buttonName.disabled = false;
+}
+
+// 버튼 비활성화 함수
+function disableButton(buttonName){
+    buttonName.classList.remove("active");
+    buttonName.disabled = true;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.href.includes('/post-write') || window.location.href.includes('/post-edit')) {
+        let inputTitle = document.querySelector('#inputTitle');
+        let inputContent = document.querySelector('#inputContent');
+        let helpPost = document.querySelector('.helptext.helpPost');
+
+        const postButton = document.querySelector('#postButton');
+
+        let inputWriteValid = false;
+
+        // 모든 검증을 통합하여 게시 버튼 활성화
+        function updatePostButtonStatus() {
+            if (inputWriteValid) {
+                activeButton(postButton);
+            } else {
+                disableButton(postButton);
+            }
+        }
+
+        // 게시글 검증 함수
+        function validatePost() {
+            helpPost.classList.remove('hide');
+            const forbiddenWhitespace = '\u3164';
+
+            // 제목 길이 검증
+            if (inputTitle.value.trim().length > 26) {
+                helpPost.textContent = "* 제목은 26자 이하로 작성해주세요.";
+                helpPost.style.color = "red";
+                inputWriteValid = false;
+            } else if (inputTitle.value.trim() === '' || inputContent.value.trim() === '' || inputTitle.value.includes(forbiddenWhitespace)) {
+                helpPost.textContent = "* 제목과 내용을 모두 작성해주세요. (공백 특수문자는 제외됩니다.)";
+                helpPost.style.color = "red";
+                inputWriteValid = false;
+            } else {
+                helpPost.textContent = "제목과 내용이 모두 입력되었습니다.";
+                helpPost.style.color = "green";
+                inputWriteValid = true;
+            }
+            updatePostButtonStatus();
+        }
+
+        // 제목 입력 길이 제한
+        inputTitle.addEventListener('input', function() {
+            inputTitle.value = inputTitle.value.slice(0, 26);        
+        });
+
+        if (window.location.href.includes('/post-write') || window.location.href.includes('/post-edit')) {
+            inputTitle.onkeyup = validatePost;
+            inputContent.onkeyup = validatePost;
+        }
+    }
+});
