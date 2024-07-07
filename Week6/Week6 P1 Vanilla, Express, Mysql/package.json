@@ -20,7 +20,7 @@
   "nodemonConfig": {
     "ignore": [
       "/data/**",
-      "/sessions/**"
+      "/backend/sessions/**"
     ]
   }
 }

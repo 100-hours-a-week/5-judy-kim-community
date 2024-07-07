@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 const FileStore = sessionFileStore(session);
 app.use(session({
     store: new FileStore({
-        path: './sessions', // 세션 파일 저장 경로
+        path: './backend/sessions', // 세션 파일 저장 경로
         ttl: 86400, // 세션의 생명 주기 (초 단위)
         retries: 0 // 파일을 읽을 때의 재시도 횟수
     }),

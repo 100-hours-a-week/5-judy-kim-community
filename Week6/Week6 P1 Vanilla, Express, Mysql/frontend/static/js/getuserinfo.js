@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .catch(error => {
-            console.error('Failed to fetch user info:', error); // 사용자 정보 가져오기 실패 시 에러 출력
+            console.error('사용자 정보를 가져오는데 실패했습니다:', error); // 사용자 정보 가져오기 실패 시 에러 출력
         });
 });
 
@@ -19,8 +19,8 @@ function fetchUserInfo() {
     })
     .then(response => {
         if (!response.ok) {
-            console.log("로그인되지않음"); // 응답이 실패하면 로그인되지 않음 출력
-            throw new Error('Failed to fetch user info'); // 에러 발생
+            console.log("로그인되지 않음"); // 응답이 실패하면 로그인되지 않음 출력
+            throw new Error('사용자 정보를 가져오는데 실패했습니다'); // 에러 발생
         }
         return response.json(); // 사용자 정보 반환
     });
