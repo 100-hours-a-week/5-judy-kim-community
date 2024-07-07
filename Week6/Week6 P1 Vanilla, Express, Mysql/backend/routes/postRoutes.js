@@ -7,12 +7,12 @@ import { getPosts, getPostById, createPost, deletePost, getEditPostPage, updateP
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const postImagesFolderPath = path.join(__dirname, '..', 'post_Images');
-const profileImagesFolderPath = path.join(__dirname, '..', 'profile_Images');
 
-// 이미지 저장 설정
+
+// 이미지를 저장할 폴더 설정
 const postImageStorage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, postImagesFolderPath); // 이미지를 저장할 폴더 설정
+        cb(null, postImagesFolderPath); 
     },
     filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); // 파일 이름을 현재 시간으로 설정하여 중복 방지
